@@ -1,11 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "@/utils/firebase/config";
-import { useRouter } from "next/navigation";
-
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
+import { Button } from "@/src/components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,28 +10,31 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/src/components/ui/card";
+import { Input } from "@/src/components/ui/input";
+import { Label } from "@/src/components/ui/label";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { auth } from "@/src/utils/firebase/config";
+import { useRouter } from "next/navigation";
 
 export default function SignUpWithImage() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const router = useRouter();
+  const [createUserWithEmailAndPassword] =
+    useCreateUserWithEmailAndPassword(auth);
 
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     try {
-      const res = await signInWithEmailAndPassword(email, password);
+      const res = await createUserWithEmailAndPassword(email, password);
       console.log({ res });
       setEmail("");
       setPassword("");
-      router.push("/");
+      router.push("/signin");
     } catch (e) {
       console.error(e);
     }
   };
-
   return (
     <>
       <div className="container relative  h-[800px] flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
@@ -68,9 +68,11 @@ export default function SignUpWithImage() {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 lg:max-w-lg">
             <Card>
               <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl text-center">Sign In</CardTitle>
+                <CardTitle className="text-2xl text-center">
+                  Create an account
+                </CardTitle>
                 <CardDescription className="text-center">
-                  Enter your email and password to sign in
+                  Enter your email and password to sign up
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4">
@@ -95,20 +97,31 @@ export default function SignUpWithImage() {
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col">
-                <Button className="w-full" onClick={handleSignIn}>
+                <Button className="w-full" onClick={handleSignUp}>
                   Sign Up
                 </Button>
                 <p className="mt-2 text-xs text-center text-gray-700">
-                  Don&apos;t have an account?
+                  Already have an account?
                   <Link
-                    href="/signup"
+                    href="/signin"
                     className=" text-blue-600 hover:underline ml-0.5"
                   >
-                    Sign Up
+                    Sign In
                   </Link>
                 </p>
               </CardFooter>
             </Card>
+
+            <p className="px-8 text-center text-sm text-muted-foreground">
+              By clicking continue, you agree to our
+              <Link
+                href="/terms"
+                className="underline underline-offset-4 hover:text-primary ml-0.5"
+              >
+                Terms of Service
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </div>
