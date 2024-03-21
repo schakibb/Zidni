@@ -69,11 +69,9 @@ export default function SignUpWithImage() {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 lg:max-w-lg">
             <Card>
               <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl text-center">
-                  Create an account
-                </CardTitle>
+                <CardTitle className="text-2xl text-center">Sign In</CardTitle>
                 <CardDescription className="text-center">
-                  Enter your email and password to sign up
+                  Enter your email and password to sign in
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4">
@@ -107,22 +105,11 @@ export default function SignUpWithImage() {
                     href="/signup"
                     className=" text-blue-600 hover:underline ml-0.5"
                   >
-                    Sign In
+                    Sign Up
                   </Link>
                 </p>
               </CardFooter>
             </Card>
-
-            <p className="px-8 text-center text-sm text-muted-foreground">
-              By clicking continue, you agree to our
-              <Link
-                href="/terms"
-                className="underline underline-offset-4 hover:text-primary ml-0.5"
-              >
-                Terms of Service
-              </Link>
-              .
-            </p>
           </div>
         </div>
       </div>
