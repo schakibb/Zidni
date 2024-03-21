@@ -1,7 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -30,7 +28,6 @@ export default function SignUpWithImage() {
     try {
       const res = await createUserWithEmailAndPassword(email, password);
       console.log({ res });
-      sessionStorage.setItem("user", `${true}`);
       setEmail("");
       setPassword("");
       router.push("/signin");
