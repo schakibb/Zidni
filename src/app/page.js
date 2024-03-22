@@ -1,32 +1,38 @@
-"use client";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "@/src/utils/firebase/config";
-import { useRouter } from "next/navigation";
-import { signOut } from "firebase/auth";
+import Footer from "../components/global/Footer/index";
+import Header from "../components/global/Header";
+import AboutSectionOne from "../components/global/About/AboutSectionOne";
+import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
+import Blog from "../components/global/Blog";
+import Brands from "../components/global/Brands";
+import ScrollUp from "../components/global/Common/ScrollUp";
+import Contact from "../components/global/Contact";
+import Features from "../components/global/Features";
+import Hero from "../components/global/Hero";
+import Pricing from "../components/global/Pricing";
+import Testimonials from "../components/global/Testimonials";
+// import Video from "../components/global/Video";
+
+export const metadata = {
+  title: "Zidni elearning platform",
+  description: "description",
+};
 
 export default function Home() {
-  const [user] = useAuthState(auth);
-  const router = useRouter();
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {user ? (
-        <button
-          onClick={() => {
-            signOut(auth);
-          }}
-        >
-          Log out
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            signOut(auth);
-          }}
-        >
-          Log out
-        </button>
-      )}
-    </main>
+    <>
+      <Header />
+      <ScrollUp />
+      <Hero />
+      <Features />
+      {/* <Video /> */}
+      <Brands />
+      <AboutSectionOne />
+      <AboutSectionTwo />
+      <Testimonials />
+      <Pricing />
+      <Blog />
+      <Contact />
+      <Footer />
+    </>
   );
 }
