@@ -26,9 +26,7 @@ const Hero = () => {
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Button>
-                    <Link href="https://nextjstemplates.com/templates/saas-starter-startup">
-                      Get Started &rarr;
-                    </Link>
+                    <Link href="/signin">Get Started &rarr;</Link>
                   </Button>
                   <Button>
                     <Link href="https://github.com/Lokmane04/Zidni">
