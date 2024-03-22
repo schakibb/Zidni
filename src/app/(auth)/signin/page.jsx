@@ -60,7 +60,7 @@ export default function SignUpWithImage() {
               <p className="text-lg">
                 Seeking knowledge is a duty upon every Muslim.
               </p>
-              <footer className="text-sm">Prophet Muhammad</footer>
+              <footer className="text-sm">Prophet Muhammad(S)</footer>
             </blockquote>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default function SignUpWithImage() {
               </CardContent>
               <CardFooter className="flex flex-col">
                 <Button className="w-full" onClick={handleSignIn}>
-                  Sign Up
+                  Sign In
                 </Button>
                 <p className="mt-2 text-xs text-center text-gray-700">
                   Don&apos;t have an account?

@@ -184,16 +184,16 @@ export const Header = () => {
                   </Button>
                 ) : (
                   <div className="hidden sm:block">
-                    <Button onClick={() => router.push("/signin")}>
-                      Sign In
+                    <Button asChild>
+                      <Link href={"/signin"}>Sign In</Link>
                     </Button>
                     <span
                       className=" mx-3 h-6 w-px bg-gray-400"
                       aria-hidden="true"
                     />
-                    <Button onClick={() => router.push("/signup")}>
-                      Sign Up
-                    </Button>
+                    <Link href={"/signin"}>
+                      <Button className="info">Sign Up</Button>
+                    </Link>
                   </div>
                 )}
                 <div>

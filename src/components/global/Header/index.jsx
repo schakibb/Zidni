@@ -179,16 +179,16 @@ const Header = () => {
                   </div>
                 ) : (
                   <div className="hidden sm:block">
-                    <Button onClick={() => router.push("/signin")}>
-                      Sign In
-                    </Button>
+                    <Link href={"signin"}>
+                      <Button>Sign In</Button>
+                    </Link>
                     <span
                       className=" mx-3 h-6 w-px bg-gray-400"
                       aria-hidden="true"
                     />
-                    <Button onClick={() => router.push("/signup")}>
-                      Sign Up
-                    </Button>
+                    <Link href={"/signup"}>
+                      <Button>Sign Up</Button>
+                    </Link>
                   </div>
                 )}
                 <div>

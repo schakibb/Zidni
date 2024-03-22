@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
+import { AnimatedButton } from "../../ui/animatedButton";
 const Hero = () => {
   return (
     <>
@@ -25,14 +26,14 @@ const Hero = () => {
                   quae sed unde.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Button>
+                  <AnimatedButton>
                     <Link href="/signin">Get Started &rarr;</Link>
-                  </Button>
-                  <Button>
+                  </AnimatedButton>
+                  <Button className="p-7 rounded-lg">
                     <Link href="https://github.com/Lokmane04/Zidni">
                       Code Source
                     </Link>
-                    <FaGithub className="ml-2" />
+                    <FaGithub className="ml-2 " />
                   </Button>
                 </div>
               </div>
