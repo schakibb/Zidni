@@ -1,7 +1,7 @@
 import React from "react";
-import AboutSectionOne from "@/src/components/global/About/AboutSectionOne";
-import AboutSectionTwo from "@/src/components/global/About/AboutSectionTwo";
-import Breadcrumb from "@/src/components/global/Common/Breadcrumb";
+import AboutSectionOne from "../../../components/global/About/AboutSectionOne";
+import AboutSectionTwo from "../../../components/global/About/AboutSectionTwo";
+import Breadcrumb from "../../../components/global/Common/Breadcrumb";
 
 export const metadata = {
   title: "About Page | Free Next.js Template for Startup and SaaS",
