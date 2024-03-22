@@ -8,7 +8,6 @@ import ScrollUp from "../components/global/Common/ScrollUp";
 import Contact from "../components/global/Contact";
 import Features from "../components/global/Features";
 import Hero from "../components/global/Hero";
-import Pricing from "../components/global/Pricing";
 import Testimonials from "../components/global/Testimonials";
 // import Video from "../components/global/Video";
 
@@ -29,7 +28,6 @@ export default function Home() {
       <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials />
-      <Pricing />
       <Blog />
       <Contact />
       <Footer />
