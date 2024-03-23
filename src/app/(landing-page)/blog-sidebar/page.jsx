@@ -27,11 +27,11 @@ const BlogSidebarPage = () => {
                     <div className="mb-5 mr-10 flex items-center">
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                          <Image
+                          {/* <Image
                             src="/images/blog/author-02.png"
                             alt="author"
                             fill
-                          />
+                          /> */}
                         </div>
                       </div>
                       <div className="w-full">
@@ -110,12 +110,12 @@ const BlogSidebarPage = () => {
                   </p>
                   <div className="mb-10 w-full overflow-hidden rounded">
                     <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
-                      <Image
+                      {/* <Image
                         src="/images/blog/blog-details-01.jpg"
                         alt="image"
                         fill
                         className="h-full w-full object-cover object-center"
-                      />
+                      /> */}
                     </div>
                   </div>
                   <p className="mb-8 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
@@ -372,28 +372,28 @@ const BlogSidebarPage = () => {
                 </h3>
                 <ul className="p-8">
                   <li className="mb-6 border-b border-body-color border-opacity-10 pb-6 dark:border-white dark:border-opacity-10">
-                    <RelatedPost
+                    {/* <RelatedPost
                       title="Best way to boost your online sales."
                       image="/images/blog/post-01.jpg"
                       slug="#"
                       date="12 Feb 2025"
-                    />
+                    /> */}
                   </li>
                   <li className="mb-6 border-b border-body-color border-opacity-10 pb-6 dark:border-white dark:border-opacity-10">
-                    <RelatedPost
+                    {/* <RelatedPost
                       title="50 Best web design tips & tricks that will help you."
                       image="/images/blog/post-02.jpg"
                       slug="#"
                       date="15 Feb, 2024"
-                    />
+                    /> */}
                   </li>
                   <li>
-                    <RelatedPost
+                    {/* <RelatedPost
                       title="The 8 best landing page builders, reviewed"
                       image="/images/blog/post-03.jpg"
                       slug="#"
                       date="05 Jun, 2024"
-                    />
+                    /> */}
                   </li>
                 </ul>
               </div>

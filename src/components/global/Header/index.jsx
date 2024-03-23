@@ -8,7 +8,7 @@ import menuData from "./menuData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 
 const Header = () => {
   const [user] = useAuthState(auth);
@@ -62,7 +62,7 @@ const Header = () => {
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
-                <Image
+                {/* <Image
                   src="/images/logo/logo-2.svg"
                   alt="logo"
                   width={140}
@@ -75,7 +75,7 @@ const Header = () => {
                   width={140}
                   height={30}
                   className="hidden w-full dark:block"
-                />
+                /> */}
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
@@ -186,8 +186,11 @@ const Header = () => {
                       className=" mx-3 h-6 w-px bg-gray-400"
                       aria-hidden="true"
                     />
-                    <Link href={"/signup"}>
-                      <Button>Sign Up</Button>
+                    <Link
+                      className={buttonVariants({ variant: "outline" })}
+                      href={"/signup"}
+                    >
+                      Sign Up
                     </Link>
                   </div>
                 )}

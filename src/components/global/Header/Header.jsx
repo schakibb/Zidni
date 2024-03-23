@@ -8,7 +8,7 @@ import menuData from "./menuData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 
 export const Header = () => {
   const [user] = useAuthState(auth);
@@ -170,35 +170,6 @@ export const Header = () => {
                     ))}
                   </ul>
                 </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0 ">
-                {user ? (
-                  <Button
-                    className="hidden sm:block"
-                    onClick={() => {
-                      signOut(auth);
-                      router.push("/signin");
-                    }}
-                  >
-                    Log out
-                  </Button>
-                ) : (
-                  <div className="hidden sm:block">
-                    <Button asChild>
-                      <Link href={"/signin"}>Sign In</Link>
-                    </Button>
-                    <span
-                      className=" mx-3 h-6 w-px bg-gray-400"
-                      aria-hidden="true"
-                    />
-                    <Link href={"/signin"}>
-                      <Button className="info">Sign Up</Button>
-                    </Link>
-                  </div>
-                )}
-                <div>
-                  <ThemeToggler />
-                </div>
               </div>
             </div>
           </div>

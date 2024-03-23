@@ -25,11 +25,11 @@ const BlogDetailsPage = () => {
                     <div className="mb-5 mr-10 flex items-center">
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
-                          <Image
+                          {/* <Image
                             src="/images/blog/author-02.png"
                             alt="author"
                             fill
-                          />
+                          /> */}
                         </div>
                       </div>
                       <div className="w-full">
@@ -108,12 +108,12 @@ const BlogDetailsPage = () => {
                   </p>
                   <div className="mb-10 w-full overflow-hidden rounded">
                     <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
-                      <Image
+                      {/* <Image
                         src="/images/blog/blog-details-02.jpg"
                         alt="image"
                         fill
                         className="object-cover object-center"
-                      />
+                      /> */}
                     </div>
                   </div>
                   <p className="mb-8 text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed lg:text-base lg:leading-relaxed xl:text-lg xl:leading-relaxed">
