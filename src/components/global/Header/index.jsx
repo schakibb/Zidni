@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -179,18 +178,18 @@ const Header = () => {
                   </div>
                 ) : (
                   <div className="hidden sm:block">
-                    <Link href={"signin"}>
-                      <Button>Sign In</Button>
-                    </Link>
-                    <span
-                      className=" mx-3 h-6 w-px bg-gray-400"
-                      aria-hidden="true"
-                    />
                     <Link
                       className={buttonVariants({ variant: "outline" })}
-                      href={"/signup"}
+                      href={"/signin"}
                     >
-                      Sign Up
+                      Sign In
+                    </Link>
+                    <span
+                      className=" mx-2.5 h-6 w-px bg-gray-400"
+                      aria-hidden="true"
+                    />
+                    <Link href={"/signup"}>
+                      <Button>Sign Up</Button>
                     </Link>
                   </div>
                 )}

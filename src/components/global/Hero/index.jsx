@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
 import { AnimatedButton } from "../../ui/animatedButton";
+import { cn } from "../../../utils/cn";
 const Hero = () => {
   return (
     <>
@@ -26,10 +27,16 @@ const Hero = () => {
                   quae sed unde.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <AnimatedButton>
-                    <Link href="/signin">Get Started &rarr;</Link>
-                  </AnimatedButton>
-                  <Button className="p-7 rounded-lg">
+                  <Link
+                    className={cn(
+                      " min-h-fit py-20 rounded-lg",
+                      buttonVariants({ variant: "outline" })
+                    )}
+                    href="/signin"
+                  >
+                    Get Started <span className="ml-2">&rarr;</span>
+                  </Link>
+                  <Button className="p-4 rounded-lg">
                     <Link href="https://github.com/Lokmane04/Zidni">
                       Code Source
                     </Link>

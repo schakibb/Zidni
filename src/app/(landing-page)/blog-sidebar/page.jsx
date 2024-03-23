@@ -2,7 +2,6 @@ import RelatedPost from "../../../components/global/Blog/RelatedPost";
 import SharePost from "../../../components/global/Blog/SharePost";
 import TagButton from "../../../components/global/Blog/TagButton";
 import NewsLatterBox from "../../../components/global/Contact/NewsLatterBox";
-import Image from "next/image";
 
 export const metadata = {
   title: "Blog Details Page | Free Next.js Template for Startup and SaaS",
