@@ -14,16 +14,15 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  <span className="text-blue-600 mr-2">Zidni</span>
-                  Elearning platform
+                  Empowering{" "}
+                  <span className="text-blue-600  mx-2">Algerian</span>
+                  minds
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
-                  nemo architecto cumque porro. Alias repudiandae minus quaerat
-                  perferendis, ab deserunt veritatis? Sint sit, iure porro
-                  mollitia pariatur repellat possimus deleniti natus molestias
-                  quasi? Nemo, vel! Quaerat numquam cum iure ullam veritatis
-                  quae sed unde.
+                  Embark on an enriching learning journey with ZidniElearning.
+                  Dive into diverse subjects with captivating animations and
+                  quizzes. Join us today and revolutionize your educational
+                  experience.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <AnimatedButton>

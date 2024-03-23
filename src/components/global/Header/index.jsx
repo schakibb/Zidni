@@ -11,7 +11,8 @@ import { auth } from "../../../utils/firebase/config";
 import { Button } from "../../ui/button";
 
 const Header = () => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
+  const user = true;
   const router = useRouter();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
