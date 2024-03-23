@@ -23,8 +23,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                title="Explore a Range of College-Level Subjects "
+                paragraph=" Whether you're a first-year student in Computer Science Engineering at USTHB or delving into subjects like mathematics and statistics, ZidniElearning offers an extensive selection of college-level courses tailored to meet your academic needs."
                 mb="44px"
               />
 
@@ -34,9 +34,9 @@ const AboutSectionOne = () => {
               >
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
+                    <List text="Analysis" />
+                    <List text="Algebra" />
+                    <List text="Computer Architecture" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">

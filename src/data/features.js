@@ -1,38 +1,38 @@
 export const features = [
   {
-    title: "The Art of War",
+    title: "AI Assistant (Chatbot)",
     description:
-      "An ancient Chinese military treatise attributed to Sun Tzu. It is commonly known to be the definitive work on military strategy and tactics.",
+      "Indispensable for your learning journey, our AI-powered chatbot seamlessly integrates into our platform, offering round-the-clock support and guidance, ensuring an unparalleled learning experience.",
     link: "https://en.wikipedia.org/wiki/The_Art_of_War",
   },
   {
-    title: "The Lean Startup",
+    title: "Responsive Accessibility",
     description:
-      "A book by Eric Ries that offers entrepreneurs a way to test their vision continuously, to adapt and adjust before it’s too late.",
+      "Enjoy the flexibility of our platform's responsive design, ensuring smooth navigation and optimal viewing experiences across all devices.",
     link: "https://en.wikipedia.org/wiki/The_Lean_Startup",
   },
   {
-    title: "The Great Gatsby",
+    title: "Progress Tracking",
     description:
-      "A novel by F. Scott Fitzgerald that depicts the Jazz Age in the United States. The story of the fabulously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan.",
+      "Easily monitor your learning journey and track your progress through intuitive tools and visual representations, empowering you to stay on course towards your educational goals.",
     link: "https://en.wikipedia.org/wiki/The_Great_Gatsby",
   },
   {
-    title: "The Theory of Everything",
+    title: "High-Quality Courses",
     description:
-      "A film directed by James Marsh that portrays the life of physicist Stephen Hawking, exploring his relationship with his first wife, Jane Wilde.",
+      "Immerse yourself in meticulously crafted courses, meticulously designed to provide exceptional educational experiences and facilitate comprehensive learning.",
     link: "https://en.wikipedia.org/wiki/The_Theory_of_Everything_(2014_film)",
   },
   {
-    title: "The Alchemist",
+    title: "Personalized Learning Paths",
     description:
-      "A novel by Paulo Coelho that follows the journey of an Andalusian shepherd boy named Santiago. It is a quest for treasure and wisdom.",
+      "Tailor your learning journey with personalized recommendations and curated content paths, ensuring that every lesson aligns with your interests and goals",
     link: "https://en.wikipedia.org/wiki/The_Alchemist_(novel)",
   },
   {
-    title: "The Matrix",
+    title: "Expert Instructors",
     description:
-      "A science fiction action film written and directed by the Wachowskis. It depicts a dystopian future in which humanity is unknowingly trapped inside a simulated reality.",
+      "Benefit from guidance provided by seasoned educators who are experts in their fields, delivering high-quality instruction and personalized support to enhance your learning experience.",
     link: "https://en.wikipedia.org/wiki/The_Matrix",
   },
 ];
