@@ -6,7 +6,7 @@ const NewsLatterBox = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="relative z-10 rounded-sm bg-white p-8 shadow-three dark:bg-gray-dark sm:p-11 lg:p-8 xl:p-11">
+    <div className="relative z-10 rounded-sm bg-white dark:bg-inherit p-8 shadow-three dark:bg-gray-dark sm:p-11 lg:p-8 xl:p-11">
       <h3 className="mb-4 text-2xl font-bold leading-tight text-black dark:text-white">
         Subscribe to receive future updates
       </h3>
