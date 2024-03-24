@@ -8,11 +8,11 @@ import menuData from "./menuData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 
 const Header = () => {
   // const [user] = useAuthState(auth);
-  const user = true;
+  const user = false;
   const router = useRouter();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -187,8 +187,11 @@ const Header = () => {
                       className=" mx-3 h-6 w-px bg-gray-400"
                       aria-hidden="true"
                     />
-                    <Link href={"/signup"}>
-                      <Button>Sign Up</Button>
+                    <Link
+                      className={buttonVariants({ variant: "outline" })}
+                      href={"/signup"}
+                    >
+                      Sign Up
                     </Link>
                   </div>
                 )}

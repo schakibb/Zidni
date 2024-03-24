@@ -23,7 +23,7 @@ export function AnimatedButton({
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-9 px-4 py-2 overflow-hidden ",
         containerClassName
       )}
       style={{
@@ -32,13 +32,13 @@ export function AnimatedButton({
       {...otherProps}
     >
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 "
         style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
       >
         <MovingBorder duration={duration} rx="30%" ry="30%">
           <div
             className={cn(
-              "h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
+              "h-full w-full opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
               borderClassName
             )}
           />

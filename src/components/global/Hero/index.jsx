@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Button } from "../../ui/button";
+import { Button, buttonVariants } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
-import { AnimatedButton } from "../../ui/animatedButton";
+import { cn } from "../../../utils/cn";
 const Hero = () => {
   return (
     <>
@@ -14,7 +14,7 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Empowering{" "}
+                  Empowering
                   <span className="text-blue-600  mx-2">Algerian</span>
                   minds
                 </h1>
@@ -25,15 +25,17 @@ const Hero = () => {
                   experience.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <AnimatedButton>
-                    <Link href="/signin">Get Started &rarr;</Link>
-                  </AnimatedButton>
-                  <Button className="p-7 rounded-lg">
-                    <Link href="https://github.com/Lokmane04/Zidni">
-                      Code Source
-                    </Link>
-                    <FaGithub className="ml-2 " />
+                  <Button>
+                    <Link href="/signup">Get Started &rarr;</Link>
                   </Button>
+
+                  <Link
+                    className={buttonVariants({ variant: "outline" })}
+                    href="https://github.com/Lokmane04/Zidni"
+                  >
+                    Code Source
+                    <FaGithub className="ml-2" />
+                  </Link>
                 </div>
               </div>
             </div>
