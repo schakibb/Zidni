@@ -15,8 +15,8 @@ const Hero = () => {
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                   Empowering
-                  <span className="text-blue-600  mx-2">Algerian</span>
-                  minds
+                  <span className="text-blue-600  mx-1.5">Algerian</span>
+                  <br className="sm:hidden" /> minds
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Embark on an enriching learning journey with ZidniElearning.
