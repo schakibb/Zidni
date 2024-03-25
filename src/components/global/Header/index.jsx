@@ -170,7 +170,7 @@ const Header = () => {
                   <div className="hidden sm:block">
                     <Button
                       onClick={() => {
-                        signOut(auth);
+                        // signOut(auth);
                         router.push("/signin");
                       }}
                     >
@@ -179,10 +179,7 @@ const Header = () => {
                   </div>
                 ) : (
                   <div className="hidden sm:block">
-                    <Link
-                      className={buttonVariants({ variant: "outline" })}
-                      href={"/signin"}
-                    >
+                    <Link className={buttonVariants()} href={"/signin"}>
                       Sign In
                     </Link>
                     <span

@@ -92,13 +92,13 @@ export const Testimonials = ({
         )}
       >
         {type === "brand" ? (
-          <React.Fragment>
+          <>
             {brandsData.map((brand) => (
-              <React.Fragment id={brand.id}>
-                <img src={brand.image} alt={brand.alt} className="mx-16" />
-              </React.Fragment>
+              <li className="rounded-2xl px-8 py-6 " key={brand.id}>
+                <img src={brand.image} alt={brand.alt} className="mx-12" />
+              </li>
             ))}
-          </React.Fragment>
+          </>
         ) : (
           items.map((item) => (
             <li

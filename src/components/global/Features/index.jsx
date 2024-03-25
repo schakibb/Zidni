@@ -1,15 +1,19 @@
+import { HoverEffect } from "../../ui/featuresCard";
+
 import SectionTitle from "../Common/SectionTitle";
-import SingleFeature from "./SingleFeature";
 import featuresData from "../../../data/featuresData";
 
 const Features = () => {
   return (
     <>
-      <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2 lg:grid-cols-3">
-        {featuresData.map((feature) => (
-          <SingleFeature key={feature.id} feature={feature} />
-        ))}
-      </div>
+      <SectionTitle
+        center={true}
+        title={"Main Features"}
+        paragraph={
+          "We revolutionize learning with interactive lessons, personalized paths, rich content, progress tracking, and collaborative tools."
+        }
+      />
+      <HoverEffect className={"-mt-24"} items={featuresData} />
     </>
   );
 };

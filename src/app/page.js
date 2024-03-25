@@ -8,9 +8,8 @@ import ScrollUp from "../components/global/Common/ScrollUp";
 import Contact from "../components/global/Contact";
 import Hero from "../components/global/Hero";
 import { Testimonials } from "../components/ui/testimonials";
-import { HoverEffect } from "../components/ui/featuresCard";
 import { quotes } from "../data/quotes";
-import featuresData from "../data/featuresData";
+import Features from "../components/global/Features";
 // import Video from "../components/global/Video";
 
 export default function Home() {
@@ -19,9 +18,14 @@ export default function Home() {
       <Header />
       <ScrollUp />
       <Hero />
-      <HoverEffect items={featuresData} />
+      <Features />
       {/* <Video /> */}
-      <Testimonials speed="normal" pauseOnHover={true} type="brand" />
+      <Testimonials
+        direction="left"
+        speed="fast"
+        pauseOnHover={false}
+        type="brand"
+      />
       <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials
