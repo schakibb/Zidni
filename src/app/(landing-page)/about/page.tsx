@@ -1,5 +1,4 @@
 import React from "react";
-import AboutSectionOne from "../../../components/global/About/AboutSectionOne";
 import AboutSectionTwo from "../../../components/global/About/AboutSectionTwo";
 import Breadcrumb from "../../../components/global/Common/Breadcrumb";
 
@@ -16,7 +15,6 @@ const AboutPage = () => {
         pageName="About Page"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In varius eros eget sapien consectetur ultrices. Ut quis dapibus libero."
       />
-      <AboutSectionOne />
       <AboutSectionTwo />
     </>
   );

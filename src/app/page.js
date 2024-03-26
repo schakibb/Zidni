@@ -1,6 +1,5 @@
 "use client";
 import Footer from "../components/global/Footer/index";
-import Header from "../components/global/Header";
 import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
 import ScrollUp from "../components/global/Common/ScrollUp";
 import Contact from "../components/global/Contact";
@@ -14,8 +13,6 @@ import Chatbot from "../components/global/Chatbot/index";
 export default function Home() {
   return (
     <>
-      <Header />
-      <ScrollUp />
       <Hero />
       <Features />
       {/* <Video /> */}

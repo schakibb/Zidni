@@ -1,7 +1,7 @@
 export const GuestMenuData = [
   {
     id: 1,
-    title: "Home",
+    title: "Team",
     path: "/",
     newTab: false,
   },
@@ -9,12 +9,6 @@ export const GuestMenuData = [
     id: 2,
     title: "About",
     path: "/about",
-    newTab: false,
-  },
-  {
-    id: 33,
-    title: "Blog",
-    path: "/blog",
     newTab: false,
   },
   {
@@ -63,9 +57,9 @@ export const userMenuData = [
     newTab: false,
   },
   {
-    id: 33,
-    title: "Blog",
-    path: "/blog",
+    id: 42,
+    title: "Contact Page",
+    path: "/contact",
     newTab: false,
   },
   {

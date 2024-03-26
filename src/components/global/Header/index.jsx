@@ -11,7 +11,7 @@ import { Button, buttonVariants } from "../../ui/button";
 
 const Header = () => {
   // const [user] = useAuthState(auth);
-  const user = false;
+  const [user, setUser] = useState(false);
   const router = useRouter();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -43,6 +43,7 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
+  let menuData = user ? userMenuData : GuestMenuData;
 
   return (
     <>
@@ -112,7 +113,7 @@ const Header = () => {
                   }`}
                 >
                   <ul className="block lg:flex lg:space-x-12">
-                    {GuestMenuData.map((menuItem, index) => (
+                    {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
@@ -143,21 +144,23 @@ const Header = () => {
                                 </svg>
                               </span>
                             </p>
-                            <div
-                              className={`submenu relative left-0 top-full rounded-sm bg-white dark:bg-black  transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
-                                openIndex === index ? "block" : "hidden"
-                              }`}
-                            >
-                              {menuItem.submenu.map((submenuItem, index) => (
-                                <Link
-                                  href={submenuItem.path}
-                                  key={index}
-                                  className="block rounded py-2.5 text-sm text-dark hover:text-primary  dark:text-white/70 dark:hover:text-white lg:px-3"
-                                >
-                                  {submenuItem.title}
-                                </Link>
-                              ))}
-                            </div>
+                            {menuItem.submenu && (
+                              <div
+                                className={`submenu relative left-0 top-full rounded-sm bg-white dark:bg-black  transition-[top] duration-300 group-hover:opacity-100 dark:bg-dark lg:invisible lg:absolute lg:top-[110%] lg:block lg:w-[250px] lg:p-4 lg:opacity-0 lg:shadow-lg lg:group-hover:visible lg:group-hover:top-full ${
+                                  openIndex === index ? "block" : "hidden"
+                                }`}
+                              >
+                                {menuItem.submenu.map((submenuItem, index) => (
+                                  <Link
+                                    href={submenuItem.path}
+                                    key={index}
+                                    className="block rounded py-2.5 text-sm text-dark hover:text-primary  dark:text-white/70 dark:hover:text-white lg:px-3"
+                                  >
+                                    {submenuItem.title}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
                           </>
                         )}
                       </li>
@@ -171,7 +174,8 @@ const Header = () => {
                     <Button
                       onClick={() => {
                         // signOut(auth);
-                        router.push("/signin");
+                        // router.push("/signin");
+                        setUser(false);
                       }}
                     >
                       Log out
@@ -179,7 +183,13 @@ const Header = () => {
                   </div>
                 ) : (
                   <div className="hidden sm:block">
-                    <Link className={buttonVariants()} href={"/signin"}>
+                    <Link
+                      className={buttonVariants()}
+                      onClick={() => {
+                        setUser(true);
+                      }}
+                      href={"/signin"}
+                    >
                       Sign In
                     </Link>
                     <span

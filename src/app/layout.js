@@ -1,5 +1,6 @@
 import ScrollToTop from "../components/global/ScrollToTop";
 import "../styles/index.css";
+import Header from "../components/global/Header";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`bg-[#FCFCFC] dark:bg-black ${inter.className}`}>
         <Analytics />
         <Providers children={children}>
+          <Header />
           {children}
           <ScrollToTop />
         </Providers>
