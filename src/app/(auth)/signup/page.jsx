@@ -18,7 +18,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { auth } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
 
-export default function SignUpWithImage() {
+export default function SignUp() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,8 +40,13 @@ export default function SignUpWithImage() {
     <>
       <div className="container relative h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-zinc-900" />
-          <div className="relative z-20 flex items-center text-lg font-medium">
+          <div className=" decorative absolute inset-0 bg-zinc-900" />
+          <div
+            onClick={() => {
+              router.push("/");
+            }}
+            className="cursor-pointer relative z-20 flex items-center text-lg font-medium"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -61,7 +66,10 @@ export default function SignUpWithImage() {
               <p className="text-lg">
                 Seeking knowledge is a duty upon every Muslim.
               </p>
-              <footer className="text-sm">Prophet Muhammad</footer>
+              <footer className="text-sm">
+                Prophet Muhammad
+                <span className="text-xl ml-2 -mb-0.5">ﷺ</span>
+              </footer>
             </blockquote>
           </div>
         </div>

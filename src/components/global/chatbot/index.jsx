@@ -1,6 +1,6 @@
 import { Input } from "../../ui/input";
 import React, { useState } from "react";
-import { AnimatedTooltipPreview } from "../../global/chatbot/teamIcons";
+import { AnimatedTooltipPreview } from "./teamIcons";
 import { buttonVariants } from "../../ui/button";
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);

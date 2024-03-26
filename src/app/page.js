@@ -1,16 +1,14 @@
 "use client";
 import Footer from "../components/global/Footer/index";
 import Header from "../components/global/Header";
-import AboutSectionOne from "../components/global/About/AboutSectionOne";
 import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
-import Blog from "../components/global/Blog";
 import ScrollUp from "../components/global/Common/ScrollUp";
 import Contact from "../components/global/Contact";
 import Hero from "../components/global/Hero";
 import { Testimonials } from "../components/ui/testimonials";
 import { quotes } from "../data/quotes";
 import Features from "../components/global/Features";
-import Chatbot from "../components/global/chatbot/index";
+import Chatbot from "../components/global/Chatbot/index";
 // import Video from "../components/global/Video";
 
 export default function Home() {
@@ -27,7 +25,6 @@ export default function Home() {
         pauseOnHover={false}
         type="brand"
       />
-      <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials
         items={quotes}
@@ -37,7 +34,6 @@ export default function Home() {
         direction="right"
       />
 
-      <Blog />
       <Contact />
       <Chatbot />
       <Footer />

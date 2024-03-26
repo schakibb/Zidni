@@ -17,7 +17,7 @@ import {
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 
-export default function SignUpWithImage() {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
@@ -39,8 +39,13 @@ export default function SignUpWithImage() {
     <>
       <div className="container relative  h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="absolute inset-0 bg-zinc-900" />
-          <div className="relative z-20 flex items-center text-lg font-medium">
+          <div className="decorative absolute inset-0 bg-zinc-900 max-w-6xl" />
+          <div
+            onClick={() => {
+              router.push("/");
+            }}
+            className="cursor-pointer relative z-20 flex items-center text-lg font-medium"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -60,11 +65,13 @@ export default function SignUpWithImage() {
               <p className="text-lg">
                 Seeking knowledge is a duty upon every Muslim.
               </p>
-              <footer className="text-sm">Prophet Muhammad(S)</footer>
+              <footer className="text-sm">
+                Prophet Muhammad <span className="text-xl ml-2 -mb-0.5">ﷺ</span>
+              </footer>
             </blockquote>
           </div>
         </div>
-        <div className="lg:p-8 mt-24 sm:mx-20 md:m-0 ">
+        <div className="lg:p-8 mt-24 sm:mx-20 md:m-0">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 lg:max-w-lg">
             <Card>
               <CardHeader className="space-y-1">

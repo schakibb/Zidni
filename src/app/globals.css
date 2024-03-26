@@ -57,3 +57,8 @@
     @apply bg-background text-foreground;
   }
 }
+.decorative {
+  background-image: url("/Image_decoration.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
