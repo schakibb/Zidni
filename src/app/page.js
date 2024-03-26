@@ -1,13 +1,12 @@
 "use client";
 import Footer from "../components/global/Footer/index";
 import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
-import ScrollUp from "../components/global/Common/ScrollUp";
 import Contact from "../components/global/Contact";
 import Hero from "../components/global/Hero";
 import { Testimonials } from "../components/ui/testimonials";
 import { quotes } from "../data/quotes";
 import Features from "../components/global/Features";
-import Chatbot from "../components/global/Chatbot/index";
+import Chatbot from "../components/global/chatbot/index";
 // import Video from "../components/global/Video";
 
 export default function Home() {

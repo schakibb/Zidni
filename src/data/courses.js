@@ -6,7 +6,7 @@ export const courses = [
     content:
       "Analyse course covers topics such as limits, derivatives, integrals, and their applications in various fields including physics, engineering, and economics. Emphasis is placed on understanding fundamental concepts and problem-solving techniques.",
     path: "/courses/analyse",
-    newTab: false,
+    next: "/courses/algebre",
   },
   {
     id: 4,
@@ -15,7 +15,7 @@ export const courses = [
     content:
       "Algebre course introduces students to basic algebraic structures, including groups, rings, and fields. Topics include solving linear equations, matrices, determinants, and vector spaces. Applications in cryptography, coding theory, and computer science are explored.",
     path: "/courses/algebre",
-    newTab: false,
+    next: "/courses/oop",
   },
   {
     id: 22,
@@ -24,7 +24,7 @@ export const courses = [
     content:
       "OOP course provides a comprehensive introduction to object-oriented programming principles and practices. Topics covered include classes, objects, inheritance, polymorphism, encapsulation, and abstraction. Students learn to design and implement object-oriented solutions to real-world problems.",
     path: "/courses/oop",
-    newTab: false,
+    next: "/courses/os",
   },
   {
     id: 11,
@@ -33,7 +33,7 @@ export const courses = [
     content:
       "Operating System course explores the fundamental concepts and structures of modern operating systems. Topics include process management, memory management, file systems, and concurrency. Students gain hands-on experience through programming assignments and system administration tasks.",
     path: "/courses/os",
-    newTab: false,
+    next: "/courses/archi",
   },
   {
     id: 10,
@@ -43,6 +43,6 @@ export const courses = [
     content:
       "Computer architecture course examines the principles and design of computer systems at the hardware-software interface. Topics include instruction set architecture, processor design, memory hierarchy, input/output systems, and parallel architectures. Emphasis is placed on understanding the underlying principles and trade-offs in computer system design.",
     path: "/courses/archi",
-    newTab: false,
+    next: "/courses/completed_path",
   },
 ];
