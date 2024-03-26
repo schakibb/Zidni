@@ -1,4 +1,4 @@
-const menuData = [
+export const GuestMenuData = [
   {
     id: 1,
     title: "Home",
@@ -49,4 +49,29 @@ const menuData = [
     ],
   },
 ];
-export default menuData;
+export const userMenuData = [
+  {
+    id: 1,
+    title: "Home",
+    path: "/",
+    newTab: false,
+  },
+  {
+    id: 2,
+    title: "About",
+    path: "/about",
+    newTab: false,
+  },
+  {
+    id: 33,
+    title: "Blog",
+    path: "/blog",
+    newTab: false,
+  },
+  {
+    id: 23,
+    title: "Courses",
+    path: "/courses",
+    newTab: false,
+  },
+];
