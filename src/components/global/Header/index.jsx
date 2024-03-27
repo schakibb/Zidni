@@ -8,6 +8,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
 import { Button, buttonVariants } from "../../ui/button";
+import Image from "next/image";
 
 const Header = () => {
   // const [user] = useAuthState(auth);
@@ -48,7 +49,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`header left-0 top-0 z-40 flex w-full items-center ${
+        className={` header left-0 top-0 z-40 flex w-full items-center ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999]  !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
             : "absolute bg-transparent"
@@ -56,27 +57,28 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-60 max-w-full px-4 xl:mr-12">
+            <div className=" pl-4 xl:mr-12 text-lg">
               <Link
                 href="/"
-                className={`header-logo block w-full ${
+                className={`flex items-center header-logo text-blue-700 ${
                   sticky ? "py-5 lg:py-2" : "py-8"
                 } `}
               >
-                {/* <Image
-                  src="/images/logo/logo-2.svg"
+                <Image
+                  src="/logo/logo-color.svg"
                   alt="logo"
-                  width={140}
-                  height={30}
-                  className="w-full dark:hidden"
+                  width={40}
+                  height={40}
+                  className="dark:hidden mr-2"
                 />
                 <Image
-                  src="/images/logo/logo.svg"
+                  src="/logo/logo-color.svg"
                   alt="logo"
-                  width={140}
-                  height={30}
-                  className="hidden w-full dark:block"
-                /> */}
+                  width={40}
+                  height={40}
+                  className="hidden dark:block mr-2"
+                />
+                Zidni
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">

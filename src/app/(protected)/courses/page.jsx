@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 
-import { Button, buttonVariants } from "../../../components/ui/button";
+import { buttonVariants } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,11 +11,6 @@ import {
   CardTitle,
 } from "../../../components/ui/card";
 import { courses } from "../../../data/courses";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "../../../components/ui/resizable";
 import Link from "next/link";
 
 const CardWithForm = () => {
