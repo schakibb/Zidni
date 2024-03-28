@@ -2,8 +2,8 @@ import Breadcrumb from "../../../components/global/Common/Breadcrumb";
 import Contact from "../../../components/global/Contact";
 
 export const metadata = {
-  title: "Contact Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Contact Page for Startup Nextjs Template",
+  title: "Zidni Elearning Platform ",
+  description: "Contact Page for Our platform",
   // other metadata
 };
 

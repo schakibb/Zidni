@@ -19,19 +19,19 @@ const studentSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  phoneNumber: {
-    type: String,
+  matricule: {
+    type: Number,
     required: true,
   },
 });
 
 // Schema for Lessons
-const lessonSchema = new mongoose.Schema({
-  name: {
-    type: String,
+const courseSchema = new mongoose.Schema({
+  id: {
+    type: Number,
     required: true,
   },
-  contents: {
+  title: {
     type: String,
     required: true,
   },
@@ -39,8 +39,31 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  chapters: [
+    {
+      chapterId: {
+        type: Number,
+        required: true,
+      },
+      title: {
+        type: String,
+        required: true,
+      },
+      chapterDescription: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  path: {
+    type: String,
+    required: true,
+  },
+  next: {
+    type: String,
+    required: true,
+  },
 });
-
 // Schema for Modules
 const moduleSchema = new mongoose.Schema({
   name: {
@@ -49,7 +72,6 @@ const moduleSchema = new mongoose.Schema({
   },
 });
 
-// Schema for Enrollments (Many-to-Many relationship between Students and Lessons)
 const enrollmentSchema = new mongoose.Schema({
   studentID: {
     type: mongoose.Schema.Types.ObjectId,
@@ -144,7 +166,7 @@ const attendanceSchema = new mongoose.Schema({
 
 // Creating Mongoose models
 const Student = mongoose.model("Student", studentSchema);
-const Lesson = mongoose.model("Lesson", lessonSchema);
+const Course = mongoose.model("Lesson", courseSchema);
 const Module = mongoose.model("Module", moduleSchema);
 const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
 const Quiz = mongoose.model("Quiz", quizSchema);
@@ -154,7 +176,7 @@ const Attendance = mongoose.model("Attendance", attendanceSchema);
 // Exporting the models
 module.exports = {
   Student,
-  Lesson,
+  Course,
   Module,
   Enrollment,
   Quiz,
