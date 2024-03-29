@@ -6,7 +6,7 @@ export const Testimonials = ({
   type,
   items,
   direction = "left",
-  speed = "fast",
+  speed = "medium",
   pauseOnHover = true,
   className,
 }) => {

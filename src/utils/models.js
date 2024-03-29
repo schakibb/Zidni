@@ -70,6 +70,10 @@ const moduleSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  semster: {
+    type: String,
+    required: true,
+  },
 });
 
 const enrollmentSchema = new mongoose.Schema({

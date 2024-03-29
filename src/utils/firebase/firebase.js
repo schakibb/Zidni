@@ -11,6 +11,7 @@ export const createDocument = async (collection, data) => {
 };
 
 // Read a document from Firestore
+// Read a document from Firestore
 export const getDocument = async (collection, docId) => {
   try {
     const docRef = await db.collection(collection).doc(docId).get();
@@ -21,6 +22,21 @@ export const getDocument = async (collection, docId) => {
     }
   } catch (error) {
     console.error("Error getting document:", error);
+    throw error;
+  }
+};
+
+// Fetch all documents from a collection in Firestore
+export const getAllDocuments = async (collection) => {
+  try {
+    const querySnapshot = await db.collection(collection).get();
+    const documents = [];
+    querySnapshot.forEach((doc) => {
+      documents.push(doc.data());
+    });
+    return documents;
+  } catch (error) {
+    console.error("Error fetching documents:", error);
     throw error;
   }
 };
