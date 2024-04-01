@@ -11,8 +11,7 @@ import { Button, buttonVariants } from "../../ui/button";
 import Image from "next/image";
 
 const Header = () => {
-  // const [user] = useAuthState(auth);
-  const [user, setUser] = useState(false);
+  const [user] = useAuthState(auth);
   const router = useRouter();
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -52,7 +51,7 @@ const Header = () => {
         className={` header left-0 top-0 z-40 flex w-full items-center ${
           sticky
             ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999]  !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
-            : "absolute bg-transparent"
+            : "absolute bg-transparent shadow-white dark:bg-blend-darken z-[9999]  !bg-opacity-80 transition"
         }`}
       >
         <div className="container">
@@ -69,15 +68,8 @@ const Header = () => {
                   alt="logo"
                   width={40}
                   height={40}
-                  className="dark:hidden mr-2"
-                />
-                <Image
-                  src="/logo/logo-color.svg"
-                  alt="logo"
-                  width={40}
-                  height={40}
-                  className="hidden dark:block mr-2"
-                />
+                  className=" mr-2"
+                />{" "}
                 Zidni
               </Link>
             </div>
@@ -175,9 +167,8 @@ const Header = () => {
                   <div className="hidden sm:block">
                     <Button
                       onClick={() => {
-                        // signOut(auth);
-                        // router.push("/signin");
-                        setUser(false);
+                        signOut(auth);
+                        router.push("/signup");
                       }}
                     >
                       Log out
@@ -185,13 +176,7 @@ const Header = () => {
                   </div>
                 ) : (
                   <div className="hidden sm:block">
-                    <Link
-                      className={buttonVariants()}
-                      onClick={() => {
-                        setUser(true);
-                      }}
-                      href={"/signin"}
-                    >
+                    <Link className={buttonVariants()} href={"/signin"}>
                       Sign In
                     </Link>
                     <span

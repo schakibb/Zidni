@@ -16,7 +16,6 @@ const CongratulationsPage = () => {
           src="https://docs.google.com/forms/d/e/1FAIpQLScUAETrTia84BQsNpRLsp7Z2IZAcuZ_RqKx3Urcbp29GHXT6g/viewform?embedded=true"
           width="100%"
           height="450px"
-          frameborder="0"
           marginheight="0"
           marginwidth="0"
         >

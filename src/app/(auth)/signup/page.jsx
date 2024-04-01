@@ -13,24 +13,42 @@ import {
 } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import { auth } from "../../../utils/firebase/config";
+import { auth, db } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
-
+import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+const initialState = {
+  email: "",
+  password: "",
+  userName: "",
+};
 export default function SignUp() {
+  let uid;
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [formState, setFormState] = useState(initialState);
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
-      const res = await createUserWithEmailAndPassword(email, password);
-      console.log({ res });
-      setEmail("");
-      setPassword("");
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        formState.email,
+        formState.password
+      );
+      uid = res.user.auth.lastNotifiedUid;
+      const ref = doc(db, "users", uid);
+      const docRef = await setDoc(ref, {
+        userName: formState.userName,
+        quizzesTaken: 0,
+        coursesFinished: 0,
+      });
+      // await addDoc(collection(db, "users"), {
+      //   userName: formState.userName,
+      //   coursesFinished: 0,
+      //   quizzesTaken: 0,
+      // });
+      console.log("Created User");
+      setFormState(initialState);
       router.push("/signin");
     } catch (e) {
       console.error(e);
@@ -40,7 +58,7 @@ export default function SignUp() {
     <>
       <div className="container relative h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className=" decorative absolute inset-0 bg-zinc-900" />
+          <div className="decorative absolute inset-0 bg-zinc-900" />
 
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
@@ -67,13 +85,33 @@ export default function SignUp() {
               </CardHeader>
               <CardContent className="grid gap-4">
                 <div className="grid gap-2">
+                  <Label htmlFor="userName">Name</Label>
+                  <Input
+                    id="userName"
+                    type="userName"
+                    placeholder="Lokmane Elhakim"
+                    value={formState.userName}
+                    onChange={(e) => {
+                      setFormState((prev) => ({
+                        ...prev,
+                        userName: e.target.value,
+                      }));
+                    }}
+                  />
+                </div>
+                <div className="grid gap-2">
                   <Label htmlFor="email">Email</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="lokmanehakim@gmail.com"
+                    value={formState.email}
+                    onChange={(e) => {
+                      setFormState((prev) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }));
+                    }}
                   />
                 </div>
                 <div className="grid gap-2">
@@ -81,8 +119,13 @@ export default function SignUp() {
                   <Input
                     id="password"
                     type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={formState.password}
+                    onChange={(e) => {
+                      setFormState((prev) => ({
+                        ...prev,
+                        password: e.target.value,
+                      }));
+                    }}
                   />
                 </div>
               </CardContent>

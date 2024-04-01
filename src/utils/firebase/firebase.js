@@ -1,64 +1,80 @@
 import { db } from "./config";
+import { collection, addDoc } from "firebase/firestore";
+
 // Create a document in Firestore
-export const createDocument = async (collection, data) => {
+export const createDocument = async ({
+  userName,
+  coursesFinished,
+  quizzesTaken,
+}) => {
   try {
-    const docRef = await db.collection(collection).add(data);
-    return docRef.id;
-  } catch (error) {
-    console.error("Error creating document:", error);
-    throw error;
+    await addDoc(collection(db, "users"), {
+      userName,
+      coursesFinished,
+      quizzesTaken,
+    });
+  } catch (e) {
+    console.error("Error adding document: ", e);
   }
 };
 
-// Read a document from Firestore
-// Read a document from Firestore
-export const getDocument = async (collection, docId) => {
-  try {
-    const docRef = await db.collection(collection).doc(docId).get();
-    if (docRef.exists) {
-      return docRef.data();
-    } else {
-      throw new Error("Document not found");
-    }
-  } catch (error) {
-    console.error("Error getting document:", error);
-    throw error;
-  }
-};
+// signup
+const signupForm = document.querySelector("#signup-form");
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // get user info
+  const email = signupForm["signup-email"].value;
+  const password = signupForm["signup-password"].value;
+
+  // sign up the user & add firestore data
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((cred) => {
+      return db.collection("users").doc(cred.user.uid).set({
+        bio: signupForm["signup-bio"].value,
+      });
+    })
+    .then(() => {
+      // close the signup modal & reset form
+      const modal = document.querySelector("#modal-signup");
+      M.Modal.getInstance(modal).close();
+      signupForm.reset();
+    });
+});
+
+// logout
+const logout = document.querySelector("#logout");
+logout.addEventListener("click", (e) => {
+  e.preventDefault();
+  auth.signOut();
+});
+
+// login
+const loginForm = document.querySelector("#login-form");
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // get user info
+  const email = loginForm["login-email"].value;
+  const password = loginForm["login-password"].value;
+
+  // log the user in
+  auth.signInWithEmailAndPassword(email, password).then((cred) => {
+    // close the signup modal & reset form
+    const modal = document.querySelector("#modal-login");
+    M.Modal.getInstance(modal).close();
+    loginForm.reset();
+  });
+});
+
+export const getDocument = async (docId, collection) => {};
 
 // Fetch all documents from a collection in Firestore
-export const getAllDocuments = async (collection) => {
-  try {
-    const querySnapshot = await db.collection(collection).get();
-    const documents = [];
-    querySnapshot.forEach((doc) => {
-      documents.push(doc.data());
-    });
-    return documents;
-  } catch (error) {
-    console.error("Error fetching documents:", error);
-    throw error;
-  }
-};
+export const getAllDocuments = async (collection) => {};
 
 // Update a document in Firestore
-export const updateDocument = async (collection, docId, data) => {
-  try {
-    await db.collection(collection).doc(docId).update(data);
-    console.log("Document updated successfully");
-  } catch (error) {
-    console.error("Error updating document:", error);
-    throw error;
-  }
-};
+export const updateDocument = async (collection, docId, data) => {};
 
 // Delete a document from Firestore
-export const deleteDocument = async (collection, docId) => {
-  try {
-    await db.collection(collection).doc(docId).delete();
-    console.log("Document deleted successfully");
-  } catch (error) {
-    console.error("Error deleting document:", error);
-    throw error;
-  }
-};
+export const deleteDocument = async (collection, docId) => {};
