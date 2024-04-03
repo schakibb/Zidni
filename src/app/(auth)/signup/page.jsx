@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { Button } from "../../../components/ui/button";
+import { Button, buttonVariants } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
@@ -13,10 +13,12 @@ import {
 } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-import { auth, db } from "../../../utils/firebase/config";
+import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { cn } from "../../../utils/cn";
+import Image from "next/image";
 const initialState = {
   email: "",
   password: "",
@@ -26,9 +28,27 @@ export default function SignUp() {
   let uid;
   const router = useRouter();
   const [formState, setFormState] = useState(initialState);
-
+  const [disabled, setDisabled] = useState(false);
+  const handleGoogleSignUp = () => {
+    setDisabled(true);
+    signInWithPopup(auth, provider)
+      .then((cred) => {
+        uid = cred.user.uid;
+      })
+      .then(() => {
+        uid = res.user.auth.lastNotifiedUid;
+        const ref = doc(db, "users", uid);
+        setDoc(ref, {
+          userName: formState.userName,
+          quizzesTaken: 0,
+          coursesFinished: 0,
+        });
+        router.push("/signin");
+      });
+  };
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setDisabled(true);
     try {
       const res = await createUserWithEmailAndPassword(
         auth,
@@ -37,16 +57,11 @@ export default function SignUp() {
       );
       uid = res.user.auth.lastNotifiedUid;
       const ref = doc(db, "users", uid);
-      const docRef = await setDoc(ref, {
+      await setDoc(ref, {
         userName: formState.userName,
         quizzesTaken: 0,
         coursesFinished: 0,
       });
-      // await addDoc(collection(db, "users"), {
-      //   userName: formState.userName,
-      //   coursesFinished: 0,
-      //   quizzesTaken: 0,
-      // });
       console.log("Created User");
       setFormState(initialState);
       router.push("/signin");
@@ -58,7 +73,7 @@ export default function SignUp() {
     <>
       <div className="container relative h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="decorative absolute inset-0 bg-zinc-900" />
+          <div className="decorative absolute inset-0 bg-zinc-900 lg:min-w-[600px] xl:min-w-[800px] " />
 
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
@@ -133,6 +148,25 @@ export default function SignUp() {
                 <Button className="w-full" onClick={handleSignUp}>
                   Sign Up
                 </Button>
+                <button
+                  onClick={handleGoogleSignUp}
+                  className={cn(
+                    "w-full mt-2 py-6",
+                    buttonVariants({ variant: "secondary" })
+                  )}
+                  type="submit"
+                >
+                  <Image
+                    alt="Google"
+                    src={"/logo/google.svg"}
+                    width={20}
+                    height={20}
+                    className="mr-2 dark:text-neutral-50 text-neutral-800"
+                  />
+                  <span className="text-neutral-800 dark:text-neutral-400">
+                    Sign In with Google
+                  </span>
+                </button>
                 <p className="mt-2 text-xs text-center text-gray-700">
                   Already have an account?
                   <Link
@@ -146,7 +180,7 @@ export default function SignUp() {
             </Card>
 
             <p className="px-8 text-center text-sm text-muted-foreground">
-              By clicking continue, you agree to our
+              By Signing up, you agree to our
               <Link
                 href="/terms"
                 className="underline underline-offset-4 hover:text-primary ml-0.5"
