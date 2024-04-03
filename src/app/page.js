@@ -23,7 +23,7 @@ export default function Home() {
       <AboutSectionTwo />
       <Testimonials
         items={quotes}
-        speed="slow"
+        speed="slower"
         pauseOnHover={true}
         type="testimonials"
         direction="right"

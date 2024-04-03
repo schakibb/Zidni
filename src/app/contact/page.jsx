@@ -1,5 +1,5 @@
-import Breadcrumb from "../../../components/global/Common/Breadcrumb";
-import Contact from "../../../components/global/Contact";
+import Breadcrumb from "../../components/global/Common/Breadcrumb";
+import Contact from "../../components/global/Contact";
 
 export const metadata = {
   title: "Zidni Elearning Platform ",

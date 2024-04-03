@@ -73,7 +73,7 @@ export const Testimonials = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 self-center mask-image:linear-gradient(to right,transparent,white 20%,white 80%,transparent) mb-3",
+        "scroller relative z-20 self-center overflow-hidden mask-image:linear-gradient(to right,transparent,white 20%,white 80%,transparent) mb-3",
         className
       )}
     >

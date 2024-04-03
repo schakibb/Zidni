@@ -3,13 +3,17 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggler from "./ThemeToggler";
-import { GuestMenuData, userMenuData } from "./menuData";
+import { userMenuData } from "./menuData";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
 import { Button, buttonVariants } from "../../ui/button";
 import Image from "next/image";
-
+import {
+  DropdownMenu,
+  DropdownMenuItem,
+  DropdownMenuContent,
+} from "../../ui/dropdown";
 const Header = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
@@ -43,15 +47,14 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
-  let menuData = user ? userMenuData : GuestMenuData;
 
   return (
     <>
       <header
         className={` header left-0 top-0 z-40 flex w-full items-center ${
           sticky
-            ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999]  !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
-            : "absolute bg-transparent shadow-white dark:bg-blend-darken z-[9999]  !bg-opacity-80 transition"
+            ? "dark:bg-gray-dark dark:shadow-sticky-dark fixed z-[9999] !bg-opacity-80 shadow-sticky backdrop-blur-sm transition"
+            : "absolute bg-transparent shadow-white dark:bg-blend-darken z-[9999] !bg-opacity-80 transition"
         }`}
       >
         <div className="container">
@@ -74,7 +77,7 @@ const Header = () => {
               </Link>
             </div>
             <div className="flex w-full items-center justify-between px-4">
-              <div className="bg-inherit">
+              <DropdownMenu className="bg-inherit">
                 <button
                   onClick={navbarToggleHandler}
                   id="navbarToggler"
@@ -107,7 +110,7 @@ const Header = () => {
                   }`}
                 >
                   <ul className="block lg:flex lg:space-x-12">
-                    {menuData.map((menuItem, index) => (
+                    {userMenuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
                           <Link
@@ -161,20 +164,20 @@ const Header = () => {
                     ))}
                   </ul>
                 </nav>
-              </div>
-              <div className="flex items-center justify-end pr-16 lg:pr-0 ">
-                {user ? (
-                  <div className="hidden sm:block">
-                    <Button
-                      onClick={() => {
-                        signOut(auth);
-                        router.push("/signup");
-                      }}
-                    >
-                      Log out
-                    </Button>
-                  </div>
-                ) : (
+              </DropdownMenu>
+              <div className="flex ml-auto items-center justify-end pr-16 lg:pr-0 ">
+                {/*                 
+                <div className="hidden sm:block">
+                  <Button
+                    onClick={() => {
+                      signOut(auth);
+                      router.push("/signup");
+                    }}
+                  >
+                    Log out
+                  </Button>
+                </div> */}
+                {user && (
                   <div className="hidden sm:block">
                     <Link className={buttonVariants()} href={"/signin"}>
                       Sign In

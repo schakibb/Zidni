@@ -3,7 +3,7 @@ export const quotes = [
     quote:
       "Success is not final, failure is not fatal: It is the courage to continue that counts.",
     name: "Winston Churchill",
-    title: "Former Prime Minister of the United Kingdom",
+    title: "Former PM of the United Kingdom",
   },
   {
     quote: "The only way to do great work is to love what you do.",
