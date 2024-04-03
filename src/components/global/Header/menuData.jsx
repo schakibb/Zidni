@@ -1,4 +1,4 @@
-export const GuestMenuData = [
+export const userMenuData = [
   {
     id: 1,
     title: "Home",
@@ -15,6 +15,12 @@ export const GuestMenuData = [
     id: 3,
     title: "Docs",
     path: "/documentation",
+    newTab: false,
+  },
+  {
+    id: 44,
+    title: "Courses",
+    path: "/courses",
     newTab: false,
   },
   {
@@ -47,31 +53,5 @@ export const GuestMenuData = [
         newTab: false,
       },
     ],
-  },
-];
-export const userMenuData = [
-  {
-    id: 1,
-    title: "Home",
-    path: "/",
-    newTab: false,
-  },
-  {
-    id: 2,
-    title: "About",
-    path: "/about",
-    newTab: false,
-  },
-  {
-    id: 42,
-    title: "Contact Page",
-    path: "/contact",
-    newTab: false,
-  },
-  {
-    id: 23,
-    title: "Courses",
-    path: "/courses",
-    newTab: false,
   },
 ];

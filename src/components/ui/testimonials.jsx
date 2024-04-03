@@ -59,6 +59,9 @@ export const Testimonials = ({
         case "normal":
           duration = "40s";
           break;
+        case "slower":
+          duration = "150s";
+          break;
         default:
           duration = "80s";
       }
@@ -70,23 +73,23 @@ export const Testimonials = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 self-center overflow-hidden mask-image:linear-gradient(to right,transparent,white 20%,white 80%,transparent)",
+        "scroller relative z-20 self-center mask-image:linear-gradient(to right,transparent,white 20%,white 80%,transparent) mb-3",
         className
       )}
     >
-      {type === "brand" && (
-        <SectionTitle
-          center={true}
-          title={"Technologies"}
-          paragraph={
-            "Our platform is always up to date with the latest technology."
-          }
-        />
-      )}
+      <SectionTitle
+        center={true}
+        title={type === "brand" ? "Technologies" : "Testimonials"}
+        paragraph={
+          type === "brand"
+            ? "Our platform is always up to date with the latest technology."
+            : "Experts Applaud Innovation, Testimonials Highlighting Enthusiastic Endorsements for Our Innovative Ideas."
+        }
+      />
       <ul
         ref={scrollerRef}
         className={cn(
-          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap mb-3",
           start && "animate-scroll",
           pauseOnHover && "hover:animation-play-state:paused"
         )}
@@ -102,31 +105,18 @@ export const Testimonials = ({
         ) : (
           items.map((item) => (
             <li
-              className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
-              style={{
-                background:
-                  "linear-gradient(180deg, var(--slate-800), var(--slate-900))",
-              }}
+              className="mb-3 bg-blue-100 dark:bg-[#0f1115] w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px] bg"
               key={item.name}
             >
               <blockquote>
-                <div
-                  aria-hidden="true"
-                  className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100% + 4px)] w-[calc(100% + 4px)]"
-                ></div>
-                <span className="relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
-                  {item.quote}
-                </span>
-                <div className="relative z-20 mt-6 flex flex-row items-center">
-                  <span className="flex flex-col gap-1">
-                    <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                      {item.name}
-                    </span>
-                    <span className="text-sm leading-[1.6] text-gray-400 font-normal">
-                      {item.title}
-                    </span>
-                  </span>
+                <div className="mt-4">
+                  <p className="font-bold dark:text-white text-black sm:text-xl">
+                    {item.quote}
+                  </p>
                 </div>
+                <footer className="mt-4 text-sm font-medium text-blue-500 sm:mt-6">
+                  {item.name}, {item.title}
+                </footer>
               </blockquote>
             </li>
           ))
