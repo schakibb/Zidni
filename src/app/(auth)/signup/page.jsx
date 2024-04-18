@@ -16,7 +16,11 @@ import { Label } from "../../../components/ui/label";
 import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc } from "firebase/firestore";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
 const initialState = {
@@ -31,11 +35,13 @@ export default function SignUp() {
   const [disabled, setDisabled] = useState(false);
   const handleGoogleSignUp = () => {
     setDisabled(true);
-    signInWithPopup(auth, provider)
+    signInWithRedirect(auth, provider)
       .then((cred) => {
         uid = cred.user.uid;
+        console.log(cred);
       })
-      .then(() => {
+      .then((res) => {
+        console.log(res);
         uid = res.user.auth.lastNotifiedUid;
         const ref = doc(db, "users", uid);
         setDoc(ref, {
@@ -71,125 +77,132 @@ export default function SignUp() {
   };
   return (
     <>
-      <div className="container relative h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="decorative absolute inset-0 bg-zinc-900 lg:min-w-[600px] xl:min-w-[800px] " />
-
-          <div className="relative z-20 mt-auto">
-            <blockquote className="space-y-2">
-              <p className="text-lg">
-                Seeking knowledge is a duty upon every Muslim.
-              </p>
-              <footer className="text-sm">
-                Prophet Muhammad
-                <span className="text-xl ml-2 -mb-0.5">ﷺ</span>
-              </footer>
-            </blockquote>
+      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        <div className="flex items-center justify-center py-12">
+          <div className="mx-auto grid w-[350px] gap-6">
+            <form className="grid gap-2" onSubmit={handleSignUp}>
+              <Card className="mt-20">
+                <CardHeader className="space-y-1">
+                  <CardTitle className="text-2xl text-center">
+                    Create an account
+                  </CardTitle>
+                  <CardDescription className="text-center">
+                    Enter your email and password to sign up
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="userName">Name</Label>
+                    <Input
+                      id="userName"
+                      type="userName"
+                      placeholder="Lokmane Elhakim"
+                      value={formState.userName}
+                      onChange={(e) => {
+                        setFormState((prev) => ({
+                          ...prev,
+                          userName: e.target.value,
+                        }));
+                      }}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="email">Email</Label>
+                    <input
+                      className={
+                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                      }
+                      required
+                      id="email"
+                      type="email"
+                      placeholder="lokmanehakim@gmail.com"
+                      value={formState.email}
+                      onChange={(e) => {
+                        setFormState((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }));
+                      }}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="password">Password</Label>
+                    <input
+                      className={
+                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                      }
+                      required
+                      id="password"
+                      type="password"
+                      value={formState.password}
+                      onChange={(e) => {
+                        setFormState((prev) => ({
+                          ...prev,
+                          password: e.target.value,
+                        }));
+                      }}
+                    />
+                  </div>
+                </CardContent>
+                <CardFooter className="flex flex-col">
+                  <button
+                    type="submit"
+                    disabled={disabled}
+                    className={cn("w-full", buttonVariants())}
+                  >
+                    Sign Up
+                  </button>
+                  <button
+                    disabled={disabled}
+                    onClick={handleGoogleSignUp}
+                    className={cn(
+                      "w-full mt-2 py-6",
+                      buttonVariants({ variant: "secondary" })
+                    )}
+                  >
+                    <Image
+                      alt="Google"
+                      src={"/logo/google.svg"}
+                      width={20}
+                      height={20}
+                      className="mr-2 dark:text-neutral-50 text-neutral-800"
+                    />
+                    <span className="text-neutral-800 dark:text-neutral-400">
+                      Sign Up with Google
+                    </span>
+                  </button>
+                  <p className="mt-2 text-xs text-center text-gray-700">
+                    Already have an account?
+                    <Link
+                      href="/signin"
+                      className=" text-blue-600 hover:underline ml-0.5"
+                    >
+                      Sign In
+                    </Link>
+                  </p>
+                </CardFooter>
+              </Card>
+            </form>
           </div>
         </div>
-        <div className="lg:p-8 mt-24 sm:mx-20 md:m-0 ">
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 lg:max-w-lg">
-            <Card>
-              <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl text-center">
-                  Create an account
-                </CardTitle>
-                <CardDescription className="text-center">
-                  Enter your email and password to sign up
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="userName">Name</Label>
-                  <Input
-                    id="userName"
-                    type="userName"
-                    placeholder="Lokmane Elhakim"
-                    value={formState.userName}
-                    onChange={(e) => {
-                      setFormState((prev) => ({
-                        ...prev,
-                        userName: e.target.value,
-                      }));
-                    }}
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="lokmanehakim@gmail.com"
-                    value={formState.email}
-                    onChange={(e) => {
-                      setFormState((prev) => ({
-                        ...prev,
-                        email: e.target.value,
-                      }));
-                    }}
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    value={formState.password}
-                    onChange={(e) => {
-                      setFormState((prev) => ({
-                        ...prev,
-                        password: e.target.value,
-                      }));
-                    }}
-                  />
-                </div>
-              </CardContent>
-              <CardFooter className="flex flex-col">
-                <Button className="w-full" onClick={handleSignUp}>
-                  Sign Up
-                </Button>
-                <button
-                  onClick={handleGoogleSignUp}
-                  className={cn(
-                    "w-full mt-2 py-6",
-                    buttonVariants({ variant: "secondary" })
-                  )}
-                  type="submit"
-                >
-                  <Image
-                    alt="Google"
-                    src={"/logo/google.svg"}
-                    width={20}
-                    height={20}
-                    className="mr-2 dark:text-neutral-50 text-neutral-800"
-                  />
-                  <span className="text-neutral-800 dark:text-neutral-400">
-                    Sign In with Google
-                  </span>
-                </button>
-                <p className="mt-2 text-xs text-center text-gray-700">
-                  Already have an account?
-                  <Link
-                    href="/signin"
-                    className=" text-blue-600 hover:underline ml-0.5"
-                  >
-                    Sign In
-                  </Link>
-                </p>
-              </CardFooter>
-            </Card>
-
-            <p className="px-8 text-center text-sm text-muted-foreground">
-              By Signing up, you agree to our
-              <Link
-                href="/terms"
-                className="underline underline-offset-4 hover:text-primary ml-0.5"
-              >
-                Terms of Service
-              </Link>
-              .
+        <div className="absolute z-20 mt-auto right-5 bottom-4">
+          <blockquote className="space-y-2">
+            <p className="text-sm ">
+              Seeking knowledge is a duty upon every Muslim.
             </p>
-          </div>
+            <footer className="text-xs text-right">
+              Prophet Muhammad <span className="text-xs ml-2 -mb-0.5">ﷺ</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div className="hidden lg:block">
+          <Image
+            src="/Image_decoration.png"
+            alt="Image"
+            width="1920"
+            height="1080"
+            className="h-full w-full object-cover"
+          />
         </div>
       </div>
     </>

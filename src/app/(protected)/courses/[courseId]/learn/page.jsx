@@ -10,6 +10,11 @@ import {
 } from "../../../../../components/ui/resizable";
 import { usePathname } from "next/navigation";
 import Visualisation from "../../../../../components/global/Visualisation";
+import {
+  Card,
+  CardContent,
+  CardTitle,
+} from "../../../../../components/ui/card";
 
 const page = () => {
   const pathname = usePathname();
@@ -17,18 +22,27 @@ const page = () => {
   //   (course) => course.path === pathname
   // )[0];
   return (
-    <div className=" mt-[9vh] min-h-fit overflow-x-hidden">
-      <ResizablePanelGroup direction="horizontal">
-        <ResizablePanel defaultSize={97}>
-          <Courses courses={courses} />
-        </ResizablePanel>
+    <>
+      <div className="sm:hidden mt-[18vh]">
+        <div className="container">
+          <p className="text-lg text-center">
+            Please Rotate your device for better user experience!
+          </p>
+        </div>
+      </div>
+      <div className="hidden sm:block mt-[9vh] min-h-fit overflow-x-hidden ">
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel defaultSize={97}>
+            <Courses courses={courses} />
+          </ResizablePanel>
 
-        <ResizableHandle withHandle className={"min-h-[91dvh]"} />
-        <ResizablePanel className="grid grid-cols-1" defaultSize={3}>
-          <Visualisation />
-        </ResizablePanel>
-      </ResizablePanelGroup>
-    </div>
+          <ResizableHandle withHandle className={"min-h-[91dvh]"} />
+          <ResizablePanel className="grid grid-cols-1" defaultSize={3}>
+            <Visualisation />
+          </ResizablePanel>
+        </ResizablePanelGroup>
+      </div>
+    </>
   );
 };
 

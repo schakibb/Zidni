@@ -2,10 +2,10 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { auth, provider } from "../../../utils/firebase/config";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 
 import Link from "next/link";
-import { Button, buttonVariants } from "../../../components/ui/button";
+import { buttonVariants } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
@@ -16,20 +16,24 @@ import {
 } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
 import { cn } from "../../../lib/utils";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignIn() {
+  const [user] = useAuthState(auth);
+  console.log("user", user);
+  if (user) redirect("/courses");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
 
   const router = useRouter();
-  const handleGoogleSignIn = () => {
+  const handleGoogleSignIn = async () => {
     setDisabled(true);
-    signInWithPopup(auth, provider).then((cred) => {
-      console.log(cred);
-      router.push("/courses");
+    signInWithRedirect(auth, provider).then(() => {
+      setDisabled(false);
+      redirect("/courses");
     });
   };
   const handleSignIn = async () => {
@@ -51,87 +55,108 @@ export default function SignIn() {
 
   return (
     <>
-      <div className="container relative  h-dvh flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
-          <div className="decorative absolute inset-0 bg-zinc-900 lg:min-w-[600px] xl:min-w-[800px] " />
+      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        <div className="flex items-center justify-center py-12">
+          <div className="mx-auto grid w-[350px] gap-6">
+            <form onSubmit={handleSignIn} className="grid gap-2">
+              <Card className="mt-20">
+                <CardHeader className="space-y-1">
+                  <CardTitle className="text-2xl text-center">
+                    Sign In
+                  </CardTitle>
+                  <CardDescription className="text-center">
+                    Enter your email and password to sign in
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="grid gap-4">
+                  <div className="grid gap-2">
+                    <Label htmlFor="email">Email</Label>
+                    <input
+                      className={
+                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                      }
+                      required
+                      id="email"
+                      type="email"
+                      placeholder=""
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="password">Password</Label>
+                    <input
+                      className={
+                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                      }
+                      required
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                </CardContent>
+                <CardFooter className="flex flex-col">
+                  <button
+                    type="submit"
+                    className={cn("w-full my-2", buttonVariants())}
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    disabled={disabled}
+                    className={cn(
+                      "w-full py-6",
+                      buttonVariants({ variant: "secondary" })
+                    )}
+                    onClick={handleGoogleSignIn}
+                  >
+                    <Image
+                      src={"/logo/google.svg"}
+                      width={20}
+                      height={20}
+                      alt="Google"
+                      className="mr-2 dark:text-neutral-50 text-neutral-800"
+                    />
+                    <span className="text-neutral-800 dark:text-neutral-400">
+                      Sign In with Google
+                    </span>
+                  </button>
+                  <p className="mt-2 text-xs text-center text-gray-700">
+                    Don&apos;t have an account?
+                    <Link
+                      href="/signup"
+                      className="text-blue-600 hover:underline ml-0.5"
+                    >
+                      Sign Up
+                    </Link>
+                  </p>
+                </CardFooter>
+              </Card>
+            </form>
+          </div>
 
-          <div className="relative z-20 mt-auto">
+          <div className="absolute z-20 mt-auto right-5 bottom-4">
             <blockquote className="space-y-2">
-              <p className="text-lg">
-                Whoever travels a path in search of knowledge, Allah will make
-                easy for him a path to Paradise.
+              <p className="text-sm ">
+                Whoever travels a path in search of knowledge, <br />
+                Allah will make easy for him a path to Paradise.
               </p>
-              <footer className="text-sm">
-                Prophet Muhammad <span className="text-xl ml-2 -mb-0.5">ﷺ</span>
+              <footer className="text-xs text-right">
+                Prophet Muhammad <span className="text-xs ml-2 -mb-0.5">ﷺ</span>
               </footer>
             </blockquote>
           </div>
         </div>
-        <div className="lg:p-8 mt-24 sm:mx-20 md:m-0">
-          <div className="mx-auto flex w-full flex-col justify-center space-y-6 lg:max-w-lg">
-            <Card>
-              <CardHeader className="space-y-1">
-                <CardTitle className="text-2xl text-center">Sign In</CardTitle>
-                <CardDescription className="text-center">
-                  Enter your email and password to sign in
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="grid gap-4">
-                <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder=""
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="grid gap-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
-              </CardContent>
-              <CardFooter className="flex flex-col">
-                <Button className="w-full my-2" onClick={handleSignIn}>
-                  Sign In
-                </Button>
-                <button
-                  disabled={disabled}
-                  className={cn(
-                    "w-full py-6",
-                    buttonVariants({ variant: "secondary" })
-                  )}
-                  onClick={handleGoogleSignIn}
-                >
-                  <Image
-                    src={"/logo/google.svg"}
-                    width={20}
-                    height={20}
-                    alt="Google"
-                    className="mr-2 dark:text-neutral-50 text-neutral-800"
-                  />
-                  <span className="text-neutral-800 dark:text-neutral-400">
-                    Sign In with Google
-                  </span>
-                </button>
-                <p className="mt-2 text-xs text-center text-gray-700">
-                  Don&apos;t have an account?
-                  <Link
-                    href="/signup"
-                    className="text-blue-600 hover:underline ml-0.5"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
-              </CardFooter>
-            </Card>
-          </div>
+        <div className="hidden lg:block">
+          <Image
+            src="/Image_decoration.png"
+            alt="Image"
+            width="1920"
+            height="1080"
+            className="h-full w-full object-cover"
+          />
         </div>
       </div>
     </>

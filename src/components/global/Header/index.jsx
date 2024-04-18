@@ -9,11 +9,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
 import { Button, buttonVariants } from "../../ui/button";
 import Image from "next/image";
-import {
-  DropdownMenu,
-  DropdownMenuItem,
-  DropdownMenuContent,
-} from "../../ui/dropdown";
+import { DropdownMenu } from "../../ui/dropdown";
 const Header = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
@@ -71,12 +67,12 @@ const Header = () => {
                   alt="logo"
                   width={40}
                   height={40}
-                  className=" mr-2"
-                />{" "}
+                  className="mr-2"
+                />
                 Zidni
               </Link>
             </div>
-            <div className="flex w-full items-center justify-between px-4">
+            <div className="flex w-full items-center justify-between px-4 ml-5">
               <DropdownMenu className="bg-inherit">
                 <button
                   onClick={navbarToggleHandler}
@@ -166,18 +162,18 @@ const Header = () => {
                 </nav>
               </DropdownMenu>
               <div className="flex ml-auto items-center justify-end pr-16 lg:pr-0 ">
-                {/*                 
-                <div className="hidden sm:block">
-                  <Button
-                    onClick={() => {
-                      signOut(auth);
-                      router.push("/signup");
-                    }}
-                  >
-                    Log out
-                  </Button>
-                </div> */}
-                {user && (
+                {user ? (
+                  <div className="hidden sm:block">
+                    <Button
+                      onClick={() => {
+                        signOut(auth);
+                        router.push("/signup");
+                      }}
+                    >
+                      Log out
+                    </Button>
+                  </div>
+                ) : (
                   <div className="hidden sm:block">
                     <Link className={buttonVariants()} href={"/signin"}>
                       Sign In

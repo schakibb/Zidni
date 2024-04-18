@@ -11,6 +11,7 @@ const Input = React.forwardRef(({ className, type, ...props }, ref) => {
       )}
       ref={ref}
       {...props}
+      required
     />
   );
 });
