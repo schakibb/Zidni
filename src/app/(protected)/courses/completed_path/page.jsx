@@ -1,5 +1,8 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "../../../../components/ui/card";
+import Link from "next/link";
+import { buttonVariants } from "../../../../components/ui/button";
+import { cn } from "../../../../utils/cn";
 
 const CongratulationsPage = () => {
   return (
@@ -11,8 +14,15 @@ const CongratulationsPage = () => {
         <CardContent className="text-gray-600 dark:text-gray-300">
           You have successfully completed the course.
         </CardContent>
+        <Link
+          href={"https://forms.gle/12zvmvNxJWk3XXNA6"}
+          target="_blank"
+          className={cn("self-center", buttonVariants())}
+        >
+          Got any feedback?
+        </Link>
         <iframe
-          className="rounded-lg"
+          className="hidden sm:block rounded-lg"
           src="https://docs.google.com/forms/d/e/1FAIpQLScUAETrTia84BQsNpRLsp7Z2IZAcuZ_RqKx3Urcbp29GHXT6g/viewform?embedded=true"
           width="100%"
           height="450px"
