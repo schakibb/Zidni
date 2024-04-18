@@ -60,5 +60,7 @@
 .decorative {
   background-image: url("/Image_decoration.png");
   background-size: cover;
-  background-repeat: no-repeat;
 }
+/* * {
+  border: 1px solid red;
+} */

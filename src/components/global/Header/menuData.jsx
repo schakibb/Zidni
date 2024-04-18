@@ -6,12 +6,6 @@ export const userMenuData = [
     newTab: false,
   },
   {
-    id: 2,
-    title: "About",
-    path: "/about",
-    newTab: false,
-  },
-  {
     id: 3,
     title: "Docs",
     path: "/documentation",
@@ -48,6 +42,12 @@ export const userMenuData = [
       },
       {
         id: 47,
+        title: "Terms and services",
+        path: "/terms",
+        newTab: false,
+      },
+      {
+        id: 49,
         title: "Sign Up Page",
         path: "/signup",
         newTab: false,

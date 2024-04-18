@@ -7,7 +7,6 @@ export const Testimonials = ({
   items,
   direction = "left",
   speed = "medium",
-  pauseOnHover = true,
   className,
 }) => {
   const containerRef = useRef(null);
@@ -91,7 +90,7 @@ export const Testimonials = ({
         className={cn(
           "flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap mb-3",
           start && "animate-scroll",
-          pauseOnHover && "hover:animation-play-state:paused"
+          "hover:animation-play-state:paused"
         )}
       >
         {type === "brand" ? (
