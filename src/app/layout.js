@@ -3,6 +3,7 @@ import "../styles/index.css";
 import Header from "../components/global/Header";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Footer from "../components/global/Footer/index";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
         <Providers children={children}>
           <Header />
           {children}
+          <Footer />
+
           <ScrollToTop />
         </Providers>
       </body>

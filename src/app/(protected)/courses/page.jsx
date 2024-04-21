@@ -17,14 +17,23 @@ import { auth } from "../../../utils/firebase/config";
 
 const CardWithForm = () => {
   const [user] = useAuthState(auth);
-  console.log("user", user);
-
   return (
-    <div className="container mt-20">
+    <div className="container mt-24">
+      {user && (
+        <div className="text-center ml-4">
+          <h1 className="text-xl sm:text-3xl mt-28">
+            Hi there {user?.displayName}👋,
+          </h1>
+          <p className="lg:text-lg text-base ml-2 ">
+            Glad to see you , excited to explore our new way of learning
+            together. Let's dive in!
+          </p>
+        </div>
+      )}
       {user ? (
         courses.map((course) => {
           return (
-            <Card className="m-4 min-w-80">
+            <Card key={course.id} className="m-4 min-w-80">
               <CardHeader>
                 <CardTitle>{course.title} </CardTitle>
                 <CardDescription>{course.description}</CardDescription>
@@ -46,7 +55,7 @@ const CardWithForm = () => {
           </CardHeader>
           <CardContent>Sign in to access courses</CardContent>
           <CardFooter className="flex justify-between">
-            <Link className={buttonVariants()} href="/auth/signin">
+            <Link className={buttonVariants()} href="/signin">
               Sign In
             </Link>
           </CardFooter>

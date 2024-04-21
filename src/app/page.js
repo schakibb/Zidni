@@ -1,5 +1,4 @@
 "use client";
-import Footer from "../components/global/Footer/index";
 import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
 import Contact from "../components/global/Contact";
 import Hero from "../components/global/Hero";
@@ -31,7 +30,6 @@ export default function Home() {
 
       <Contact />
       <Chatbot />
-      <Footer />
     </>
   );
 }

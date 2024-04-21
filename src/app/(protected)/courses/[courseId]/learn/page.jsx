@@ -10,11 +10,6 @@ import {
 } from "../../../../../components/ui/resizable";
 import { usePathname } from "next/navigation";
 import Visualisation from "../../../../../components/global/Visualisation";
-import {
-  Card,
-  CardContent,
-  CardTitle,
-} from "../../../../../components/ui/card";
 
 const page = () => {
   const pathname = usePathname();
@@ -30,7 +25,7 @@ const page = () => {
           </p>
         </div>
       </div>
-      <div className="hidden sm:block mt-[9vh] min-h-fit overflow-x-hidden ">
+      <div className="hidden sm:block mt-[12vh] min-h-fit overflow-x-hidden ">
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel defaultSize={97}>
             <Courses courses={courses} />
