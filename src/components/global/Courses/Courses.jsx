@@ -21,7 +21,7 @@ const Courses = ({ courses }) => {
       {courses.map((course) => (
         <Card className="m-4 min-w-80">
           <CardHeader>
-            <CardTitle>{course.title} </CardTitle>
+            <CardTitle>{course.title}</CardTitle>
             <CardDescription>{course.description}</CardDescription>
           </CardHeader>
           <CardContent>
