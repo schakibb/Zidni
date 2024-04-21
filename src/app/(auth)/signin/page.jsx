@@ -21,9 +21,6 @@ import { cn } from "../../../lib/utils";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignIn() {
-  const [user] = useAuthState(auth);
-  console.log("user", user);
-  if (user) redirect("/courses");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
@@ -31,10 +28,13 @@ export default function SignIn() {
   const router = useRouter();
   const handleGoogleSignIn = async () => {
     setDisabled(true);
-    signInWithRedirect(auth, provider).then(() => {
-      setDisabled(false);
-      redirect("/courses");
-    });
+    signInWithRedirect(auth, provider)
+      .then(() => {
+        setDisabled(false);
+      })
+      .then(() => {
+        router.push("/courses");
+      });
   };
   const handleSignIn = async () => {
     e.preventDefault();

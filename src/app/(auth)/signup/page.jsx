@@ -15,10 +15,9 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
-  signInWithPopup,
   signInWithRedirect,
 } from "firebase/auth";
 import { cn } from "../../../utils/cn";
@@ -35,15 +34,13 @@ export default function SignUp() {
   const [disabled, setDisabled] = useState(false);
   const handleGoogleSignUp = () => {
     setDisabled(true);
-    signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider)
       .then((cred) => {
         uid = cred.user.uid;
-        console.log(cred);
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         uid = res.user.auth.lastNotifiedUid;
-        const ref = doc(db, "users", uid);
+        const ref = addDoc(db, "users", uid);
         setDoc(ref, {
           userName: formState.userName,
           quizzesTaken: 0,
@@ -62,7 +59,7 @@ export default function SignUp() {
         formState.password
       );
       uid = res.user.auth.lastNotifiedUid;
-      const ref = doc(db, "users", uid);
+      const ref = addDoc(db, "users", uid);
       await setDoc(ref, {
         userName: formState.userName,
         quizzesTaken: 0,
@@ -132,6 +129,7 @@ export default function SignUp() {
                         "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
                       }
                       required
+                      placeholder="********"
                       id="password"
                       type="password"
                       value={formState.password}
