@@ -16,10 +16,7 @@ import { Label } from "../../../components/ui/label";
 import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc, addDoc } from "firebase/firestore";
-import {
-  createUserWithEmailAndPassword,
-  signInWithRedirect,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
 const initialState = {

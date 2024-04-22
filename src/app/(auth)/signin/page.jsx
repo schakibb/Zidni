@@ -16,9 +16,8 @@ import {
 } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-import { signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../lib/utils";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -28,7 +27,7 @@ export default function SignIn() {
   const router = useRouter();
   const handleGoogleSignIn = async () => {
     setDisabled(true);
-    signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider)
       .then(() => {
         setDisabled(false);
       })

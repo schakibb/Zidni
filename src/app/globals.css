@@ -61,6 +61,20 @@
   background-image: url("/Image_decoration.png");
   background-size: cover;
 }
+/* to test css  variables */
+
 /* * {
   border: 1px solid red;
 } */
+
+/* Customize the scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Set the width of the scrollbar */
+}
+::-webkit-scrollbar-track {
+  background-color: #b1b1b2e6;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #2563ebe6;
+  border-radius: 8px;
+}
