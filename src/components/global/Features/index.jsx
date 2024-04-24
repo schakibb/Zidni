@@ -1,7 +1,7 @@
 import { HoverEffect } from "../../ui/featuresCard";
 
 import SectionTitle from "../Common/SectionTitle";
-import featuresData from "../../../data/featuresData";
+import { featuresData, mobileFeaturesData } from "../../../data/featuresData";
 
 const Features = () => {
   return (
@@ -13,7 +13,14 @@ const Features = () => {
           "We revolutionize learning with interactive lessons, personalized paths, rich content, progress tracking, and collaborative tools."
         }
       />
-      <HoverEffect className={"-mt-24"} items={featuresData} />
+      <HoverEffect
+        className={"-mt-24 mb-8 hidden sm:grid"}
+        items={featuresData}
+      />
+      <HoverEffect
+        className={"-mt-24 mx-5 mb-8 p-0 sm:hidden"}
+        items={mobileFeaturesData}
+      />
     </>
   );
 };

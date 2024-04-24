@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button, buttonVariants } from "../../ui/button";
+import { buttonVariants } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
 import { cn } from "../../../utils/cn";
 const Hero = () => {
@@ -18,16 +18,15 @@ const Hero = () => {
                   <span className="text-blue-600 ml-3">Algerian</span>
                   <br className="sm:hidden m-0" /> minds
                 </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Embark on an enriching learning journey with ZidniElearning.
-                  Dive into diverse subjects with captivating animations and
-                  quizzes. Join us today and revolutionize your educational
-                  experience.
+                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg">
+                  Discover Zidni e-learning, Animated, Interactive, Engaging.
+                  Transform your learning with quizzes. Join us, revolutionize
+                  education.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Button>
-                    <Link href="/signup">Get Started &rarr;</Link>
-                  </Button>
+                  <Link href="/signup" className={buttonVariants()}>
+                    Get Started <span className="ml-2"> &rarr;</span>
+                  </Link>
 
                   <Link
                     className={buttonVariants({ variant: "outline" })}
