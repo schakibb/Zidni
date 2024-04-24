@@ -17,7 +17,7 @@ import {
 import { Label } from "../../../components/ui/label";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../lib/utils";
-
+import { Toaster, toast } from "sonner";
 export default function SignIn() {
   let uid, usersCollection;
   const [email, setEmail] = useState("");
