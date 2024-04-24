@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
-import { Button, buttonVariants } from "../../../components/ui/button";
+import { buttonVariants } from "../../../components/ui/button";
 import {
   Card,
   CardContent,
@@ -15,7 +15,7 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
-import { doc, setDoc, addDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
@@ -25,30 +25,28 @@ const initialState = {
   userName: "",
 };
 export default function SignUp() {
-  let uid;
+  let uid, usersCollection;
   const router = useRouter();
   const [formState, setFormState] = useState(initialState);
-  const [disabled, setDisabled] = useState(false);
-  const handleGoogleSignUp = () => {
-    setDisabled(true);
-    signInWithPopup(auth, provider)
-      .then((cred) => {
-        uid = cred.user.uid;
-      })
-      .then(() => {
-        uid = res.user.auth.lastNotifiedUid;
-        const ref = addDoc(db, "users", uid);
-        setDoc(ref, {
-          userName: formState.userName,
-          quizzesTaken: 0,
-          coursesFinished: 0,
-        });
-        router.push("/signin");
-      });
+  const handleGoogleSignUp = async () => {
+    const cred = await signInWithPopup(auth, provider);
+    uid = cred.user.uid;
+    usersCollection = collection(db, "users");
+    const userData = {
+      userName: cred.user.displayName,
+      email: cred.user.email,
+      photoUrl: cred.user.photoURL,
+      quizzesTaken: 0,
+      coursesFinished: 0,
+    };
+    const ref = doc(usersCollection, uid);
+    await setDoc(ref, userData);
+    await addDoc(usersCollection, userData);
+    console.log(userData, "userData");
+    router.push("/courses");
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
-    setDisabled(true);
     try {
       const res = await createUserWithEmailAndPassword(
         auth,
@@ -142,13 +140,11 @@ export default function SignUp() {
                 <CardFooter className="flex flex-col">
                   <button
                     type="submit"
-                    disabled={disabled}
                     className={cn("w-full", buttonVariants())}
                   >
                     Sign Up
                   </button>
                   <button
-                    disabled={disabled}
                     onClick={handleGoogleSignUp}
                     className={cn(
                       "w-full mt-2 py-6",
@@ -180,9 +176,9 @@ export default function SignUp() {
             </form>
           </div>
         </div>
-        <div className="absolute z-20 mt-auto right-5 bottom-4">
+        <div className="absolute z-20 mt-auto right-5 my-4 bottom-3">
           <blockquote className="space-y-2">
-            <p className="text-sm ">
+            <p className="text-xs sm:text-sm">
               Seeking knowledge is a duty upon every Muslim.
             </p>
             <footer className="text-xs text-right">

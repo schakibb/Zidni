@@ -1,5 +1,5 @@
 "use client";
-import AboutSectionTwo from "../components/global/About/AboutSectionTwo";
+import AboutSection from "../components/global/About/AboutSection";
 import Contact from "../components/global/Contact";
 import Hero from "../components/global/Hero";
 import { Testimonials } from "../components/ui/testimonials";
@@ -14,20 +14,20 @@ export default function Home() {
       <Features />
       {/* <Video /> */}
       <Testimonials
-        direction="left"
-        speed="fast"
-        pauseOnHover={false}
-        type="brand"
-      />
-      <AboutSectionTwo />
-      <Testimonials
         items={quotes}
         speed="slower"
         pauseOnHover={true}
         type="testimonials"
         direction="right"
       />
+      <AboutSection />
 
+      <Testimonials
+        direction="left"
+        speed="fast"
+        pauseOnHover={false}
+        type="brand"
+      />
       <Contact />
       <Chatbot />
     </>

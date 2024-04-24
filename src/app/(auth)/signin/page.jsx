@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { auth, provider } from "../../../utils/firebase/config";
-import { useRouter, redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 import { buttonVariants } from "../../../components/ui/button";
@@ -14,39 +14,47 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
-import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../lib/utils";
 
 export default function SignIn() {
+  let uid, usersCollection;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [disabled, setDisabled] = useState(false);
 
   const router = useRouter();
   const handleGoogleSignIn = async () => {
-    setDisabled(true);
-    signInWithPopup(auth, provider)
-      .then(() => {
-        setDisabled(false);
-      })
-      .then(() => {
-        router.push("/courses");
+    try {
+      const cred = await signInWithPopup(auth, provider);
+      uid = cred.user.uid;
+      usersCollection = collection(db, "users");
+      const userData = {
+        userName: cred.user.displayName,
+        email: cred.user.email,
+        photoUrl: cred.user.photoURL,
+        quizzesTaken: 0,
+        coursesFinished: 0,
+      };
+      const ref = doc(usersCollection, uid);
+      await setDoc(ref, userData);
+      await addDoc(usersCollection, userData);
+
+      router.push("/courses");
+    } catch (error) {
+      console.log("error", error);
+      toast.error("Something went wrong", {
+        description: "Failed to sign in, please try again later.",
       });
+    }
   };
   const handleSignIn = async () => {
     e.preventDefault();
-    setDisabled(true);
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password).then(
-        () => {
-          setEmail("");
-          setPassword("");
-          router.push("/courses");
-        }
-      );
-      console.log({ res });
+      await signInWithEmailAndPassword(auth, email, password).then(() => {
+        setEmail("");
+        setPassword("");
+      });
     } catch (e) {
       console.error(e);
     }
@@ -57,8 +65,9 @@ export default function SignIn() {
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
         <div className="flex items-center justify-center py-12">
           <div className="mx-auto grid w-[350px] gap-6">
+            <Toaster richColors />
             <form onSubmit={handleSignIn} className="grid gap-2">
-              <Card className="mt-20">
+              <Card className="mt-20 sm:mt-14">
                 <CardHeader className="space-y-1">
                   <CardTitle className="text-2xl text-center">
                     Sign In
@@ -104,7 +113,6 @@ export default function SignIn() {
                     Sign In
                   </button>
                   <button
-                    disabled={disabled}
                     className={cn(
                       "w-full py-6",
                       buttonVariants({ variant: "secondary" })
@@ -135,10 +143,9 @@ export default function SignIn() {
               </Card>
             </form>
           </div>
-
-          <div className="absolute z-20 mt-auto right-5 bottom-4">
+          <div className="absolute z-20 right-5 hidden my-4 sm:bottom-4 ">
             <blockquote className="space-y-2">
-              <p className="text-sm ">
+              <p className="text-xs sm:text-sm">
                 Whoever travels a path in search of knowledge, <br />
                 Allah will make easy for him a path to Paradise.
               </p>
