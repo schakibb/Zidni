@@ -19,6 +19,8 @@ import { doc, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
+import { useForm } from "react-hook-form";
+
 const initialState = {
   email: "",
   password: "",
@@ -44,6 +46,17 @@ export default function SignUp() {
     await addDoc(usersCollection, userData);
     console.log(userData, "userData");
     router.push("/courses");
+  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ defaultValues: initialState });
+  const onSubmitHandler = (data) => {
+    // handleSignUp(data);
+    console.log({ data });
+    reset({ email: "", password: "", userName: "" });
   };
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -72,7 +85,7 @@ export default function SignUp() {
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
         <div className="flex items-center justify-center py-12">
           <div className="mx-auto grid w-[350px] gap-6">
-            <form className="grid gap-2" onSubmit={handleSignUp}>
+            <form onSubmit={handleSubmit(onSubmitHandler)}>
               <Card className="mt-20">
                 <CardHeader className="space-y-1">
                   <CardTitle className="text-2xl text-center">
@@ -86,17 +99,25 @@ export default function SignUp() {
                   <div className="grid gap-2">
                     <Label htmlFor="userName">Name</Label>
                     <Input
+                      {...register("userName", {
+                        required: true,
+                        maxLength: 30,
+                      })}
                       id="userName"
                       type="userName"
                       placeholder="Lokmane Elhakim"
-                      value={formState.userName}
-                      onChange={(e) => {
-                        setFormState((prev) => ({
-                          ...prev,
-                          userName: e.target.value,
-                        }));
-                      }}
                     />
+                    {errors.userName && errors.userName.type === "required" && (
+                      <p className="text-red-600 text-sm">
+                        Please enter a your name.
+                      </p>
+                    )}
+                    {errors.userName &&
+                      errors.userName.type === "maxLength" && (
+                        <p className="text-red-600 text-sm">
+                          Name must be less than 30 characters.
+                        </p>
+                      )}
                   </div>
                   <div className="grid gap-2">
                     <Label htmlFor="email">Email</Label>
@@ -108,14 +129,27 @@ export default function SignUp() {
                       id="email"
                       type="email"
                       placeholder="lokmanehakim@gmail.com"
-                      value={formState.email}
-                      onChange={(e) => {
-                        setFormState((prev) => ({
-                          ...prev,
-                          email: e.target.value,
-                        }));
-                      }}
+                      {...register("email", {
+                        required: true,
+                        maxLength: 40,
+                        minLength: 6,
+                      })}
                     />
+                    {errors.email && errors.email.type === "required" && (
+                      <p className="text-red-600 text-sm">
+                        Email address is required.
+                      </p>
+                    )}
+                    {errors.email && errors.email.type === "minLength" && (
+                      <p className="text-red-600 text-sm">
+                        Email must be at least 6 characters.
+                      </p>
+                    )}
+                    {errors.email && errors.email.type === "maxLength" && (
+                      <p className="text-red-600 text-sm">
+                        Name must be less than 30 characters.
+                      </p>
+                    )}
                   </div>
                   <div className="grid gap-2">
                     <Label htmlFor="password">Password</Label>
@@ -127,14 +161,29 @@ export default function SignUp() {
                       placeholder="********"
                       id="password"
                       type="password"
-                      value={formState.password}
-                      onChange={(e) => {
-                        setFormState((prev) => ({
-                          ...prev,
-                          password: e.target.value,
-                        }));
-                      }}
+                      {...register("password", {
+                        required: true,
+                        maxLength: 30,
+                        minLength: 6,
+                      })}
                     />
+                    {errors.password && errors.password.type === "required" && (
+                      <p className="text-red-600 text-sm">
+                        Password is required
+                      </p>
+                    )}
+                    {errors.password &&
+                      errors.password.type === "maxLength" && (
+                        <p className="text-red-600 text-sm">
+                          Password must be less than 30 characters.
+                        </p>
+                      )}
+                    {errors.password &&
+                      errors.password.type === "minLength" && (
+                        <p className="text-red-600 text-sm">
+                          Password must be at least 6 characters.
+                        </p>
+                      )}
                   </div>
                 </CardContent>
                 <CardFooter className="flex flex-col">
@@ -176,7 +225,7 @@ export default function SignUp() {
             </form>
           </div>
         </div>
-        <div className="absolute z-20 mt-auto right-5 my-4 bottom-3">
+        <div className="absolute z-20 mt-auto right-5 my-4 bottom-3 hidden lg:block">
           <blockquote className="space-y-2">
             <p className="text-xs sm:text-sm">
               Seeking knowledge is a duty upon every Muslim.
