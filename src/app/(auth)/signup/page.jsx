@@ -15,38 +15,21 @@ import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { auth, db, provider } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
-import { doc, setDoc, addDoc, collection, updateDoc } from "firebase/firestore";
+import { doc, setDoc, addDoc, collection } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
-
+import { handleGoogleSignUp } from "../../../utils/firebase/firebase";
 const initialState = {
   email: "",
   password: "",
   userName: "",
 };
 export default function SignUp() {
-  let uid, usersCollection;
+  let uid;
   const router = useRouter();
-  const [formState, setFormState] = useState(initialState);
-  const handleGoogleSignUp = async () => {
-    const cred = await signInWithPopup(auth, provider);
-    uid = cred.user.uid;
-    usersCollection = collection(db, "users");
-    const userData = {
-      userName: cred.user.displayName,
-      email: cred.user.email,
-      photoUrl: cred.user.photoURL,
-      quizzesTaken: 0,
-      coursesFinished: 0,
-    };
-    const ref = doc(usersCollection, uid);
-    await setDoc(ref, userData);
-    await addDoc(usersCollection, userData);
-    console.log(userData, "userData");
-    router.push("/courses");
-  };
+
   const {
     register,
     handleSubmit,
@@ -54,27 +37,30 @@ export default function SignUp() {
     reset,
   } = useForm({ defaultValues: initialState });
   const onSubmitHandler = (data) => {
-    // handleSignUp(data);
+    handleSignUp(data);
     console.log({ data });
     reset({ email: "", password: "", userName: "" });
+    router.push("/signin");
   };
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  const handleSignUp = async ({ userName, email, password }) => {
     try {
-      const res = await createUserWithEmailAndPassword(
-        auth,
-        formState.email,
-        formState.password
-      );
+      const res = await createUserWithEmailAndPassword(auth, email, password);
       uid = res.user.auth.lastNotifiedUid;
       const ref = addDoc(db, "users", uid);
       await setDoc(ref, {
-        userName: formState.userName,
-        quizzesTaken: 0,
-        coursesFinished: 0,
+        userName,
+        quizzesTaken: [
+          { quiz: "sfsd", finished: false },
+          { quiz: "algebra", finished: false },
+          { quiz: "probability", finished: false },
+        ],
+        coursesFinished: [
+          { course: "sfsd", enrolled: false },
+          { course: "algebra", enrolled: false },
+          { course: "probability", enrolled: false },
+        ],
       });
       console.log("Created User");
-      setFormState(initialState);
       router.push("/signin");
     } catch (e) {
       console.error(e);

@@ -18,36 +18,23 @@ import { Label } from "../../../components/ui/label";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { cn } from "../../../lib/utils";
 import { Toaster, toast } from "sonner";
+import { handleGoogleSignUp } from "../../../utils/firebase/firebase";
 export default function SignIn() {
-  let uid, usersCollection;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
-  const handleGoogleSignIn = async () => {
+  const handleGoogleSignIn = () => {
     try {
-      const cred = await signInWithPopup(auth, provider);
-      uid = cred.user.uid;
-      usersCollection = collection(db, "users");
-      const userData = {
-        userName: cred.user.displayName,
-        email: cred.user.email,
-        photoUrl: cred.user.photoURL,
-        quizzesTaken: 0,
-        coursesFinished: 0,
-      };
-      const ref = doc(usersCollection, uid);
-      await setDoc(ref, userData);
-      await addDoc(usersCollection, userData);
-
+      handleGoogleSignUp();
       router.push("/courses");
     } catch (error) {
-      console.log("error", error);
       toast.error("Something went wrong", {
-        description: "Failed to sign in, please try again later.",
+        description: "We couldn't sign you in, please try again later.",
       });
     }
   };
+
   const handleSignIn = async () => {
     e.preventDefault();
     try {
@@ -64,7 +51,7 @@ export default function SignIn() {
     <>
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
         <div className="flex items-center justify-center py-12">
-          <div className="mx-auto grid w-[350px] gap-6">
+          <div className="mx-auto grid w-auto gap-6">
             <Toaster richColors />
             <form onSubmit={handleSignIn} className="grid gap-2">
               <Card className="mt-20 sm:mt-14">
@@ -143,7 +130,7 @@ export default function SignIn() {
               </Card>
             </form>
           </div>
-          <div className="absolute z-20 right-5 hidden my-4 sm:bottom-4 ">
+          <div className="absolute z-[999] right-5 hidden md:block my-4 sm:bottom-4 ">
             <blockquote className="space-y-2">
               <p className="text-xs sm:text-sm">
                 Whoever travels a path in search of knowledge, <br />
