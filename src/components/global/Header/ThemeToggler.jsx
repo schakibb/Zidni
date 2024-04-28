@@ -7,10 +7,10 @@ const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
   return (
     <>
-      <div className="flex justify-between items-center ml-3">
+      <div className="flex justify-between items-center">
         <Switch
           aria-label="theme toggler"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
           id="theme"
         />
         <Label htmlFor="theme">

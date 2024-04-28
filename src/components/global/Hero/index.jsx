@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { buttonVariants } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
-import { cn } from "../../../utils/cn";
+
 const Hero = () => {
   return (
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden  pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="h-[90dvh] relative z-10 overflow-hidden mt-20 pb-16 pt-[120px] dark:bg-gray-dark md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
@@ -19,9 +19,9 @@ const Hero = () => {
                   <br className="sm:hidden m-0" /> minds
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg">
-                  Discover Zidni e-learning, Animated, Interactive, Engaging.
-                  Transform your learning with quizzes. Join us, revolutionize
-                  education.
+                  Explore dynamic e-learning with Zidni. Engage with interactive
+                  content and quizzes.
+                  <br /> Join us to revolutionize education together!
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link href="/signup" className={buttonVariants()}>
@@ -40,7 +40,8 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
+        <div className="dark:baked_background absolute right-0 top-0 z[-1] opacity-75"></div>
+        {/* <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
             width="450"
             height="556"
@@ -280,7 +281,7 @@ const Hero = () => {
               </radialGradient>
             </defs>
           </svg>
-        </div>
+        </div> */}
       </section>
     </>
   );
