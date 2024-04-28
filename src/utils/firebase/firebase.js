@@ -1,6 +1,6 @@
-import { toast } from "sonner";
-import { db } from "./config";
-import { collection, addDoc } from "firebase/firestore";
+import { auth, db, provider } from "./config";
+import { collection, addDoc, doc, setDoc } from "firebase/firestore";
+import { signInWithPopup } from "firebase/auth";
 
 // Create a document in Firestore
 export const createDocument = async ({
@@ -8,20 +8,16 @@ export const createDocument = async ({
   coursesFinished,
   quizzesTaken,
 }) => {
-  try {
-    await addDoc(collection(db, "users"), {
-      userName,
-      coursesFinished,
-      quizzesTaken,
-    });
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
+  await addDoc(collection(db, "users"), {
+    userName,
+    coursesFinished,
+    quizzesTaken,
+  });
 };
 
 export const handleGoogleSignUp = async () => {
   const cred = await signInWithPopup(auth, provider);
-  uid = cred.user.uid;
+  const uid = cred.user.uid;
   const usersCollection = collection(db, "users");
   const userData = {
     userName: cred.user.displayName,
@@ -40,6 +36,4 @@ export const handleGoogleSignUp = async () => {
   };
   const ref = doc(usersCollection, uid);
   await setDoc(ref, userData);
-  // await addDoc(usersCollection, userData);
-  router.push(href);
 };

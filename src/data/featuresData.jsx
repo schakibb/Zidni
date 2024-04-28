@@ -13,15 +13,15 @@ export const featuresData = [
         xmlns="http://www.w3.org/2000/svg"
         transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"
         stroke="#565252"
-        stroke-width="0.144"
+        strokeWidth="0.144"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           stroke="#CCCCCC"
-          stroke-width="0.048"
+          strokeWidth="0.048"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <path d="M7.45284 2.71266C7.8276 1.76244 9.1724 1.76245 9.54716 2.71267L10.7085 5.65732C10.8229 5.94743 11.0526 6.17707 11.3427 6.29148L14.2873 7.45284C15.2376 7.8276 15.2376 9.1724 14.2873 9.54716L11.3427 10.7085C11.0526 10.8229 10.8229 11.0526 10.7085 11.3427L9.54716 14.2873C9.1724 15.2376 7.8276 15.2376 7.45284 14.2873L6.29148 11.3427C6.17707 11.0526 5.94743 10.8229 5.65732 10.7085L2.71266 9.54716C1.76244 9.1724 1.76245 7.8276 2.71267 7.45284L5.65732 6.29148C5.94743 6.17707 6.17707 5.94743 6.29148 5.65732L7.45284 2.71266Z"></path>
@@ -66,51 +66,51 @@ export const featuresData = [
         className="fill-current dark:text-white text-gray-300"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <path
             d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z"
             stroke="#1C274C"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           ></path>
           <path
             opacity="0.5"
             d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
             stroke="#1C274C"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           ></path>
           <path
             opacity="0.5"
             d="M2 12L4 12"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M20 12L22 12"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M12 4V2"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M12 22V20"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
         </g>
       </svg>
@@ -192,15 +192,15 @@ export const mobileFeaturesData = [
         xmlns="http://www.w3.org/2000/svg"
         transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)"
         stroke="#565252"
-        stroke-width="0.144"
+        strokeWidth="0.144"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           stroke="#CCCCCC"
-          stroke-width="0.048"
+          strokeWidth="0.048"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <path
@@ -249,51 +249,51 @@ export const mobileFeaturesData = [
         width={60}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
           id="SVGRepo_tracerCarrier"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></g>
         <g id="SVGRepo_iconCarrier">
           <path
             d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z"
             stroke="#1C274C"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           ></path>
           <path
             opacity="0.5"
             d="M15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z"
             stroke="#1C274C"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           ></path>
           <path
             opacity="0.5"
             d="M2 12L4 12"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M20 12L22 12"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M12 4V2"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
           <path
             opacity="0.5"
             d="M12 22V20"
             stroke="#1C274C"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           ></path>
         </g>
       </svg>
