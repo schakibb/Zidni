@@ -1,3 +1,4 @@
+import { buttonVariants } from "../../ui/button";
 import NewsLatterBox from "./NewsLatterBox";
 
 const Contact = () => {
@@ -55,16 +56,14 @@ const Contact = () => {
                 </label>
                 <textarea
                   name="message"
-                  rows={5}
+                  rows={3}
                   placeholder="Enter your Message"
                   className="border-stroke w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:text-body-color-dark dark:shadow-two dark:focus:border-primary dark:focus:shadow-none"
                 ></textarea>
               </div>
             </div>
             <div className="w-full px-4">
-              <button className="rounded-sm bg-primary px-9 py-4 text-base font-medium text-white shadow-submit duration-300 hover:bg-primary/90 dark:shadow-submit-dark">
-                Send feedback
-              </button>
+              <button className={buttonVariants()}>Send feedback</button>
             </div>
           </div>
         </form>
