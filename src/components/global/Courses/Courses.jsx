@@ -19,7 +19,7 @@ const Courses = ({ courses }) => {
   return (
     <div className={"flex-col justify-center items-center sm:flex mt-5"}>
       {courses.map((course) => (
-        <Card className="m-4 min-w-80">
+        <Card key={course.id} className="m-4 min-w-80">
           <CardHeader>
             <CardTitle>{course.title}</CardTitle>
             <CardDescription>{course.description}</CardDescription>

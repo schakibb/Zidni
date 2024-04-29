@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { cn } from "../../utils/cn";
 import { brandsData } from "../../data/brandsData";
 import SectionTitle from "../global/Common/SectionTitle";
+import Image from "next/image";
 export const Testimonials = ({
   type,
   items,
@@ -97,18 +98,24 @@ export const Testimonials = ({
           <>
             {brandsData.map((brand) => (
               <li className="rounded-2xl px-8 py-6 " key={brand.id}>
-                <img src={brand.image} alt={brand.alt} className="mx-12" />
+                <Image
+                  width={50}
+                  height={50}
+                  src={brand.image}
+                  alt={brand.alt}
+                  className="mx-12"
+                />
               </li>
             ))}
           </>
         ) : (
           items.map((item) => (
             <li
-              className="mb-3 bg-blue-100 dark:bg-[#0f1115] w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px] bg"
+              className="bg-blue-100 dark:bg-[#0f1115] h-[250px] w-[300px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[400px] mx-3"
               key={item.name}
             >
               <blockquote>
-                <div className="mt-4">
+                <div className="mt-3 mb-7">
                   <p className="font-bold dark:text-white text-black sm:text-xl">
                     {item.quote}
                   </p>
