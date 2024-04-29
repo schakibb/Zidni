@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 
 import { buttonVariants } from "../../../components/ui/button";
@@ -13,72 +13,91 @@ import {
 } from "../../../components/ui/card";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-import { auth, db, provider } from "../../../utils/firebase/config";
+import { auth, db } from "../../../utils/firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc, addDoc, collection } from "firebase/firestore";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { cn } from "../../../utils/cn";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { handleGoogleSignUp } from "../../../utils/firebase/firebase";
+import { Toaster, toast } from "sonner";
+
 const initialState = {
   email: "",
   password: "",
   userName: "",
 };
+
 export default function SignUp() {
   let uid;
   const router = useRouter();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({ defaultValues: initialState });
-  const onSubmitHandler = (data) => {
-    handleSignUp(data);
-    console.log({ data });
-    reset({ email: "", password: "", userName: "" });
-    router.push("/signin");
+  const onSubmitHandler = async (data) => {
+    try {
+      await handleSignUp(data);
+      reset({ email: "", password: "", userName: "" });
+      router.push("/signin");
+    } catch (error) {
+      toast.error("Something went wrong", {
+        description: "We couldn't sign you up, please try again later.",
+        position: "top-right",
+        duration: 3000,
+      });
+    }
   };
   const handleSignUp = async ({ userName, email, password }) => {
+    const userData = {
+      userName,
+      quizzesTaken: [
+        { quiz: "sfsd", finished: false },
+        { quiz: "algebra", finished: false },
+        { quiz: "probability", finished: false },
+      ],
+      coursesFinished: [
+        { course: "sfsd", enrolled: false },
+        { course: "algebra", enrolled: false },
+        { course: "probability", enrolled: false },
+      ],
+    };
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       uid = res.user.auth.lastNotifiedUid;
-      const ref = addDoc(db, "users", uid);
-      await setDoc(ref, {
-        userName,
-        quizzesTaken: [
-          { quiz: "sfsd", finished: false },
-          { quiz: "algebra", finished: false },
-          { quiz: "probability", finished: false },
-        ],
-        coursesFinished: [
-          { course: "sfsd", enrolled: false },
-          { course: "algebra", enrolled: false },
-          { course: "probability", enrolled: false },
-        ],
-      });
-      console.log("Created User");
-      router.push("/signin");
+      const ref = doc(db, "users", uid);
+      await setDoc(ref, userData);
+      await addDoc(ref, userData);
+      router.push("/courses");
     } catch (e) {
-      console.error(e);
+      if (e.code === "auth/email-already-in-use") {
+        toast.error("Email already in use", {
+          description:
+            "Please try again with a different email or try signing in if you already have an account.",
+          position: "top-right",
+          duration: 3000,
+        });
+        return;
+      }
     }
   };
   return (
     <>
-      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+      <div className="w-full mt-10 lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px] ">
         <div className="flex items-center justify-center py-12">
           <div className="mx-auto grid w-[350px] gap-6">
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
-              <Card className="mt-20">
+            <form onSubmit={handleSubmit(onSubmitHandler)} className="mx-2">
+              <Toaster richColors />
+              <Card>
                 <CardHeader className="space-y-1">
                   <CardTitle className="text-2xl text-center">
                     Create an account
                   </CardTitle>
                   <CardDescription className="text-center">
-                    Enter your email and password to sign up
+                    Enter email and password to sign up
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-4">
@@ -197,7 +216,7 @@ export default function SignUp() {
                       Sign Up with Google
                     </span>
                   </button>
-                  <p className="mt-2 text-xs text-center text-gray-700">
+                  <p className="mt-3 text-xs text-center text-gray-700">
                     Already have an account?
                     <Link
                       href="/signin"
@@ -211,8 +230,8 @@ export default function SignUp() {
             </form>
           </div>
         </div>
-        <div className="absolute z-20 mt-auto right-5 my-4 bottom-3 hidden lg:block">
-          <blockquote className="space-y-2">
+        <div className="absolute z-20 mt-auto right-5 my-4 bottom-3">
+          <blockquote className="space-y-2 text-white">
             <p className="text-xs sm:text-sm">
               Seeking knowledge is a duty upon every Muslim.
             </p>
@@ -220,15 +239,6 @@ export default function SignUp() {
               Prophet Muhammad <span className="text-xs ml-2 -mb-0.5">ﷺ</span>
             </footer>
           </blockquote>
-        </div>
-        <div className="hidden lg:block">
-          <Image
-            src="/Image_decoration.png"
-            alt="Image"
-            width="1920"
-            height="1080"
-            className="h-full w-full object-cover"
-          />
         </div>
       </div>
     </>
