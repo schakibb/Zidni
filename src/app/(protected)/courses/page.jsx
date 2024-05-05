@@ -16,7 +16,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../../utils/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import { Toaster, toast } from "sonner";
 import { cn } from "../../../utils/cn";
 
 const Courses = () => {
@@ -31,31 +30,15 @@ const Courses = () => {
         const res = await updateProfile(auth.currentUser, {
           displayName: docSnap.data().userName,
         });
-
-        console.log("res", res);
       }
     };
     if (!user) {
       return;
     }
     getUsers();
-    toast.success("We couldn't sign you in.", {
-      action: {
-        label: <p>Dismiss</p>,
-
-        onClick: () => {
-          toast.dismiss();
-        },
-      },
-      description: "Great to see you back!",
-      position: "top-right",
-      dismissible: true,
-      duration: 3000,
-    });
   }, [user]);
   return (
     <>
-      <Toaster richColors />
       <div className="bg-muted/40 py-1 rounded-lg mt-1">
         {user && (
           <div className="text-center ml-4">

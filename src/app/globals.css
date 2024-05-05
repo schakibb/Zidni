@@ -58,10 +58,6 @@
     overflow-x: hidden;
   }
 }
-.decorative {
-  background-image: url("/Image_decoration.png");
-  background-size: cover;
-}
 /* to test css  variables */
 
 /* * {
@@ -82,4 +78,13 @@
 .baked_background {
   background-image: url("/svg/background.svg");
   background-size: cover;
+}
+.zindex {
+  z-index: 1599 !important;
+}
+.second-zindex {
+  z-index: 1999 !important;
+}
+.red {
+  color: red;
 }

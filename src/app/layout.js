@@ -18,14 +18,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <link
-        rel="icon"
-        href="/logo/usthb.png"
-        type="image/<generated>"
-        itemType="<generated>"
-      />
-      <body className={`bg-[#fdfdfd] dark:bg-background ${inter.className}`}>
+    <html suppressHydrationWarning={true} lang="en">
+      <link rel="icon" href="/logo/usthb.png" />
+      <body
+        suppressHydrationWarning={true}
+        className={`bg-[#fdfdfd] dark:bg-background ${inter.className}`}
+      >
         <Providers children={children}>
           <Header />
           {children}
