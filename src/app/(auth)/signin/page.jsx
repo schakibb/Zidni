@@ -16,7 +16,7 @@ import {
 } from "../../../components/ui/card";
 import { Label } from "../../../components/ui/label";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { cn } from "../../../lib/utils";
+import { cn } from "../../../utils/cn";
 import { Toaster, toast } from "sonner";
 import { handleGoogleSignUp } from "../../../utils/firebase/firebase";
 import { useForm } from "react-hook-form";
@@ -80,12 +80,12 @@ export default function SignIn() {
 
   return (
     <div className="w-full h-full mt-32">
-      <Toaster richColors />
-      <Card className="mx-auto max-w-sm ">
+      <Card className="mx-auto max-w-sm text-center">
+        <Toaster richColors />
         <CardHeader>
-          <CardTitle className="text-xl">Sign In</CardTitle>
+          <CardTitle className="text-xl ">Sign In</CardTitle>
           <CardDescription>
-            Enter your information to create an account
+            Enter your email and password to sign in.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -93,7 +93,7 @@ export default function SignIn() {
             onSubmit={handleSubmit(onSubmitHandler)}
             className="mt-20 mx-2 sm:mt-2"
           >
-            <div className="grid gap-4">
+            <div className="grid gap-4 text-left">
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
                 <input
@@ -154,19 +154,16 @@ export default function SignIn() {
                   </p>
                 )}
               </div>
-              <button
-                type="submit"
-                className={cn("w-full mt-2", buttonVariants())}
-              >
-                Sign In
-              </button>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col items-center justify-stretch">
+          <button type="submit" className={cn("w-full", buttonVariants())}>
+            Sign In
+          </button>
           <button
             className={cn(
-              "w-full pb-6 -mt-3",
+              "w-full mt-2 py-6",
               buttonVariants({ variant: "secondary" })
             )}
             onClick={handleGoogleSignIn}
