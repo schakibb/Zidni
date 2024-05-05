@@ -6,7 +6,9 @@ import { Testimonials } from "../components/ui/testimonials";
 import { quotes } from "../data/quotes";
 import Features from "../components/global/Features";
 import Chatbot from "../components/global/chatbot/index";
+import Footer from "../components/global/Footer/index";
 // import Video from "../components/global/Video";
+
 export default function Home() {
   return (
     <>
@@ -30,6 +32,7 @@ export default function Home() {
       />
       <Contact />
       <Chatbot />
+      <Footer />
     </>
   );
 }

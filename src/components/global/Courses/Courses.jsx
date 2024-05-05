@@ -15,45 +15,43 @@ import {
   CardTitle,
 } from "../../ui/card";
 import Link from "next/link";
+import { cn } from "../../../utils/cn";
 const Courses = ({ courses }) => {
   return (
-    <div className={"flex-col justify-center items-center sm:flex mt-5"}>
+    <>
       {courses.map((course) => (
-        <Card className="m-4 min-w-80">
+        <Card key={course.id} className="m-4 min-w-80">
           <CardHeader>
             <CardTitle>{course.title}</CardTitle>
             <CardDescription>{course.description}</CardDescription>
           </CardHeader>
           <CardContent>
-            {course.chapters && (
-              <Accordion
-                key={course.id}
-                type="single"
-                collapsible
-                className="decoration"
-              >
-                {course.chapters.map((chapter) => (
-                  <AccordionItem
-                    value={chapter.chapterId}
-                    key={chapter.chapterId}
-                  >
-                    <AccordionTrigger>{chapter.title}</AccordionTrigger>
-                    <AccordionContent>
-                      {chapter.chapterDescription}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            )}
+            <div
+              className={
+                "flex-col justify-center items-center sm:flex mt-5 w-full"
+              }
+            >
+              {course.chapters.map((chapter, idx) => (
+                <button
+                  className={cn("w-full my-1 text-left", buttonVariants())}
+                  key={chapter.chapterId}
+                >
+                  {idx + 1}. {chapter.title}
+                </button>
+              ))}
+            </div>
           </CardContent>
           <CardFooter>
-            <Link href={course.next} className={buttonVariants()}>
-              Next Course
+            <Link
+              href={`/courses/${course.title}/learn/${course.quiz}`}
+              className={buttonVariants()}
+            >
+              Take quiz
             </Link>
           </CardFooter>
         </Card>
       ))}
-    </div>
+    </>
   );
 };
 

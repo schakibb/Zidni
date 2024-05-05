@@ -21,13 +21,16 @@ const CongratulationsPage = () => {
           milestone. You can now head back to the resources page and explore
           more content, Keep Excelling .
         </CardContent>
-        <Link
-          href={"https://forms.gle/12zvmvNxJWk3XXNA6"}
-          target="_blank"
-          className={cn("ml-6", buttonVariants())}
-        >
+        <div className="flex items-center mb-3 ml-6">
           Got any feedback?
-        </Link>
+          <Link
+            href={"https://forms.gle/12zvmvNxJWk3XXNA6"}
+            target="_blank"
+            className={cn("", buttonVariants({ variant: "link" }))}
+          >
+            Let us know
+          </Link>
+        </div>
         <iframe
           className="hidden sm:block rounded-lg"
           src="https://docs.google.com/forms/d/e/1FAIpQLScUAETrTia84BQsNpRLsp7Z2IZAcuZ_RqKx3Urcbp29GHXT6g/viewform?embedded=true"

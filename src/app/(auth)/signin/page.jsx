@@ -15,156 +15,181 @@ import {
   CardTitle,
 } from "../../../components/ui/card";
 import { Label } from "../../../components/ui/label";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { cn } from "../../../lib/utils";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { cn } from "../../../utils/cn";
 import { Toaster, toast } from "sonner";
+import { handleGoogleSignUp } from "../../../utils/firebase/firebase";
+import { useForm } from "react-hook-form";
+
 export default function SignIn() {
-  let uid, usersCollection;
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
   const router = useRouter();
-  const handleGoogleSignIn = async () => {
-    try {
-      const cred = await signInWithPopup(auth, provider);
-      uid = cred.user.uid;
-      usersCollection = collection(db, "users");
-      const userData = {
-        userName: cred.user.displayName,
-        email: cred.user.email,
-        photoUrl: cred.user.photoURL,
-        quizzesTaken: 0,
-        coursesFinished: 0,
-      };
-      const ref = doc(usersCollection, uid);
-      await setDoc(ref, userData);
-      await addDoc(usersCollection, userData);
+  if (auth.currentUser) router.push("/courses");
 
-      router.push("/courses");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm({ defaultValues: { email: "", password: "" } });
+  const onSubmitHandler = (data) => {
+    try {
+      console.log({ data });
+      handleSignIn(data);
+      reset({ email: "", password: "" });
     } catch (error) {
-      console.log("error", error);
-      toast.error("Something went wrong", {
-        description: "Failed to sign in, please try again later.",
+      toast.error("We couldn't sign you in.", {
+        description: `${error.message}`,
       });
     }
   };
-  const handleSignIn = async () => {
-    e.preventDefault();
+
+  const handleGoogleSignIn = async () => {
     try {
-      await signInWithEmailAndPassword(auth, email, password).then(() => {
-        setEmail("");
-        setPassword("");
+      await handleGoogleSignUp();
+      router.push("/courses");
+    } catch (error) {
+      toast.error("We couldn't sign you in.", {
+        description: `${error.message}`,
+        position: "top-right",
+        duration: 3000,
       });
+    }
+  };
+
+  const handleSignIn = async (data) => {
+    try {
+      const res = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      console.log(res);
     } catch (e) {
-      console.error(e);
+      if (e.code === "auth/invalid-email") {
+        console.log(e);
+        toast.error("Invalid Email", {
+          description:
+            "Either the email is invalid or you haven't sign up yet. Please try again.",
+          position: "top-right",
+          duration: 3000,
+        });
+        return;
+      }
     }
   };
 
   return (
-    <>
-      <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-        <div className="flex items-center justify-center py-12">
-          <div className="mx-auto grid w-[350px] gap-6">
-            <Toaster richColors />
-            <form onSubmit={handleSignIn} className="grid gap-2">
-              <Card className="mt-20 sm:mt-14">
-                <CardHeader className="space-y-1">
-                  <CardTitle className="text-2xl text-center">
-                    Sign In
-                  </CardTitle>
-                  <CardDescription className="text-center">
-                    Enter your email and password to sign in
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="grid gap-4">
-                  <div className="grid gap-2">
-                    <Label htmlFor="email">Email</Label>
-                    <input
-                      className={
-                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
-                      }
-                      required
-                      id="email"
-                      type="email"
-                      placeholder=""
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="password">Password</Label>
-                    <input
-                      className={
-                        "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
-                      }
-                      required
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
-                </CardContent>
-                <CardFooter className="flex flex-col">
-                  <button
-                    type="submit"
-                    className={cn("w-full my-2", buttonVariants())}
-                  >
-                    Sign In
-                  </button>
-                  <button
-                    className={cn(
-                      "w-full py-6",
-                      buttonVariants({ variant: "secondary" })
-                    )}
-                    onClick={handleGoogleSignIn}
-                  >
-                    <Image
-                      src={"/logo/google.svg"}
-                      width={20}
-                      height={20}
-                      alt="Google"
-                      className="mr-2 dark:text-neutral-50 text-neutral-800"
-                    />
-                    <span className="text-neutral-800 dark:text-neutral-400">
-                      Sign In with Google
-                    </span>
-                  </button>
-                  <p className="mt-2 text-xs text-center text-gray-700">
-                    Don&apos;t have an account?
-                    <Link
-                      href="/signup"
-                      className="text-blue-600 hover:underline ml-0.5"
-                    >
-                      Sign Up
-                    </Link>
+    <div className="w-full h-full mt-32">
+      <Card className="mx-auto max-w-sm text-center">
+        <Toaster richColors />
+        <CardHeader>
+          <CardTitle className="text-xl ">Sign In</CardTitle>
+          <CardDescription>
+            Enter your email and password to sign in.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form
+            onSubmit={handleSubmit(onSubmitHandler)}
+            className="mt-20 mx-2 sm:mt-2"
+          >
+            <div className="grid gap-4 text-left">
+              <div className="grid gap-2">
+                <Label htmlFor="email">Email</Label>
+                <input
+                  className={
+                    "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                  }
+                  id="email"
+                  type="email"
+                  placeholder="lokmanehakim@gmail.com"
+                  {...register("email", {
+                    required: true,
+                    maxLength: 40,
+                    minLength: 6,
+                  })}
+                />
+                {errors.email && errors.email.type === "required" && (
+                  <p className="text-red-600 text-sm">
+                    Email address is required.
                   </p>
-                </CardFooter>
-              </Card>
-            </form>
-          </div>
-          <div className="absolute z-20 right-5 hidden my-4 sm:bottom-4 ">
-            <blockquote className="space-y-2">
-              <p className="text-xs sm:text-sm">
-                Whoever travels a path in search of knowledge, <br />
-                Allah will make easy for him a path to Paradise.
-              </p>
-              <footer className="text-xs text-right">
-                Prophet Muhammad <span className="text-xs ml-2 -mb-0.5">ﷺ</span>
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-        <div className="hidden lg:block">
-          <Image
-            src="/Image_decoration.png"
-            alt="Image"
-            width="1920"
-            height="1080"
-            className="h-full w-full object-cover"
-          />
-        </div>
-      </div>
-    </>
+                )}
+                {errors.email && errors.email.type === "minLength" && (
+                  <p className="text-red-600 text-sm">
+                    Email must be at least 6 characters.
+                  </p>
+                )}
+                {errors.email && errors.email.type === "maxLength" && (
+                  <p className="text-red-600 text-sm">
+                    Name must be less than 30 characters.
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <input
+                  className={
+                    "flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium  focus-visible:outline-black disabled:cursor-not-allowed disabled:opacity-50"
+                  }
+                  placeholder="********"
+                  id="password"
+                  type="password"
+                  {...register("password", {
+                    required: true,
+                    maxLength: 30,
+                    minLength: 6,
+                  })}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <p className="text-red-600 text-sm">Password is required</p>
+                )}
+                {errors.password && errors.password.type === "maxLength" && (
+                  <p className="text-red-600 text-sm">
+                    Password must be less than 30 characters.
+                  </p>
+                )}
+                {errors.password && errors.password.type === "minLength" && (
+                  <p className="text-red-600 text-sm">
+                    Password must be at least 6 characters.
+                  </p>
+                )}
+              </div>
+            </div>
+          </form>
+        </CardContent>
+        <CardFooter className="flex flex-col items-center justify-stretch">
+          <button type="submit" className={cn("w-full", buttonVariants())}>
+            Sign In
+          </button>
+          <button
+            className={cn(
+              "w-full mt-2 py-6",
+              buttonVariants({ variant: "secondary" })
+            )}
+            onClick={handleGoogleSignIn}
+          >
+            <Image
+              src={"/logo/google.svg"}
+              width={20}
+              height={20}
+              alt="Google"
+              className="mr-2 dark:text-neutral-50 text-neutral-800"
+            />
+            <span className="text-neutral-800 dark:text-neutral-400">
+              Sign In with Google
+            </span>
+          </button>
+          <p className="mt-3 text-xs text-center text-gray-700">
+            Don&apos;t have an account?
+            <Link
+              href="/signup"
+              className="text-blue-600 hover:underline ml-0.5"
+            >
+              Sign Up
+            </Link>
+          </p>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }

@@ -1,10 +1,5 @@
 import Link from "next/link";
-
-export const metadata = {
-  title: "Error Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Error Page for Startup Nextjs Template",
-  // other metadata
-};
+import { buttonVariants } from "../components/ui/button";
 
 const ErrorPage = () => {
   return (
@@ -146,10 +141,7 @@ const ErrorPage = () => {
                   The page you were looking for appears to have been moved,
                   deleted or does not exist.
                 </p>
-                <Link
-                  href="/"
-                  className="px-8 py-3 text-base font-bold text-white duration-300 rounded-md bg-primary shadow-signUp hover:bg-white hover:text-primary md:px-9 lg:px-8 xl:px-9"
-                >
+                <Link href="/" className={buttonVariants()}>
                   Back to Homepage
                 </Link>
               </div>

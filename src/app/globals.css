@@ -58,10 +58,6 @@
     overflow-x: hidden;
   }
 }
-.decorative {
-  background-image: url("/Image_decoration.png");
-  background-size: cover;
-}
 /* to test css  variables */
 
 /* * {
@@ -78,4 +74,17 @@
 ::-webkit-scrollbar-thumb {
   background-color: #2563ebe6;
   border-radius: 8px;
+}
+.baked_background {
+  background-image: url("/svg/background.svg");
+  background-size: cover;
+}
+.zindex {
+  z-index: 1599 !important;
+}
+.second-zindex {
+  z-index: 1999 !important;
+}
+.red {
+  color: red;
 }
