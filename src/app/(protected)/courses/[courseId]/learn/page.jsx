@@ -63,10 +63,10 @@ const page = () => {
                         </button>
                       ))}
                       <Link
-                        href={`/courses/${course.title}/quiz`}
+                        href={`/courses/${course.next}`}
                         className={cn("my-2", buttonVariants())}
                       >
-                        Take quiz
+                        Next course
                       </Link>
                     </div>
                   </CardContent>

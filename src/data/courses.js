@@ -23,8 +23,8 @@ export const courses = [
             `,
             subChapterVisualisation: (
               <VisualisationComponent
-                animationData={treeAnimation}
-                title={"Tree"}
+                animationData={storageUnits}
+                title={"Storage Units"}
                 description={
                   "Il existe plusieurs types de mémoires dans un ordinateur."
                 }
@@ -38,8 +38,8 @@ export const courses = [
             `,
             subChapterVisualisation: (
               <VisualisationComponent
-                animationData={storageUnits}
-                title={"Storage Units"}
+                animationData={treeAnimation}
+                title={"Tree"}
                 description={
                   "Il existe plusieurs types de mémoires dans un ordinateur."
                 }
@@ -52,6 +52,6 @@ export const courses = [
 
     path: "/courses/sfsd/learn",
     quiz: "/courses/sfsd/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
-    next: "/courses/completed_path",
+    next: "completed_path",
   },
 ];
