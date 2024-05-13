@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 const VisualisationComponent = ({
-  width = 500,
+  width = 550,
   height = 400,
   animationData,
   title,
