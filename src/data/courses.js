@@ -767,6 +767,6 @@ export const courses = [
 
     path: "/courses/sfsd/learn",
     quiz: "/courses/sfsd/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
-    next: "/courses/completed_path",
+    next: "completed_path",
   },
 ];
