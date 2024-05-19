@@ -19,6 +19,7 @@ import {
 } from "../../../components/ui/dropdown";
 const Header = () => {
   const [user] = useAuthState(auth);
+  // const user = true;
   const router = useRouter();
   return (
     <>

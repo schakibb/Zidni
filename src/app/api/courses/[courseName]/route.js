@@ -1,4 +1,4 @@
-import connectMongoDB from "../../../../lib/mongodb";
+import connectMongoDB from "../../../../utils/mongodb";
 import { Course } from "../../../../models/models";
 import { NextResponse } from "next/server";
 
