@@ -1,8 +1,12 @@
 import VisualisationComponent from "../components/global/Visualisation/index";
 import * as storageUnits from "./visualisation/sfsd/storageUnits.json";
+import File from "./visualisation/sfsd/File.jsx";
+import * as creatingDanceTable from "./visualisation/sfsd/CreatingIndexTable.json";
+import * as RepresentationsOfMultiValued from "./visualisation/sfsd/RepresentationsOfMultiValued.json";
 import * as blockCirculation from "./visualisation/sfsd/blockCirculation.json";
 import * as recordTypes from "./visualisation/sfsd/recordTypes.json";
 import { Fragment } from "react";
+import { title } from "process";
 
 export const courses = [
   {
@@ -21,7 +25,7 @@ export const courses = [
             id: 111,
             title: "1) Introduction",
             subChapterContent: (
-              <p>
+              <div>
                 A file, in computing, is a way of storing, organizing and
                 managing information (or data) permanently or temporarily on a
                 storage medium, such as a hard drive, a optical disk, USB stick,
@@ -50,7 +54,7 @@ export const courses = [
                 or simply to consult them. Example: Student.dat is a data file
                 that may contain information relating to students of a school
                 such as last name, first name, date of birth, grade, etc.
-              </p>
+              </div>
             ),
             subChapterVisualisation: null, // no visualisation is needed for this subchapter
           },
@@ -58,7 +62,7 @@ export const courses = [
             id: 122,
             title: "2) Basic concepts",
             subChapterContent: (
-              <p>
+              <div>
                 The computer only understands binary language, a sequence of 0s
                 and 1s. This is why all information must be converted into a
                 series of bits before being processed by the computer. This
@@ -114,7 +118,7 @@ export const courses = [
                     organized.
                   </li>
                 </ul>
-              </p>
+              </div>
             ),
             subChapterVisualisation: (
               <VisualisationComponent
@@ -128,7 +132,7 @@ export const courses = [
             id: 133,
             title: "3) Logical file and physical file",
             subChapterContent: (
-              <p>
+              <div>
                 <h4>
                   <strong>Logical file:</strong>
                 </h4>{" "}
@@ -152,7 +156,7 @@ export const courses = [
                 recipe and the resulting dish, before and after its preparation.
                 Here the recipe represents the logical file, and the flat
                 represents the physical file.
-              </p>
+              </div>
             ),
             subChapterVisualisation: null,
           },
@@ -160,7 +164,7 @@ export const courses = [
             id: 144,
             title: "4) Logical recording and physical recording",
             subChapterContent: (
-              <p>
+              <div>
                 <h4>
                   <strong>Logical Recording:</strong>
                 </h4>
@@ -189,7 +193,7 @@ export const courses = [
                 <br />
                 The parameter that makes it possible to distinguish between
                 these three cases is called 'blocking factor'.
-              </p>
+              </div>
             ), //TODO: add LogicalRecord svg here
             subChapterVisualisation: (
               <VisualisationComponent
@@ -203,7 +207,7 @@ export const courses = [
             id: 155,
             title: "5) Blocking factor and its interest",
             subChapterContent: (
-              <p>
+              <div>
                 The blocking factor is the number of logical records contained
                 in a physical record. It is calculated as follows:
                 <br />
@@ -225,7 +229,7 @@ export const courses = [
                 entire file. However, if we increase the blocking factor to 2,
                 then we could accomplish the same task using only 50 I/O
                 operations.
-              </p>
+              </div>
             ),
             subChapterVisualisation: null,
           },
@@ -456,7 +460,7 @@ export const courses = [
             id: 188,
             title: "8) File activity",
             subChapterContent: (
-              <p>
+              <div>
                 The activity of a file is defined by the following
                 characteristics:
                 <ul>
@@ -491,7 +495,7 @@ export const courses = [
                 File stability is relative to a given period. A file is said to
                 be stable for a period if the number of records created is
                 approximately equal to the number of records deleted.
-              </p>
+              </div>
             ),
             subChapterVisualisation: null,
           },
@@ -499,7 +503,7 @@ export const courses = [
             id: 199,
             title: "9) File typology",
             subChapterContent: (
-              <p>
+              <div>
                 We can distinguish several types of files according to:
                 <ul>
                   <li>-The nature of the information it contains</li>
@@ -600,7 +604,7 @@ export const courses = [
                     had kept them, they would then be archive files.
                   </li>
                 </ul>
-              </p>
+              </div>
             ),
             subChapterVisualisation: null,
           },
@@ -608,7 +612,7 @@ export const courses = [
             id: 210,
             title: "10) Basic File Operations",
             subChapterContent: (
-              <p>
+              <div>
                 The basic operations that can be performed on a file are:
                 <ul>
                   <li>
@@ -727,7 +731,7 @@ export const courses = [
                     <li>-Minimize storage cost.</li>
                   </li>
                 </ul>
-              </p>
+              </div>
             ),
             subChapterVisualisation: null,
           },
@@ -735,7 +739,7 @@ export const courses = [
             id: 221,
             title: "11) Operations on records",
             subChapterContent: (
-              <p>
+              <div>
                 After creating the file, several operations can be performed on
                 its records, namely:
                 <ul>
@@ -758,9 +762,370 @@ export const courses = [
                     a record.
                   </li>
                 </ul>
-              </p>
+              </div>
             ),
           },
+        ],
+      },
+      // TODO Oussama
+      { chapterId: 2, title: "....", chapterDescription: "" },
+      // TODO Chakib
+      { chapterId: 3, title: "....", chapterDescription: "" },
+      {
+        chapterId: 4,
+        title: "Index structures",
+        chapterDescription:
+          "Chapter 3 addresses index structures, which are essential for accelerating the search for records in a database. It begins by defining general concepts, including the search key, which is used to retrieve specific records. The index is presented as a data structure in main memory (MM) or secondary memory (SM), offering single-key and multi-key access methods. In the context of single-key access, various types of indexes are explored, such as MM indexes, SM indexes, and multi-level indexes. The use of MM indexes for searching, inserting, and deleting records is detailed. Additionally, the process of creating, saving, and loading indexes is discussed. The chapter also covers aspects of multi-key access, where multiple attributes are used for searches. It presents techniques such as independent indexes, inverted indexes, and bitmap indexes to efficiently handle these queries. The use of MM indexes in the form of binary search trees and the exploration of large indexes are also addressed. Finally, the chapter explores the steps of a multi-key query, including the use of secondary and primary indexes to filter and retrieve relevant records. It also discusses the procedures for inserting and deleting records, emphasizing the updating of associated indexes. In summary, this chapter provides a comprehensive understanding of index structures and their effective use in database management.",
+        subChapter: [
+          {
+            id: 111,
+            title: "1) Introduction",
+            subChapterContent: (
+              <div>
+                <p>
+                  Sequential file structures can become inefficient when the
+                  data file grows in size. Operations such as searching and
+                  inserting become less efficient. Indexing methods aim to
+                  enhance performance by managing an auxiliary structure (index
+                  table) that accelerates the <strong>search</strong> for
+                  records.
+                </p>
+                <br />
+                <h4>
+                  <strong>1.1 Defenition of Index</strong>
+                </h4>
+                <p>
+                  An index is a data structure used to speed up the retrieval of
+                  records in memory or on disk. It helps find specific data
+                  quickly within a file or database. By organizing key-value
+                  pairs or pointers, indexes make it easier to access the
+                  information you need, improving the efficiency of data
+                  searches.
+                  <br />
+                  Often, an index is an ordered table in main memory,
+                  containing, among other things, pairs:
+                  <br />
+                  <strong>{"<key_value, record_address>."}</strong>
+                </p>
+                <br />
+                <h4>
+                  <strong>1.2 The uses of index table :</strong>
+                </h4>{" "}
+                <ol>
+                  <li>
+                    <strong>-Speeding Up Searches</strong>: An index table
+                    allows for faster data retrieval by providing quick access
+                    to the location of records.
+                  </li>
+                  <li>
+                    <strong>-Efficient Sorting</strong>: It helps in efficiently
+                    sorting data based on indexed columns, making it easier to
+                    retrieve sorted results.
+                  </li>
+                  <li>
+                    <strong>-Facilitating Range Queries</strong>: Index tables
+                    enable efficient execution of range queries, such as finding
+                    all records within a specific range of values.
+                  </li>
+
+                  <li>
+                    <strong>-Improving Filtering</strong>: Indexes allow for
+                    faster filtering of records based on specific criteria,
+                    reducing the need to scan entire tables.
+                  </li>
+                  <li>
+                    <strong>-Boosting Aggregate Functions</strong>: They enhance
+                    the performance of aggregate functions (e.g., COUNT, SUM) by
+                    quickly accessing the relevant data.
+                  </li>
+                  <li>
+                    <strong>-Optimizing Query Performance</strong>: Overall,
+                    index tables optimize query performance by reducing the time
+                    and computational resources required for data retrieval.
+                  </li>
+                </ol>
+                <br />
+                <h4>
+                  <strong>1.3 Search Key :</strong>
+                </h4>
+                The 'search key', or set of criteria used to locate records, is
+                pivotal in data retrieval:
+                <p>
+                  <strong>Example of searches :</strong>'Person.dat'
+                  {" < Id , Name, Age >"}
+                  <br />→ For the 'Id' search key with value '0005': Result:
+                  <br />
+                  '0005' , 'Mia Lee' , 21
+                  <br />→ For the 'Age' search key with value '049': Result:
+                  <br></br>
+                  '0007','Ava Doe','49'
+                  <br></br>
+                  '0010','Farah Ole','49'
+                </p>
+                <br></br>
+                <br />
+              </div>
+            ),
+            subChapterVisualisation: (
+              <VisualisationComponent
+                animationData={creatingDanceTable}
+                height={500}
+                width={500}
+                title={"Example of Creating an Index table for a TOF File"}
+                description={
+                  "We will use a concrete example to illustrate the creation of a dense index table for a file viewed as TOF (Table Ordered with Fixed-length records). Suppose we have a data file containing information about students ,The records are ordered by ID"
+                }
+              />
+            ),
+          },
+          {
+            id: 166,
+            title: "2) Single-key access",
+            subChapterContent: (
+              <div>
+                <p>
+                  The key can be either unique-valued or non-unique
+                  (multiple-valued).
+                </p>
+                <br></br>
+                <h4>
+                  <strong>
+                    2.1 Representations of multi-valued index tables:
+                  </strong>
+                </h4>
+                <ul>
+                  <li>-One entry per key value</li>
+                  <li>-Multiple entries per key value</li>
+                </ul>
+                (Check Visualisation bellow)
+              </div>
+            ),
+            subChapterVisualisation: (
+              <VisualisationComponent
+                animationData={RepresentationsOfMultiValued}
+                height={500}
+                width={500}
+                title={"Representations of multi-valued index tables"}
+                description={""}
+              />
+            ),
+          },
+          {
+            id: 177,
+            title: "2.2 Dense Index (Non-Clustered Index):",
+            subChapterContent: (
+              <div>
+                <p>
+                  An index is termed 'dense' if it includes all values of the
+                  key attribute from the data file. In such cases, maintaining
+                  the file's order based on this attribute is unnecessary.
+                </p>
+                <br></br>
+                <h4>
+                  <strong>2.3 Non-Dense Index (Clustered Index):</strong>
+                </h4>
+                <p>
+                  Conversely, an index is labeled 'non-dense' if it doesn't
+                  encompass all values of the key attribute from the data file.
+                  For instance, only one value per block or group of blocks may
+                  be retained in the index. Consequently, the file must be
+                  organized based on the indexed attribute. One advantage of a
+                  non-dense index is its reduced size compared to a dense index
+                  for the same data file.
+                  <br></br>
+                  <strong>→Example On dense and Non-dense index :</strong>
+                  <br></br>
+                  Consider a File storing information about students, where each
+                  student has a unique student ID.
+                </p>
+                <table class="min-w-full border border-yellow-400 my-5">
+                  <thead>
+                    <tr>
+                      <th
+                        scope="col"
+                        class="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider"
+                      >
+                        Department ID
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider"
+                      >
+                        Student ID
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider"
+                      >
+                        Name
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-3 text-left text-xs font-medium text-blue-700 uppercase tracking-wider"
+                      >
+                        Age
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        101
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        001
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        John
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        20
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        103
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        002
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Alice
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        22
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        101
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        003
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Emily
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        21
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        109
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        004
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Michael
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        23
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        102
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        005
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Sophia
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        19
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        101
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        006
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        William
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        24
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        102
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        007
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Sam
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        21
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        103
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        008
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Rick
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        20
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        110
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        009
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        Adam
+                      </td>
+                      <td class="px-4 py-2 whitespace-nowrap border border-yellow-400 text-blue-700">
+                        26
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>
+                  If we create an index table on the student ID column, it would
+                  be considered dense because the file is Ordered on Id.
+                  <br></br>
+                  In this example, a dense index on the student ID does not
+                  conatain all the students Id,(for example it could contain the
+                  last/first student ID of each Block)
+                  <br></br>
+                  But if we create an index table on the department ID column,
+                  it would be considered non-dense, the file is not Ordered on
+                  department Id
+                  <br></br>
+                  In this example, a non-dense index on the department ID
+                  conatains all the Departements Id
+                </p>
+              </div>
+            ),
+            subChapterVisualisation: (
+              <VisualisationComponent
+                animationData={creatingDanceTable}
+                height={500}
+                width={500}
+                title={"Example of Creating an Index table for a TOF File"}
+                description={
+                  "We will use a concrete example to illustrate the creation of a dense index table for a file viewed as TOF (Table Ordered with Fixed-length records). Suppose we have a data file containing information about students ,The records are ordered by ID"
+                }
+              />
+            ),
+          },
+          {},
         ],
       },
     ],
