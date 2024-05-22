@@ -1,9 +1,6 @@
 import { useEffect, useReducer } from "react";
 
-import Header from "./Header";
-import Main from "./Main";
 import Loader from "./Loader";
-import Error from "./Error";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
 import NextButton from "./NextButton";
@@ -12,12 +9,11 @@ import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
 import questions from "../../data/quiz/sfsd/questions.json";
-
+import { Card, CardContent } from "../ui/card";
 const SECS_PER_QUESTION = 30;
 
 const initialState = {
   questions: questions,
-  // status options will be... 'loading', 'error', 'ready', 'active', 'finished'
   status: "loading",
   index: 0,
   answer: null,
@@ -87,14 +83,12 @@ export default function App() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <Header />
-      <Main className="main">
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && (
-          <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
-        )}
+    <Card className="self-center flex flex-col items-center justify-center w-fit mx-[10%] my-4 p-5">
+      {status === "loading" && <Loader />}
+      {status === "ready" && (
+        <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
+      )}
+      <CardContent>
         {status === "active" && (
           <>
             <Progress
@@ -129,7 +123,7 @@ export default function App() {
             dispatch={dispatch}
           />
         )}
-      </Main>
-    </div>
+      </CardContent>
+    </Card>
   );
 }

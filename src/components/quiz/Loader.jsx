@@ -23,7 +23,7 @@ export default function Loader() {
         `}
       </style>
       <div className="loader w-16 h-8 bg-gray-700 animate-loader"></div>
-      <p>Loading questions...</p>
+      <h1>Loading questions...</h1>
     </div>
   );
 }

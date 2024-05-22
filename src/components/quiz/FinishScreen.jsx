@@ -1,17 +1,10 @@
-import NextButton from "./NextButton";
-
-function FinishScreen({
-  points,
-  maxPossiblePoints,
-  highscore,
-  dispatch,
-  status,
-}) {
+import { Button } from "../ui/button";
+function FinishScreen({ points, maxPossiblePoints, highscore, dispatch }) {
   const percentage = (points / maxPossiblePoints) * 100;
 
   let emoji;
 
-  if (percentage >= 0) emoji = "👎";
+  if (percentage >= 0) emoji = "😓";
   if (percentage >= 20) emoji = "👀";
   if (percentage >= 40) emoji = "🏅";
   if (percentage >= 60) emoji = "🥉";
@@ -28,12 +21,20 @@ function FinishScreen({
       <p className="text-xl md:text-2xl mb-12">
         ( Highscore: {highscore} points )
       </p>
-      <button
-        className="block font-semibold text-xl md:text-2xl border-2 border-gray-700 bg-gray-700 py-3 md:py-4 px-8 md:px-10 cursor-pointer rounded-full transition duration-300 hover:bg-gray-600 disabled mx-auto"
+      <Button
+        size="lg"
+        className="mr-4"
         onClick={() => dispatch({ type: "restart" })}
       >
         Restart
-      </button>
+      </Button>
+      <Button
+        size="lg"
+        className="ml-4"
+        onClick={() => dispatch({ type: "restart" })}
+      >
+        Next course
+      </Button>
     </div>
   );
 }

@@ -1,18 +1,20 @@
 // src/components/Options.js
 import React from "react";
 import "./Options.css";
+import { Button } from "../../ui/button";
 
 function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
   return (
-    <div className="options">
+    <div className="flex flex-col gap-3 mb-7">
       {question.options.map((option, index) => (
-        <button
-          className={`btn btn-option ${index === answer ? "answer" : ""} ${
+        <Button
+          variant="secondary"
+          className={` ${index === answer ? "translate-x-8" : ""} ${
             hasAnswered
               ? index === question.correctOption
-                ? "correct"
-                : "wrong"
+                ? "bg-green-500"
+                : "bg-red-500"
               : ""
           }`}
           key={option}
@@ -20,7 +22,7 @@ function Options({ question, dispatch, answer }) {
           onClick={() => dispatch({ type: "newAnswer", payload: index })}
         >
           {option}
-        </button>
+        </Button>
       ))}
     </div>
   );
