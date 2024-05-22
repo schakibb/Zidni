@@ -17,6 +17,7 @@ import * as FormEnrg from "../data/visualisation/sfsd/Format D'enregistrement Ph
 import * as FormEnrgFixedSizeNonBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille fixe non bloqués.json"
 import * as FormEnrgFixedSizeBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille fixe bloqués.json"
 import * as FormEnrgVarSizeNonBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille variable non bloqués.json"
+import * as DiskOrganization from "../data/visualisation/sfsd/disk organization.json"
 
 import { title } from "process";
 
@@ -870,19 +871,54 @@ export const courses = [
                   title: "4) Principle of magnetic recording",
                   subChapterContent: (
                     <p>
-                    ....
+                    Magnetic media (Fig. 1) consist of a thin layer of magnetizable material, usually iron oxide, 
+                    deposited on a flexible (tape) or rigid (disk) support. The magnetic layer is composed of magnetic microcells (small magnets)
+                    that can be magnetized by an electric current.
+                    Reading and writing operations are performed using a head consisting of the air gap of a magnet with an electrical 
+                    coil wound around it. The read/write head magnetizes the surface of the medium in one direction or the other. The direction 
+                    of magnetization indicates the value of the recorded bit (0/1).
                     </p>
                   ),
                   subChapterVisualisation: null, // no visualisation is needed for this subchapter
                 },
                 {
-                  // TO DO Bouhamza
+                  subChapterContent: (
+                    <div>
+                    <h4>
+                      <strong>4.1.Writing:</strong>
+                    </h4>
+                    Recording (writing) information onto the magnetic medium involves passing an electric current through the coil that constitutes the head.
+                    The passage of current through the coil generates a localized magnetic field, and the area (the cell) of the magnetic surface in front of
+                    the air gap becomes magnetized. This magnetization orients the particles (microcells) of the material.
+                    The orientation of the particles depends on the direction of the electric current. 
+                    This is how writing is performed, with the orientation of the particles defining the value to be assigned to the magnetized 
+                    </div>
+                  ),
+                  subChapterVisualisation: null, // no visualisation is needed for this subchapter
+                },
+                {
+                  subChapterContent: (
+                    <div>
+                    <h4>
+                      <strong>4.2.Reading</strong>
+                    </h4>
+                    To read the stored information, a read head is used to detect the magnetic changes on the medium. When this head passes over 
+                    the magnetized areas (cells), an electric current is induced in the coil. The direction of the induced electric current depends 
+                    on the type of magnetization. Thus, based on the direction of the electric current, it is possible to determine the value of the information 
+                    that has just been read (0 or 1). 
+                    </div>
+                  ),
+                  subChapterVisualisation: null, // no visualisation is needed for this subchapter
+                },
+                {
                   id: 225,
                   title: "5) Recording density",
                   subChapterContent: (
-                    <p>
-                    ....
-                    </p>
+                    <div>
+                    In general, recording density represents the amount of information that can be stored per unit of surface area 
+                    (or length) on the magnetic medium. In practice, it is measured in Bits Per Square Inch (bpi). In other words, 
+                    it is equal to the number of bits stored per inch along a recording track.
+                    </div>
                   ),
                   subChapterVisualisation: null, // no visualisation is needed for this subchapter
                 },
@@ -1169,14 +1205,31 @@ export const courses = [
                   id: 228,
                   title: "8) Magnetic disks",
                   subChapterContent: (
-                    <p>
+                    <div>
                       <h4>
-                        <strong>a. Organisation du disque</strong>
+                        <strong>A.disk organization</strong>
                       </h4>
-                    ....
-                    </p>
+                      To store information on the disk, an adequate organization is necessary to facilitate writing and reading operations. 
+                      This organization is referred to in computing terms as formatting.
+                      The formatting operation involves organizing the disk into tracks and sectors. 
+                      Each side of a disk platter is divided into tracks, which are concentric circles numbered starting from 0 from the outside. 
+                      Depending on the model, the number of tracks per side varies from 10 to over 1,000. 
+                      There is an inter-track space between each track where no information is recorded. 
+                      Each track is further divided into equal-sized parts called sectors (ranging from 4 to 32 sectors per track), 
+                      with the sector being the smallest unit of reading/writing on the disk. The size of a sector typically ranges from 32 to 4,096 bytes, 
+                      with a common value being 512 bytes. Sectors are also separated by inter-sector spaces.
+                      Thus, the smallest physically accessible unit on the disk is the sector. To optimize reading and writing operations, 
+                      sectors are grouped into blocks. A block consists of several sectors and represents the smallest unit of exchange between 
+                      the disk and the central memory.
+                    </div>
                   ),
-                  subChapterVisualisation: null, // no visualisation is needed for this subchapter
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={DiskOrganization}
+                      title={"disk organization:"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
