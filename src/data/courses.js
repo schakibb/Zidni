@@ -9,7 +9,15 @@ import { Fragment } from "react";
 import * as ReturnToZero from "../data/visualisation/sfsd/Return To Zero.json"
 import * as NoReturnToZero from "../data/visualisation/sfsd/No Return To Zero.json"
 import * as PhaseEncoding from "../data/visualisation/sfsd/Phase Encoding.json"
-import * as NRZBloque from "../data/visualisation/sfsd/FNRZ Non-Bloqué.json"
+import * as NRZNBloque from "../data/visualisation/sfsd/FNRZ Non-Bloqué.json"
+import * as NRZBloque from "../data/visualisation/sfsd/FNRZ Bloqué.json"
+import * as PENBloque from "../data/visualisation/sfsd/PE Non-Bloqué.json"
+import * as PEBloque from "../data/visualisation/sfsd/PE Bloqué.json"
+import * as FormEnrg from "../data/visualisation/sfsd/Format D'enregistrement Physique.json"
+import * as FormEnrgFixedSizeNonBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille fixe non bloqués.json"
+import * as FormEnrgFixedSizeBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille fixe bloqués.json"
+import * as FormEnrgVarSizeNonBlocked from "../data/visualisation/sfsd/Le format des enregistrements de taille variable non bloqués.json"
+
 import { title } from "process";
 
 export const courses = [
@@ -965,7 +973,7 @@ export const courses = [
                   ),
                   subChapterVisualisation: (
                     <VisualisationComponent
-                      animationData={NRZBloque}
+                      animationData={NRZNBloque}
                       title={"Recording format in NRZ mode:"}
                       description={``}
                     />
@@ -980,6 +988,13 @@ export const courses = [
                       In this case, the number of control characters (CRC and LRC) is equal to the number of logical records, 
                       since each block contains only one logical record, resulting in a significant loss of storage space.
                     </p>
+                  ),
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={NRZBloque}
+                      title={"Recording format in NRZ mode:"}
+                      description={``}
+                    />
                   ),
                 },
                 {
@@ -998,8 +1013,13 @@ export const courses = [
                       <br />
                     </p>
                   ),
-      
-                  // to DO Visualisation To BE Continued
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={PENBloque}
+                      title={"Recording format in PE mode:"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
@@ -1012,7 +1032,13 @@ export const courses = [
                     </p>
                   ),
       
-                  // TO Do Visualisation To Be Continued
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={PEBloque}
+                      title={"Recording format in PE mode:"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
@@ -1122,7 +1148,7 @@ export const courses = [
                   subChapterContent: (
                     <p>
                       <h4>
-                        <strong>F.Sequential access:</strong>
+                        <strong>E.Sequential access:</strong>
                       </h4>{" "}
                       <br />
                       Sequential access mode is the most common for magnetic tapes. 
@@ -1162,8 +1188,14 @@ export const courses = [
                       <br />
                     </p>
                   ),
-      
-                  // TO Do Visualisation To Be Continued
+
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={FormEnrg}
+                      title={"RecordingPhysical recording format:"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
@@ -1199,7 +1231,13 @@ export const courses = [
                     </p>
                   ),
       
-                  // TO Do Visualisation To Be Continued
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={FormEnrgFixedSizeNonBlocked}
+                      title={"The format of unblocked fixed-size records (F=1):"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
@@ -1219,7 +1257,13 @@ export const courses = [
                     </p>
                   ),
       
-                  // TO Do Visualisation To Be Continued
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={FormEnrgFixedSizeBlocked}
+                      title={"The format of blocked fixed-size records:"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
@@ -1237,7 +1281,13 @@ export const courses = [
                     </p>
                   ),
       
-                  // TO Do Visualisation To Be Continued
+                  subChapterVisualisation: (
+                    <VisualisationComponent
+                      animationData={FormEnrgVarSizeNonBlocked}
+                      title={"The format of unblocked variable-size records (F=1)"}
+                      description={``}
+                    />
+                  ),
                 },
                 {
                   subChapterContent: (
