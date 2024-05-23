@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import OpenButton from "./components/openButton";
 import BodyContainer from "./components/bodyContainer";
+import initQuestionAns from "../../../data/chatbot/qstAns.json";
+
+const initQuestion = initQuestionAns.questions.map((qst) => qst.question);
+const initResponse = initQuestionAns.questions.map((qst) => qst.answer);
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,9 +56,11 @@ function Chatbot() {
     }
   };
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-2.5 h-[32rem] w-80 justify-end  ">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-2.5 h-[90%] max-w-[30dvw] justify-end  ">
       {isOpen && (
         <BodyContainer
+          initResponse={initResponse}
+          initQuestion={initQuestion}
           listQuestions={questions}
           listResponses={responses}
           isLoading={isLoading}
