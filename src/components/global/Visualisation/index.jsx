@@ -30,7 +30,13 @@ const VisualisationComponent = ({
         <CardHeader>
           <CardTitle>Visualisation: {title}</CardTitle>
         </CardHeader>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription>
+          {description}
+          <br />
+          <span className="text-[#f3f7a1] text-sm">
+            Click to stop and play the animation
+          </span>
+        </CardDescription>
         <CardContent>
           <Lottie options={defaultOptions} height={height} width={width} />
         </CardContent>

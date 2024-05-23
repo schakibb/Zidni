@@ -6,6 +6,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../../utils/firebase/config";
 import { Button, buttonVariants } from "../../ui/button";
+import { useState } from "react";
 
 import { CircleUser, Search, Menu } from "lucide-react";
 
@@ -21,6 +22,8 @@ const Header = () => {
   // const [user] = useAuthState(auth);
   const user = true;
   const router = useRouter();
+  const [selected, setSelected] = useState("home");
+
   return (
     <>
       <header className="z-50 sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
@@ -39,31 +42,50 @@ const Header = () => {
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="/"
-            className="text-foreground transition-colors hover:text-foreground"
+            className={` ${
+              selected === "home" ? "text-foreground" : "text-muted-foreground"
+            } transition-colors hover:text-foreground`}
+            onClick={() => setSelected("home")}
           >
             Home
           </Link>
           <Link
             href="/docs"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={` ${
+              selected === "docs" ? "text-foreground" : "text-muted-foreground"
+            } transition-colors hover:text-foreground`}
+            onClick={() => setSelected("docs")}
           >
             Docs
           </Link>
           <Link
             href="/courses"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={` ${
+              selected === "courses"
+                ? "text-foreground"
+                : "text-muted-foreground"
+            } transition-colors hover:text-foreground`}
+            onClick={() => setSelected("courses")}
           >
             Courses
           </Link>
           <Link
             href="/contact"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={` ${
+              selected === "contact"
+                ? "text-foreground"
+                : "text-muted-foreground"
+            } transition-colors hover:text-foreground`}
+            onClick={() => setSelected("contact")}
           >
             Contact
           </Link>
           <Link
             href="/blog"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={` ${
+              selected === "blog" ? "text-foreground" : "text-muted-foreground"
+            } transition-colors hover:text-foreground`}
+            onClick={() => setSelected("blog")}
           >
             Blog
           </Link>
