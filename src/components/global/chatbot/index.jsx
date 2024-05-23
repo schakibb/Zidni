@@ -1,79 +1,75 @@
-"use state";
-import React, { useState } from "react";
-import Bot, { PresetQuestions } from "./Bot";
-import { motion } from "framer-motion";
-import { cn } from "../../../utils/cn";
-import { AnimatedTooltipPreview } from "./teamIcons";
-import { ChevronDown, MessageCircle } from "lucide-react";
-const Chatbot = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isDisplayed, setIsDisplayed] = useState(false);
-  return (
-    <motion.div
-      layout
-      animate={{
-        bottom: isOpen ? 29 : 5,
-      }}
-      initial={{ bottom: 5 }}
-      className="fixed bottom-5 right-5 z-[199] "
-    >
-      <motion.div
-        className={cn(
-          "size-16 border border-white shadow-2xl cursor-pointer flex items-center justify-center z-[100] bg-gray-800 fixed bottom-5 right-5",
+import { useState, useEffect } from "react";
+import OpenButton from "./components/openButton";
+import BodyContainer from "./components/bodyContainer";
+import initQuestionAns from "../../../data/chatbot/qstAns.json";
 
-          isOpen
-            ? "w-[80dvw] sm:w-96 h-[80dvh] sm:h-[34rem] cursor-default rounded-lg bottom"
-            : "rounded-full"
-        )}
-        onClick={() => {
-          if (!isOpen) {
-            setIsOpen(true);
-          }
-          setIsDisplayed(false);
-        }}
-        layout
-        animate={{
-          borderRadius: isOpen ? 10 : 50,
-        }}
-        initial={{ borderRadius: 50 }}
-        onAnimationComplete={() => {
-          if (!isOpen) {
-            setIsDisplayed(true);
-          }
-        }}
-      >
-        {isDisplayed && (
-          <MessageCircle className="text-white h-[30px] w-[40px]" />
-        )}
-        {isOpen && (
-          <motion.div className={`m-0 p-0 size-full rounded-xl`}>
-            {/* <!-- Heading --> */}
-            <div className=" flex flex-col space-y-1.5 bg-[#226EF2] rounded-lg py-4 shadow-xl">
-              <AnimatedTooltipPreview />
-              <p className="text-2xl decoration-4 self-center text-white dark:text-gray-50">
-                Zidni Support Team
-              </p>
-              <p className="decoration-8 text-white leading-3 text-xs self-center">
-                Got any questions? chat with us
-              </p>
-            </div>
-            {isOpen && (
-              <ChevronDown
-                className="size-12 cursor-pointer text-white absolute bottom-1 right-3 rounded-full"
-                onClick={() => {
-                  setIsOpen((prev) => !prev);
-                }}
-              />
-            )}
-            <div className="text-white mt-5 ml-3">
-              <Bot />
-              <PresetQuestions />
-            </div>
-          </motion.div>
-        )}
-      </motion.div>
-    </motion.div>
+const initQuestion = initQuestionAns.questions.map((qst) => qst.question);
+const initResponse = initQuestionAns.questions.map((qst) => qst.answer);
+
+function Chatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [questions, setquestions] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  const [responses, setResponses] = useState([]);
+
+  useEffect(
+    function () {
+      const controller = new AbortController();
+      const sendMessage = async () => {
+        try {
+          setLoading(true);
+          const response = await fetch("http://127.0.0.1:5000/chat", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ message: questions[questions.length - 1] }),
+            signal: controller.signal,
+          });
+          const data = await response.json();
+          setResponses((prev) => [...prev, data.answer]);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (
+        questions.length > 0 &&
+        questions?.at(questions.length - 1).length > 0
+      ) {
+        sendMessage();
+      }
+      return function () {
+        controller.abort();
+      };
+    },
+    [questions]
   );
-};
+  const handleOpen = () => {
+    setIsOpen((isOpen) => !isOpen);
+  };
+  const handlequestion = (message) => {
+    if (message !== "" && message.length > 1) {
+      setquestions((prev) => [...prev, message]);
+    }
+  };
+  return (
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-2.5 h-[90%] max-w-[30dvw] justify-end  ">
+      {isOpen && (
+        <BodyContainer
+          initResponse={initResponse}
+          initQuestion={initQuestion}
+          listQuestions={questions}
+          listResponses={responses}
+          isLoading={isLoading}
+          setMessage={handlequestion}
+        />
+      )}
+      <OpenButton isWaiting={isLoading} setIsOpen={handleOpen} />
+    </div>
+  );
+}
 
 export default Chatbot;

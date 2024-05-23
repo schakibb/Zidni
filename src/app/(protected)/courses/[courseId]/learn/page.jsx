@@ -107,7 +107,9 @@ const Visualisation = ({ courses, index }) => {
               {filteredChapter[0]?.subChapter?.map((subChapter) => {
                 return (
                   <div key={subChapter?.id}>
-                    <p>{subChapter?.subChapterContent}</p>
+                    <br />
+                    <h3 className="font-bold">{subChapter?.title}</h3>
+                    <div>{subChapter?.subChapterContent}</div>
                     {subChapter?.subChapterVisualisation}
                   </div>
                 );
