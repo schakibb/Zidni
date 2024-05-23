@@ -13,6 +13,7 @@ function Body({ isLoading, listQst, listRes }) {
   listQst.map((qst, index) => {
     list.push({ qst, res: listRes.length > index ? listRes[index] : "" });
   });
+  console.log(list);
   return (
     <div className="flex bg-[#2c3240] justify-start flex-col space-y-5 overflow-y-auto w-full h-4/6 p-1.5">
       {list.length === 0 && (

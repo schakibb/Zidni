@@ -1,12 +1,17 @@
 import { useState, useEffect } from "react";
 import OpenButton from "./components/openButton";
 import BodyContainer from "./components/bodyContainer";
+import initQuestion from "../../../data/chatbot/qstAns.json";
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [questions, setquestions] = useState([]);
+  const [questions, setquestions] = useState(
+    initQuestion.questions.map((q) => q.question)
+  );
   const [isLoading, setLoading] = useState(false);
-  const [responses, setResponses] = useState([]);
+  const [responses, setResponses] = useState(
+    initQuestion.questions.map((q) => q.answer)
+  );
 
   useEffect(
     function () {
