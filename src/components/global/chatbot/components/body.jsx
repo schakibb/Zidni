@@ -37,19 +37,10 @@ function Body({ initQuestion, initResponse, isLoading, listQst, listRes }) {
         );
       })}
       {list.length === 0 && (
-        <>
-          <p className="flex justify-center items-center h-1/7 text-center text-[14px] text-[#A3A3A3]">
-            This AI chatbot will help you discover the functionalities of the
-            plateform and answer on you questions! For more information contact
-            us{" "}
-          </p>
-          <Link
-            href={"mailto::zidni.mailcon@gmail.com"}
-            className={buttonVariants({ variant: "link" })}
-          >
-            zidni.mailcon@gmail.com
-          </Link>
-        </>
+        <p className="flex justify-center items-center h-1/7 text-center text-[14px] text-[#A3A3A3]">
+          This AI chatbot will help you discover the functionalities of the
+          plateform and answer on you questions!
+        </p>
       )}
       {list.map((msg, index) => (
         <Fragment key={index}>
