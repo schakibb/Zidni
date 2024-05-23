@@ -33,7 +33,29 @@ const page = () => {
       ),
     },
     {
-      title: "Create Account and enroll 2",
+      title: "How to use our Chatbot",
+      link: (
+        <iframe
+          src="https://scribehow.com/embed/Create_Account_and_enroll_our_courses__6I1EPc0gSDG81Gaydxte1Q?as=scrollable&skipIntro=true"
+          width="100%"
+          height="640"
+          frameborder="0"
+        ></iframe>
+      ),
+    },
+    {
+      title: "How to contribute to our project",
+      link: (
+        <iframe
+          src="https://scribehow.com/embed/Create_Account_and_enroll_our_courses__6I1EPc0gSDG81Gaydxte1Q?as=scrollable&skipIntro=true"
+          width="100%"
+          height="640"
+          frameborder="0"
+        ></iframe>
+      ),
+    },
+    {
+      title: "How to add resources",
       link: (
         <iframe
           src="https://scribehow.com/embed/Create_Account_and_enroll_our_courses__6I1EPc0gSDG81Gaydxte1Q?as=scrollable&skipIntro=true"
