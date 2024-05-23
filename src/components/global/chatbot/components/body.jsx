@@ -14,9 +14,9 @@ function Body({ isLoading, listQst, listRes }) {
     list.push({ qst, res: listRes.length > index ? listRes[index] : "" });
   });
   return (
-    <div className="flex bg-[#020817] dark:bg-[#fdfdfd] justify-start flex-col space-y-5 overflow-y-auto w-full h-4/6 p-1.5">
+    <div className="flex bg-[#2c3240] justify-start flex-col space-y-5 overflow-y-auto w-full h-4/6 p-1.5">
       {list.length === 0 && (
-        <p className="flex justify-center items-center h-1/7 text-center text-[14px] text-[#213547] dark:text-[#A3A3A3]">
+        <p className="flex justify-center items-center h-1/7 text-center text-[14px] text-[#A3A3A3]">
           This AI chatbot will help you discover the functionalities of the
           plateform and answer on you questions!
         </p>
