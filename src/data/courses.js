@@ -1781,6 +1781,129 @@ export const courses = [
 
     path: "/courses/sfsd/learn",
     quiz: "/courses/sfsd/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
+    next: "/courses/algebra/learn",
+  },
+
+  //algebre 
+  {
+    id: 11,
+    title: "algebra",
+    description: "algebra",
+    chapters: [
+      {
+        chapterId: 1,
+        title: "Review of Algebra 2 Concepts",
+        chapterDescription: (<p></p>),
+        subChapter: [
+          {
+            id: 111,
+            title: "1) Review of Vector Spaces",
+            subChapterContent: (
+              <div>
+                Let (E,+) be a group (written additively) soit (E, +) un groupe (noté additivement) et K un corps (K = Q , R ou C).(K, + , .)
+                <br />
+                (represents addition and multiplication (usually within R))
+                <br />
+                <strong>E is said to be a vector space over K if</strong>
+                <br />
+                1. (E, +) is an abelian group (+ is commutative).
+                <br />
+                2. il existe une loi notée . (externe)There exists a law denoted (external):
+                <br />
+                K×E → E
+                <br />
+                (d,x) → d⋅x,  d∈K,  x∈E
+                <br />
+                -  d ⋅ (x+y) = d ⋅ x + d ⋅ y
+                <br />
+                - (d + β) ⋅ x = d ⋅ x + β ⋅ x
+                <br />
+                - ( dβ ) ⋅ x = d ⋅ ( β ⋅ x )
+                <br />
+                - 1 K​⋅ x = x
+                <br />
+                <br />
+                <strong>Examples :</strong>
+                <br />
+                1- K = R
+                <br />
+                1.1 R^(n) is a vector space over R.
+                <br />
+                (x 1​,…,x n​)+(y1​,…,yn​)=(x 1​+y1​,…,x n​+y n​)
+                <br />
+                d⋅(x 1​,…,xn​)=(dx1​,…,dxn​)
+                <br />
+                1.2 R[x]=&#123; p (polynomial with coefficients in R) &#125;
+                <br />
+                1.3 Rn​[x]=&#123; p∈R[x]∣degp≤n &#125;
+                <br />
+                <strong>F is said to be a subspace of E if</strong>
+                <br />
+                a- (F , +) s/g de (E , +)
+                <br />
+                b- d ∈ K , x ∈ F , d.x ∈ F
+                <br />
+                <strong>Remarks :</strong>
+                <br />
+                A- F1 and F2 are subspaces of E so F1 ∩ F2  is subspace
+                <br />
+                B- The union is not always a subspace.
+                <br />
+                C- F1 + F2 = &123; f1 + f2 / f1 ∈ F1 , f2 ∈ F2 &125; is subspace of E.
+                <br />
+                dim (f1 + f2) = dim f1 + dim f2 - dim F1 ∩ F2
+                <br />
+                D- If F1 + F2 = E and F1 ∩ F2 = &123; neutral element of E &125; =&gt; F1 is supplementary to F2 in E. ( or the inverse)
+              </div>
+            ),
+            subChapterVisualisation: null, // no visualisation is needed for this subchapter
+          },
+          {
+            id: 112,
+            title: "2) linear mappings",
+            subChapterContent: (
+              <div>
+                Let f be a function : f : E → E (E and F are two subspaces in R)
+                <br />
+                f is said to be linear if :
+                <br />
+                A- f(x + y) = f(x) + f(y)
+                <br />
+                B- f(d x) = d f(x)
+                <br />
+                <strong>OR</strong>
+                -f(ax + by)
+              </div>
+            ),
+            subChapterVisualisation: null, // no visualisation is needed for this subchapter
+          },
+        ],
+      },
+      {
+        chapterId: 2,
+        title: "chapter two algebre",
+        chapterDescription: (
+          <p>
+            ...........
+          </p>
+        ),
+        subChapter: [
+          {
+            id: 111,
+            title: "1) pppppppppppppiiiiiiiiiiiii",
+            subChapterContent: (
+              <div>
+                ..................
+              </div>
+            ),
+            subChapterVisualisation: null, // no visualisation is needed for this subchapter
+          },
+        ],
+      },
+    ],
+    path: "/courses/algebra/learn",
+    quiz: "/courses/algebra/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
     next: "/courses/completed_path",
   },
+
 ];

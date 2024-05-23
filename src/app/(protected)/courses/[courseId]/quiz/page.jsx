@@ -5,13 +5,13 @@ import Lottie, { LottiePlayer, Controls } from "lottie-react";
 const page = () => {
   return (
     <>
-      <LottiePlayer src={storageUnits}>
+      {/*<LottiePlayer src={storageUnits}>
         <Controls
           visible={true}
           buttons={["play", "repeat", "frame", "debug"]}
         />
-      </LottiePlayer>
-    </>
+  </LottiePlayer>*/}
+  </>
   );
 };
 
