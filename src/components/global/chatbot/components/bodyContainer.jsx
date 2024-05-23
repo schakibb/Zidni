@@ -4,12 +4,15 @@ import Body from "./body";
 import { AnimatedTooltipPreview } from "../teamIcons";
 
 function BodyContainer({
+  initQuestion,
+  initResponse,
   listQuestions,
   listResponses,
   isLoading,
   setMessage,
 }) {
   const [questionInput, setQuestionInput] = useState("");
+  console.log(initResponse);
   return (
     <div className="flex justify-center items-center flex-col rounded-lg h-4/5 w-full border border-[#A3A3A3] rounded-[10px] ">
       <div className="flex flex-col justify-center items-center w-full h-1/6 bg-gradient-to-r from-blue-600 to-blue-500 rounded-t-lg font-bold text-2xl ">
@@ -17,6 +20,8 @@ function BodyContainer({
         <h2>Chatbot</h2>
       </div>
       <Body
+        initResponse={initResponse}
+        initQuestion={initQuestion}
         isLoading={isLoading}
         listQst={listQuestions}
         listRes={listResponses}
