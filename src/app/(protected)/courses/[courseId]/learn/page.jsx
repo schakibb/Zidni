@@ -32,7 +32,7 @@ const page = () => {
           </p>
         </div>
       </div>
-      <div className="hidden sm:block min-h-fit">
+      <div className="hidden sm:block min-h-fit --font-abz">
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel defaultSize={35}>
             <>
@@ -69,12 +69,6 @@ const page = () => {
                     >
                       Take quiz
                     </Link>
-                    {/* <Link
-                      href={selectedCourse.next}
-                      className={cn("my-2", buttonVariants())}
-                    >
-                      Next course
-                    </Link> */}
                   </div>
                 </CardContent>
               </Card>
