@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 const VisualisationComponent = ({
-  width = 550,
+  width = 600,
   height = 400,
   animationData,
   title,
@@ -17,8 +17,8 @@ const VisualisationComponent = ({
 }) => {
   const defaultOptions = {
     loop: true,
-    autoplay: false,
-    animationData: animationData,
+    autoplay: true,
+    animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -33,7 +33,7 @@ const VisualisationComponent = ({
         <CardDescription>
           {description}
           <br />
-          <span className="text-[#f3f7a1] text-sm">
+          <span className="dark:text-[#f3f7a1] text-[#a6ac43] text-sm">
             Click to stop and play the animation
           </span>
         </CardDescription>
