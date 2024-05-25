@@ -1,19 +1,17 @@
 import { useEffect, useReducer } from "react";
-
-import Loader from "./Loader";
 import StartScreen from "./StartScreen";
 import Question from "./Question";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
-import Footer from "./Footer";
 import Timer from "./Timer";
-import questions from "../../data/quiz/sfsd/questions.json";
 import { Card, CardContent } from "../ui/card";
+import { quizzes } from "../../data/quiz/quizzes";
+
 const SECS_PER_QUESTION = 30;
 
 const initialState = {
-  questions: questions,
+  questions: [],
   status: "loading",
   index: 0,
   answer: null,
@@ -21,10 +19,11 @@ const initialState = {
   highscore: 0,
   secondsRemaining: null,
 };
+
 function reducer(state, action) {
   switch (action.type) {
     case "dataReceived":
-      return { ...state, status: "ready" };
+      return { ...state, questions: action.payload, status: "ready" };
     case "dataFailed":
       return { ...state, status: "error" };
     case "start":
@@ -35,12 +34,11 @@ function reducer(state, action) {
       };
     case "newAnswer":
       const question = state.questions[state.index];
-
       return {
         ...state,
         answer: action.payload,
         points:
-          action.payload === question.correctOption
+          action.payload === question.correctAnswer
             ? state.points + question.points
             : state.points,
       };
@@ -61,12 +59,12 @@ function reducer(state, action) {
         secondsRemaining: state.secondsRemaining - 1,
         status: state.secondsRemaining === 0 ? "finished" : state.status,
       };
-
     default:
       throw new Error("unhandled action type: ");
   }
 }
-export default function App() {
+
+export default function App({ name }) {
   const [
     { questions, status, index, answer, points, highscore, secondsRemaining },
     dispatch,
@@ -78,13 +76,24 @@ export default function App() {
     0
   );
 
-  useEffect(function () {
-    dispatch({ type: "dataReceived" });
-  }, []);
+  useEffect(() => {
+    function fetchQuestions() {
+      const courseQuizzes = quizzes.find((quiz) => quiz.name === name);
+      if (courseQuizzes) {
+        const allQuestions = courseQuizzes.quizzes.flat(); // Flatten the array of quizzes
+        dispatch({ type: "dataReceived", payload: allQuestions });
+      } else {
+        dispatch({ type: "dataFailed" });
+      }
+    }
+
+    fetchQuestions();
+  }, [name]);
 
   return (
     <Card className="self-center flex flex-col items-center justify-center w-fit mx-[10%] my-4 p-5">
-      {status === "loading" && <Loader />}
+      {status === "loading" && "Loading"}
+      {status === "error" && "No quizzes found for this course."}
       {status === "ready" && (
         <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
       )}
@@ -99,11 +108,11 @@ export default function App() {
               answer={answer}
             />
             <Question
-              question={questions[index]}
+              question={questions[index]} // Pass the current question correctly
               dispatch={dispatch}
               answer={answer}
             />
-            <Footer>
+            <footer>
               <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
               <NextButton
                 dispatch={dispatch}
@@ -112,7 +121,7 @@ export default function App() {
                 index={index}
                 status={status}
               />
-            </Footer>
+            </footer>
           </>
         )}
         {status === "finished" && (

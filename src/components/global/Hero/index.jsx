@@ -7,7 +7,7 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section>
-      <div className={`flex flex-col -mt-8 overflow-hidden `}>
+      <div className={`flex flex-col -mt-8 overflow-hidden --font-abz`}>
         <ContainerScroll
           titleComponent={
             <div className="-mt-28 mx-auto max-w-[800px] text-center">

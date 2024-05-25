@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "../../utils/cn";
 import { buttonVariants } from "../ui/button";
 
-function NextButton({ dispatch, answer, index, numQuestions, status }) {
+function NextButton({ dispatch, answer, index, numQuestions }) {
   if (answer === null) return null;
   return (
     <div className="float-right">

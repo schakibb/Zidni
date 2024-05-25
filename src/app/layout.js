@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
       <link rel="icon" href="/logo/usthb.png" />
       <body
         suppressHydrationWarning={true}
-        className={`bg-[#fdfdfd] dark:bg-background ${inter.className}`}
+        className={`bg-[#fdfdfd] dark:bg-background ${syne.variable} ${inter.variable} ${abeezee.variable}`}
       >
         <Providers children={children}>
           <Header />
