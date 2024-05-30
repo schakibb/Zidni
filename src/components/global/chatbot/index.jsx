@@ -56,7 +56,7 @@ function Chatbot() {
     }
   };
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-2.5 h-[90%] max-w-[40dvw] justify-end  ">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end space-y-2.5 h-[90%] max-w-[45dvw] md:max-w-[40dvw] min-w-[300px] justify-end  ">
       {isOpen && (
         <BodyContainer
           initResponse={initResponse}

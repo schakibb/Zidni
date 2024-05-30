@@ -7,16 +7,16 @@ import Image from "next/image";
 const Hero = () => {
   return (
     <section>
-      <div className={`flex flex-col -mt-8 overflow-hidden --font-abz`}>
+      <div className={`flex flex-col -mt-8 overflow-hidden`}>
         <ContainerScroll
           titleComponent={
-            <div className="-mt-28 mx-auto max-w-[800px] text-center">
-              <h1 className="mb-5 text-6xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
+            <div className="-mt-14 sm:-mt-28 mx-auto max-w-[800px] text-center">
+              <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
                 Empowering
                 <span className="text-blue-600 ml-3">Algerian</span>
                 <br className="sm:hidden m-0" /> minds
               </h1>
-              <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg">
+              <p className="mb-12 text-xs !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg">
                 Explore dynamic e-learning with Zidni. Engage with interactive
                 content and quizzes.
                 <br /> Join us to revolutionize education together!
@@ -42,7 +42,7 @@ const Hero = () => {
             alt="hero"
             height={720}
             width={1400}
-            className="dark:hidden mx-auto rounded-2xl object-cover h-full object-left-top"
+            className="dark:hidden hidden sm:block mx-auto rounded-2xl object-cover h-full object-left-top"
             draggable={false}
           />
           <Image
@@ -50,7 +50,7 @@ const Hero = () => {
             alt="hero"
             height={720}
             width={1400}
-            className="hidden dark:block mx-auto rounded-2xl object-cover h-full object-left-top"
+            className="hidden dark:block sm:block mx-auto rounded-2xl object-cover h-full object-left-top"
             draggable={false}
           />
         </ContainerScroll>

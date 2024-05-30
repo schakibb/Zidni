@@ -1,6 +1,6 @@
 import { auth, db, provider } from "./config";
 import { collection, addDoc, doc, setDoc } from "firebase/firestore";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithRedirect } from "firebase/auth";
 
 // Create a document in Firestore
 export const createDocument = async ({
@@ -16,7 +16,7 @@ export const createDocument = async ({
 };
 
 export const handleGoogleSignUp = async () => {
-  const cred = await signInWithPopup(auth, provider);
+  const cred = await signInWithRedirect(auth, provider);
   const uid = cred.user.uid;
   const usersCollection = collection(db, "users");
   const userData = {

@@ -33,8 +33,8 @@ const VisualisationComponent = ({
         <CardDescription>
           {description}
           <br />
-          <span className="dark:text-[#f3f7a1] text-[#a6ac43] text-sm">
-            Click to stop and play the animation
+          <span className="dark:text-[#f3f7a1] text-[#6e7228] text-sm">
+            Click to toggle the animation
           </span>
         </CardDescription>
         <CardContent>

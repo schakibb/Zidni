@@ -34,7 +34,8 @@ const Dashboard = () => {
             <Link href="#">Apparence</Link>
             <Link href="#">Support</Link>
             <Link href="#">Organizations</Link>
-            <Link href="#">Advanced</Link>
+            <Link href="#">Courses finished</Link>
+            <Link href="#">Curriculum</Link>
           </nav>
           <div className="grid gap-6">
             <Card x-chunk="dashboard-04-chunk-1">

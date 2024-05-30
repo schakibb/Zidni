@@ -2,7 +2,7 @@ function openButton({ isWaiting, setIsOpen }) {
   return (
     <button
       className="z-[100]  inline-flex items-center justify-center text-sm disabled:pointer-events-none disabled:opacity-80 border border-[#A3A3A3] rounded-full bg-[#020817] 
-      w-12 h-12  hover:bg-gray-900 m-0 cursor-pointer border-gray-200 bg-none p-0 normal-case
+      w-12 h-12  hover:bg-gray-900 m-0 cursor-pointer bg-none p-0 normal-case
        leading-5 shadow-xl"
       onClick={setIsOpen}
     >

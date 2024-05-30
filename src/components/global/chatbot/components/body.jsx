@@ -25,7 +25,7 @@ function Body({ initQuestion, initResponse, isLoading, listQst, listRes }) {
   });
 
   return (
-    <div className="flex bg-[#2c3240] justify-start flex-col space-y-5 overflow-y-auto w-full h-4/6 p-1.5">
+    <div className="flex justify-start flex-col space-y-5 overflow-y-auto w-full h-4/6 p-1.5 rounded-b-lg bg-slate-100 dark:bg-gray-900">
       {listInit.map((msg, index) => {
         return (
           <Fragment key={index}>
