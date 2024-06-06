@@ -5,10 +5,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../../../../components/ui/card";
-import { buttonVariants } from "../../../../components/ui/button";
+} from "../../../components/ui/card";
+import { buttonVariants } from "../../../components/ui/button";
 import Link from "next/link";
-const page = () => {
+const BDDVisualisation = () => {
   return (
     <>
       <Card>
@@ -37,4 +37,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default BDDVisualisation;

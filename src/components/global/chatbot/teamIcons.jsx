@@ -2,12 +2,12 @@
 import React from "react";
 import { AnimatedTooltip } from "../../ui/animated-tooltip";
 const people = [
-  {
-    id: 3,
-    name: "Zidni chatbot",
-    designation: "AI Chatbot",
-    image: "/logo/usthb.png",
-  },
+  // {
+  //   id: 3,
+  //   name: "Zidni chatbot",
+  //   designation: "AI Chatbot",
+  //   image: "/logo/usthb.png",
+  // },
   // {
   //   id: 2,
   //   name: "Baslimane Lokmane Elhakim",

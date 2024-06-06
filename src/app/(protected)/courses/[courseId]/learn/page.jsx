@@ -34,7 +34,7 @@ const page = () => {
       </div>
       <div className="hidden sm:block min-h-fit --font-abz">
         <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel defaultSize={35}>
+          <ResizablePanel defaultSize={35} minSize={5}>
             <>
               <Card key={selectedCourse.id} className="m-4 min-w-80">
                 <CardHeader>
@@ -83,6 +83,7 @@ const page = () => {
     </>
   );
 };
+
 export default page;
 const Visualisation = ({ courseSelected, index }) => {
   let idx;
@@ -98,7 +99,7 @@ const Visualisation = ({ courseSelected, index }) => {
       <div className={"flex-col justify-center items-center sm:flex"}>
         <Card className="m-4">
           <CardHeader>
-            <CardTitle>
+            <CardTitle className="text-center text-2xl">
               {filteredChapter[0]?.chapterId}. {filteredChapter[0]?.title}
             </CardTitle>
           </CardHeader>

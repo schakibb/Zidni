@@ -5,6 +5,7 @@ function openButton({ isWaiting, setIsOpen }) {
       w-12 h-12  hover:bg-gray-900 m-0 cursor-pointer bg-none p-0 normal-case
        leading-5 shadow-xl"
       onClick={setIsOpen}
+      disabled={isWaiting}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

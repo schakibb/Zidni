@@ -26,10 +26,10 @@ function BodyContainer({
         </span>
 
         <Link
-          href={"mailto::zidni.mailcon@gmail.com"}
+          href={"mailto:contact.zidni@gmail.com"}
           className={cn("!text-blue-700", buttonVariants({ variant: "link" }))}
         >
-          zidni.mailcon@gmail.com
+          contact.zidni@gmail.com
         </Link>
       </div>
       <Body

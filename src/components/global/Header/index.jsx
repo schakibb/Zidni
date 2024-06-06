@@ -105,12 +105,21 @@ const Header = () => {
                   // it's static just for the moment
                 }
                 <datalist id="courses">
-                  <option value="sfsd" />
-                  <option value="algebra 1" />
-                  <option value="algebra 2" />
-                  <option value="analyse 1" />
-                  <option value="probability" />
-                  <option value="stats" />
+                  {[
+                    "sfsd",
+                    "algebra 1",
+                    "algebra 2",
+                    "analyse 1",
+                    "probability",
+                    "stats",
+                  ].map((option) => (
+                    <option
+                      value={option}
+                      onClick={() => {
+                        router.push(`/courses/${option}`);
+                      }}
+                    />
+                  ))}
                 </datalist> */}
               </div>
             ) : (
