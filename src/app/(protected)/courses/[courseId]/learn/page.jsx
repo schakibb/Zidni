@@ -26,6 +26,7 @@ import {
 
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -107,7 +108,7 @@ const page = () => {
                 >
                   <SheetHeader>
                     <SheetTitle>{selectedCourse.title} </SheetTitle>
-                    <SheetDescription>
+                    <SheetClose>
                       {selectedCourse.chapters.map((chapter, idx) => (
                         <button
                           onClick={() => {
@@ -118,6 +119,7 @@ const page = () => {
                             buttonVariants({ variant: "outline" })
                           )}
                           key={chapter.chapterId}
+                          type="submit"
                         >
                           {idx + 1}. {chapter.title}
                         </button>
@@ -137,7 +139,7 @@ const page = () => {
                       >
                         Next course
                       </Link>
-                    </SheetDescription>
+                    </SheetClose>
                   </SheetHeader>
                 </SheetContent>
               </Sheet>
