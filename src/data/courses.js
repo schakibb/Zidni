@@ -30,7 +30,6 @@ import * as Multiplication from "../data/visualisation/sfsd/multiplication.json"
 import * as MatrixDetCalc from "../data/visualisation/sfsd/determinantcalcul.json";
 import * as AppLinear from "../data/visualisation/sfsd/application_matrice.json";
 import TableSFSD from "./visualisation/sfsd/TableSFSD";
-
 export const courses = [
   {
     id: 23,
@@ -38,6 +37,7 @@ export const courses = [
     description:
       "The File Structures and Data Structures module studies file access, data structures, and associated algorithms to efficiently manipulate massive data, optimizing transfers between central and external memory.",
     comingSoon: false,
+    isNew: true,
     chapters: [
       {
         chapterId: 1,
@@ -1697,6 +1697,7 @@ export const courses = [
     description:
       "Learn algebra basics, including equations, inequalities, polynomials, and an introduction to matrices for foundational problem-solving skills.",
     comingSoon: true,
+    isNew: true,
 
     chapters: [
       {
@@ -2117,6 +2118,8 @@ export const courses = [
     description:
       "Master database fundamentals, including design, SQL, normalization, indexing, transactions, and optimization for efficient data management and retrieval.",
     comingSoon: true,
+    isNew: false,
+
     //algebre
     chapters: [
       {
@@ -2538,6 +2541,8 @@ export const courses = [
     description:
       "Explore graph theory concepts, including vertices, edges, paths, cycles, and graph coloring, with applications in computer science and networks.",
     comingSoon: true,
+    isNew: false,
+
     //algebre
     chapters: [
       {
@@ -2958,6 +2963,8 @@ export const courses = [
     description:
       "Learn the principles of data architecture, focusing on data modeling, storage solutions, data integration, and governance in modern systems.",
     comingSoon: true,
+    isNew: false,
+
     //algebre
     chapters: [
       {
