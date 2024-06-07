@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../ui/card";
+import { cn } from "../../../utils/cn";
 const VisualisationComponent = ({
   width = 600,
   height = 400,
@@ -38,8 +39,18 @@ const VisualisationComponent = ({
             Click on the animation to toggle it.
           </span>
         </CardDescription>
-        <CardContent>
-          <Lottie options={defaultOptions} height={height} width={width} />
+        <CardContent
+          className={cn(
+            "overflow-hidden",
+            "w-full",
+            "h-full",
+            "flex",
+            "items-center",
+            "justify-center",
+            "cursor-pointer"
+          )}
+        >
+          <Lottie options={defaultOptions} />
         </CardContent>
       </Card>
     </div>

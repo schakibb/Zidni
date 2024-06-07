@@ -42,11 +42,14 @@ const page = () => {
   const [panelIsOpened, setPanelIsOpened] = React.useState(false);
   return (
     <>
-      <div className="hidden sm:block min-h-fit --font-abz sticky">
+      <div className="min-h-fit --font-abz sticky">
         <ResizablePanelGroup direction="horizontal">
           <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
             <>
-              <Card key={selectedCourse.id} className="m-4 min-w-80">
+              <Card
+                key={selectedCourse.id}
+                className="m-4 min-w-80 hidden sm:block"
+              >
                 <CardHeader>
                   <CardTitle>{selectedCourse.title}</CardTitle>
                   <CardDescription>
@@ -93,7 +96,7 @@ const page = () => {
                     className="relative -left-3 top-3 bg-muted/100 p-2 rounded-full block sm:hidden"
                     onClick={() => setPanelIsOpened((prev) => !prev)}
                   >
-                    {panelIsOpened ? <ChevronRight /> : <ChevronLeft />}
+                    <ChevronRight />
                   </button>
                 </SheetTrigger>
                 <SheetContent
@@ -124,6 +127,15 @@ const page = () => {
                         className={cn("my-2", buttonVariants())}
                       >
                         Take quiz
+                      </Link>
+                      <Link
+                        href={selectedCourse.next}
+                        className={cn(
+                          "my-2 ml-3",
+                          buttonVariants({ variant: "secondary" })
+                        )}
+                      >
+                        Next course
                       </Link>
                     </SheetDescription>
                   </SheetHeader>
