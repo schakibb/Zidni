@@ -4,8 +4,6 @@ import * as React from "react";
 import { buttonVariants } from "../../../components/ui/button";
 import {
   Card,
-  CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -16,7 +14,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../../utils/firebase/config";
 import { doc, getDoc } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-
+import React from "react";
+import { BentoGrid, BentoGridItem } from "../../../components/ui/bento-grid";
+import { AlignVerticalSpaceAround } from "lucide-react";
 const Courses = () => {
   const [user] = useAuthState(auth);
   // const user = true;
@@ -37,6 +37,10 @@ const Courses = () => {
     }
     getUsers();
   }, [user]);
+  const Skeleton = () => (
+    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100"></div>
+  );
+
   return (
     <>
       <div className="bg-muted/40 py-1 rounded-lg mt-1">
@@ -52,24 +56,24 @@ const Courses = () => {
           </div>
         )}
         {user ? (
-          courses.map((course) => {
-            return (
-              <Card key={course.id} className="m-4 min-w-80">
-                <CardHeader>
-                  <CardTitle>{course.title} </CardTitle>
-                  <CardDescription>{course.description}</CardDescription>
-                </CardHeader>
-                <CardContent>{course.content} </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Link className={buttonVariants()} href={course.path}>
-                    Enroll
-                  </Link>
-                </CardFooter>
-              </Card>
-            );
-          })
+          <BentoGrid className="mt-7 mx-auto">
+            {courses.map((course, i) => (
+              <BentoGridItem
+                key={i}
+                title={course.title}
+                description={course.description}
+                header={<Skeleton />}
+                icon={
+                  course.icon ?? (
+                    <AlignVerticalSpaceAround className="h-4 w-4 text-neutral-500" />
+                  )
+                }
+                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              />
+            ))}
+          </BentoGrid>
         ) : (
-          <div className="py-20 mx-2 md:mx-[35dvw] text-center ">
+          <div className="py-20 mx-2 md:mx-[35dvw] text-center">
             <Card className="py-3">
               <CardHeader>
                 <CardTitle>Sign in to access courses</CardTitle>
