@@ -55,6 +55,7 @@ const Courses = () => {
           <BentoGrid className="mt-7 mx-auto">
             {courses.map((course, i) => (
               <BentoGridItem
+                path={course.path}
                 key={i}
                 title={course.title}
                 description={course.description}

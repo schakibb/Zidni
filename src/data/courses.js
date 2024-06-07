@@ -1696,7 +1696,7 @@ export const courses = [
     title: "Algebra",
     description:
       "Learn algebra basics, including equations, inequalities, polynomials, and an introduction to matrices for foundational problem-solving skills.",
-    comingSoon: true,
+    comingSoon: false,
     isNew: true,
 
     chapters: [

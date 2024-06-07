@@ -150,7 +150,7 @@ const Visualisation = ({ courseSelected, index }) => {
 
   filteredChapter = filterChapter(idx);
   return (
-    <div className="min-h-[85dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
+    <div className="min-h-[85dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
       <div className={"flex-col justify-center items-center sm:flex"}>
         <Card className="m-4">
           <CardHeader>
