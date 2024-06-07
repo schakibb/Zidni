@@ -17,7 +17,7 @@ const VisualisationComponent = ({
 }) => {
   const defaultOptions = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
@@ -34,7 +34,8 @@ const VisualisationComponent = ({
           {description}
           <br />
           <span className="dark:text-[#f3f7a1] text-[#6e7228] text-sm">
-            Click to toggle the animation
+            <br />
+            Click on the animation to toggle it.
           </span>
         </CardDescription>
         <CardContent>
