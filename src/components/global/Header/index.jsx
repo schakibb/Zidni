@@ -178,16 +178,24 @@ const Header = () => {
                   )}
 
                   <DropdownMenuItem>
-                    <Link href="/docs">Docs</Link>
+                    <Link href="/docs" className="h-full w-full">
+                      Docs
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Link href="/courses">Courses</Link>
+                    <Link href="/courses" className="h-full w-full">
+                      Courses
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Link href="/contact">Contact</Link>
+                    <Link href="/contact" className="h-full w-full">
+                      Contact
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Link href="/blog">Blog</Link>
+                    <Link href="/blog" className="h-full w-full">
+                      Blog
+                    </Link>
                   </DropdownMenuItem>
                   {user ? (
                     <>
