@@ -42,14 +42,68 @@ const page = () => {
   )[0];
   const [panelIsOpened, setPanelIsOpened] = React.useState(false);
   return (
-    <>
-      <div className="min-h-fit --font-abz sticky">
-        <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
-            <>
-              <Card
-                key={selectedCourse.id}
-                className="m-4 min-w-80 hidden sm:block"
+    <div className="min-h-fit -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
+      <ResizablePanelGroup direction="horizontal">
+        <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
+          <>
+            <Card
+              key={selectedCourse.id}
+              className="m-4 min-w-80 hidden sm:block"
+            >
+              <CardHeader>
+                <CardTitle>{selectedCourse.title}</CardTitle>
+                <CardDescription>{selectedCourse.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div
+                  className={
+                    "flex-col justify-center items-center sm:flex mt-5 w-full"
+                  }
+                >
+                  {selectedCourse.chapters.map((chapter, idx) => (
+                    <button
+                      onClick={() => {
+                        setIndex(idx + 1);
+                      }}
+                      className={cn(
+                        "w-full my-1 text-left",
+                        buttonVariants({ variant: "outline" })
+                      )}
+                      key={chapter.chapterId}
+                    >
+                      {idx + 1}. {chapter.title}
+                    </button>
+                  ))}
+                  <Link
+                    href={selectedCourse.quiz}
+                    className={cn("my-2", buttonVariants())}
+                  >
+                    Take quiz
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </>
+        </ResizablePanel>
+        <ResizableHandle withHandle className={"min-h-[91dvh]"} />
+        <ResizablePanel defaultSize={65} className="z-[40] w-full">
+          <div className="flex items-center space-x-2">
+            <Sheet>
+              <SheetTrigger>
+                <button
+                  className={cn(
+                    "relative -left-3 top-8 bg-muted/100 p-2 !rounded-full block sm:hidden",
+                    buttonVariants({})
+                  )}
+                >
+                  <ChevronRight />
+                </button>
+              </SheetTrigger>
+              <SheetContent
+                side="left"
+                className={
+                  "flex-col justify-center items-center sm:flex mt-5 w-full"
+                }
               >
                 <CardHeader>
                   <CardTitle>{selectedCourse.title}</CardTitle>
