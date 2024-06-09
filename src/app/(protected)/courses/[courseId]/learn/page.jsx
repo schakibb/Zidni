@@ -40,29 +40,73 @@ const page = () => {
   const selectedCourse = courses.filter(
     (course) => course.path === pathname
   )[0];
-  const [panelIsOpened, setPanelIsOpened] = React.useState(false);
   return (
-    <>
-      <div className="min-h-fit --font-abz sticky">
-        <ResizablePanelGroup direction="horizontal">
-          <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
-            <>
-              <Card
-                key={selectedCourse.id}
-                className="m-4 min-w-80 hidden sm:block"
-              >
-                <CardHeader>
-                  <CardTitle>{selectedCourse.title}</CardTitle>
-                  <CardDescription>
-                    {selectedCourse.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div
-                    className={
-                      "flex-col justify-center items-center sm:flex mt-5 w-full"
-                    }
+    <div className="min-h-fit -mt-8 --font-abz sticky w-full m-0 p-0">
+      <ResizablePanelGroup direction="horizontal">
+        <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
+          <>
+            <Card
+              key={selectedCourse.id}
+              className="m-4 min-w-80 hidden sm:block"
+            >
+              <CardHeader>
+                <CardTitle>{selectedCourse.title}</CardTitle>
+                <CardDescription>{selectedCourse.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div
+                  className={
+                    "flex-col justify-center items-center sm:flex mt-5 w-full"
+                  }
+                >
+                  {selectedCourse.chapters.map((chapter, idx) => (
+                    <button
+                      onClick={() => {
+                        setIndex(idx + 1);
+                      }}
+                      className={cn(
+                        "w-full my-1 text-left",
+                        buttonVariants({ variant: "outline" })
+                      )}
+                      key={chapter.chapterId}
+                    >
+                      {idx + 1}. {chapter.title}
+                    </button>
+                  ))}
+                  <Link
+                    href={selectedCourse.quiz}
+                    className={cn("my-2", buttonVariants())}
                   >
+                    Take quiz
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </>
+        </ResizablePanel>
+        <ResizableHandle withHandle className={"min-h-[91dvh]"} />
+        <ResizablePanel defaultSize={65} className="z-[40] w-full">
+          <div className="flex items-center space-x-2">
+            <Sheet>
+              <SheetTrigger>
+                <button
+                  className={cn(
+                    "relative -left-3 top-8 bg-muted/100 p-2 !rounded-full block sm:hidden",
+                    buttonVariants({})
+                  )}
+                >
+                  <ChevronRight />
+                </button>
+              </SheetTrigger>
+              <SheetContent
+                side="left"
+                className={
+                  "flex-col justify-center items-center sm:flex mt-5 w-full"
+                }
+              >
+                <SheetHeader>
+                  <SheetTitle>{selectedCourse.title} </SheetTitle>
+                  <SheetClose>
                     {selectedCourse.chapters.map((chapter, idx) => (
                       <button
                         onClick={() => {
@@ -73,6 +117,7 @@ const page = () => {
                           buttonVariants({ variant: "outline" })
                         )}
                         key={chapter.chapterId}
+                        type="submit"
                       >
                         {idx + 1}. {chapter.title}
                       </button>
@@ -83,73 +128,25 @@ const page = () => {
                     >
                       Take quiz
                     </Link>
-                  </div>
-                </CardContent>
-              </Card>
-            </>
-          </ResizablePanel>
-          <ResizableHandle withHandle className={"min-h-[91dvh]"} />
-          <ResizablePanel defaultSize={65} className="z-[40] w-full">
-            <div className="flex items-center space-x-2">
-              <Sheet>
-                <SheetTrigger>
-                  <button
-                    className="relative -left-3 top-3 bg-muted/100 p-2 rounded-full block sm:hidden"
-                    onClick={() => setPanelIsOpened((prev) => !prev)}
-                  >
-                    <ChevronRight />
-                  </button>
-                </SheetTrigger>
-                <SheetContent
-                  side="left"
-                  className={
-                    "flex-col justify-center items-center sm:flex mt-5 w-full"
-                  }
-                >
-                  <SheetHeader>
-                    <SheetTitle>{selectedCourse.title} </SheetTitle>
-                    <SheetClose>
-                      {selectedCourse.chapters.map((chapter, idx) => (
-                        <button
-                          onClick={() => {
-                            setIndex(idx + 1);
-                          }}
-                          className={cn(
-                            "w-full my-1 text-left",
-                            buttonVariants({ variant: "outline" })
-                          )}
-                          key={chapter.chapterId}
-                          type="submit"
-                        >
-                          {idx + 1}. {chapter.title}
-                        </button>
-                      ))}
-                      <Link
-                        href={selectedCourse.quiz}
-                        className={cn("my-2", buttonVariants())}
-                      >
-                        Take quiz
-                      </Link>
-                      <Link
-                        href={selectedCourse.next}
-                        className={cn(
-                          "my-2 ml-3",
-                          buttonVariants({ variant: "secondary" })
-                        )}
-                      >
-                        Next course
-                      </Link>
-                    </SheetClose>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
-            </div>
+                    <Link
+                      href={selectedCourse.next}
+                      className={cn(
+                        "my-2 ml-3",
+                        buttonVariants({ variant: "secondary" })
+                      )}
+                    >
+                      Next course
+                    </Link>
+                  </SheetClose>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </div>
 
-            <Visualisation index={index} courseSelected={selectedCourse} />
-          </ResizablePanel>
-        </ResizablePanelGroup>
-      </div>
-    </>
+          <Visualisation index={index} courseSelected={selectedCourse} />
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </div>
   );
 };
 
@@ -165,14 +162,18 @@ const Visualisation = ({ courseSelected, index }) => {
   filteredChapter = filterChapter(idx);
   return (
     <div className="min-h-[85dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
-      <div className={"flex-col justify-center items-center sm:flex"}>
+      <div
+        className={
+          "flex-col justify-center items-center sm:flex m-0 p-0 w-full"
+        }
+      >
         <Card className="m-4">
           <CardHeader>
             <CardTitle className="text-center text-2xl">
               {filteredChapter[0]?.chapterId}. {filteredChapter[0]?.title}
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="w-full ">
             <Accordion
               key={filteredChapter[0]?.chapterId}
               className="w-full"

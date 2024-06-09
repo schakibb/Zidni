@@ -9,13 +9,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 import { cn } from "../../../utils/cn";
-const VisualisationComponent = ({
-  width = 600,
-  height = 400,
-  animationData,
-  title,
-  description,
-}) => {
+const VisualisationComponent = ({ animationData, title, description }) => {
   const defaultOptions = {
     loop: true,
     autoplay: false,
@@ -26,20 +20,17 @@ const VisualisationComponent = ({
   };
 
   return (
-    <div className="m-2">
-      <Card>
+    <div className="my-2 w-full">
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>Visualisation: {title}</CardTitle>
         </CardHeader>
         <CardDescription>
-          {description}
-          <br />
           <span className="dark:text-[#f3f7a1] text-[#6e7228] text-sm">
-            <br />
             Click on the animation to toggle it.
           </span>
         </CardDescription>
-        <CardContent
+        <div
           className={cn(
             "overflow-hidden",
             "w-full",
@@ -51,7 +42,7 @@ const VisualisationComponent = ({
           )}
         >
           <Lottie options={defaultOptions} />
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
