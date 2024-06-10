@@ -9,13 +9,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 import { cn } from "../../../utils/cn";
-const VisualisationComponent = ({
-  width = 600,
-  height = 400,
-  animationData,
-  title,
-  description,
-}) => {
+const VisualisationComponent = ({ animationData, title, description }) => {
   const defaultOptions = {
     loop: true,
     autoplay: false,

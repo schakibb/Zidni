@@ -21,22 +21,28 @@ export const BentoGridItem = ({
   description,
   label,
   path,
+  comingSoon,
 }) => {
   const router = useRouter();
   return (
     <div
       className={cn(
-        "cursor-pointer row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-muted/60 dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4",
+        "cursor-pointer row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-muted/60 dark:border-white/[0.2] bg-white border border-black/[0.4] justify-between flex flex-col space-y-4",
         className
       )}
-      onClick={() => router.push(path)}
+      onClick={() => {
+        comingSoon || router.push(path);
+      }}
     >
       <div className="translate-x-0 transition duration-200">
         <Badge
           className={cn(
             "absolute right-5 top-1",
-            label === "New" ? "bg-green-500" : "bg-[#ffa500]"
+            label === "New"
+              ? "bg-green-500 !hover:bg-green-600"
+              : "bg-[#ffa500]"
           )}
+          variant={"secondary"}
         >
           {label}
         </Badge>
@@ -46,6 +52,12 @@ export const BentoGridItem = ({
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
           {description}
         </div>
+        {/*         
+      TODO:CHAKIB HADDADI
+      */
+        /* <div className="mt-20 font-sans font-normal text-neutral-600 text-sm dark:text-neutral-300">
+          Course Made by :
+        </div> */}
       </div>
     </div>
   );

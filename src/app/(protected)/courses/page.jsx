@@ -58,6 +58,7 @@ const Courses = () => {
                 path={course.path}
                 key={i}
                 title={course.title}
+                comingSoon={course.comingSoon}
                 description={course.description}
                 icon={
                   course.icon ?? (
