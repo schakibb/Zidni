@@ -53,11 +53,13 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
 }
+
 /* to test css  variables */
 
 /* * {
@@ -66,15 +68,19 @@
 
 /* Customize the scrollbar */
 ::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar */
+  width: 8px;
+  /* Set the width of the scrollbar */
 }
+
 ::-webkit-scrollbar-track {
   background-color: #b1b1b2e6;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #2563ebe6;
   border-radius: 8px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0e3faa;
 }
@@ -82,6 +88,20 @@
 .zindex {
   z-index: 1599 !important;
 }
+
 .second-zindex {
   z-index: 1999 !important;
+}
+
+.node {
+  fill: #007bff;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+.label {
+  font-size: 12px;
+  fill: #333;
 }
