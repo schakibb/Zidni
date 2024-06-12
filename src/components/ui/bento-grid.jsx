@@ -1,6 +1,8 @@
 import { useRouter } from "next/navigation";
 import { cn } from "../../utils/cn";
 import { Badge } from "./badge";
+import { buttonVariants } from "./button";
+import Link from "next/link";
 
 export const BentoGrid = ({ className, children }) => {
   return (
@@ -27,12 +29,12 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "cursor-pointer row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-muted/60 dark:border-white/[0.2] bg-white border border-black/[0.4] justify-between flex flex-col space-y-4",
+        "row-span-1 rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-muted/60 dark:border-white/[0.2] bg-white border border-black/[0.4] justify-between flex flex-col space-y-4",
         className
       )}
-      onClick={() => {
-        comingSoon || router.push(path);
-      }}
+      // onClick={() => {
+      //   comingSoon || router.push(path);
+      // }}
     >
       <div className="translate-x-0 transition duration-200">
         <Badge
@@ -52,6 +54,17 @@ export const BentoGridItem = ({
         <div className="font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300">
           {description}
         </div>
+        {!comingSoon && (
+          <button
+            className={cn("my-2", buttonVariants())}
+            onClick={() => {
+              comingSoon || router.push(path);
+            }}
+          >
+            Enroll
+          </button>
+        )}
+
         {/*         
       TODO:CHAKIB HADDADI
       */

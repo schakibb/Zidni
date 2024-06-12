@@ -52,7 +52,7 @@ const Courses = () => {
           </div>
         )}
         {user ? (
-          <BentoGrid className="mt-7 mx-auto">
+          <BentoGrid className="my-7 mx-auto">
             {courses.map((course, i) => (
               <BentoGridItem
                 path={course.path}
