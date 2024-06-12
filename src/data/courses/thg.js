@@ -1,4 +1,4 @@
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import { Graphviz } from "graphviz-react";
 
 export const thg = {
   id: 38,
@@ -9,7 +9,7 @@ export const thg = {
   isNew: false,
 
   //fin
-  path: "/courses/bdd/learn",
-  quiz: "/courses/bdd/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
+  path: "/courses/thg/learn",
+  quiz: "/courses/thg/quiz", // quiz route will redirect to the next page if finished (congrats on every finish)
   next: "/courses/completed_path",
 };

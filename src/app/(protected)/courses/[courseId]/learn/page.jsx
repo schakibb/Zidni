@@ -15,6 +15,7 @@ import {
   CardTitle,
 } from "../../../../../components/ui/card";
 import { cn } from "../../../../../utils/cn";
+import Chatbot from "../../../../../components/global/chatbot/index";
 import { buttonVariants } from "../../../../../components/ui/button";
 import Link from "next/link";
 import {
@@ -146,6 +147,7 @@ const page = () => {
           <Visualisation index={index} courseSelected={selectedCourse} />
         </ResizablePanel>
       </ResizablePanelGroup>
+      <Chatbot />
     </div>
   );
 };
@@ -167,7 +169,7 @@ const Visualisation = ({ courseSelected, index }) => {
           "flex-col justify-center items-center sm:flex m-0 p-0 w-full"
         }
       >
-        <Card className="m-4">
+        <Card className="m-4 w-[97%]">
           <CardHeader>
             <CardTitle className="text-center text-2xl">
               {filteredChapter[0]?.chapterId}. {filteredChapter[0]?.title}
