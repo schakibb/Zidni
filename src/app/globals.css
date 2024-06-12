@@ -121,6 +121,7 @@ polygon {
 }
 
 .edge>path,
-.node>ellipse {
+.node>ellipse,
+.edge>polygon {
   stroke: #3b82f6;
 }
