@@ -55,7 +55,7 @@ export const VisualisationComponent = ({
 // For extra information in a course
 export const InfoCard = ({ title = "Example", children }) => {
   return (
-    <div className="flex flex-row justify-start flex-wrap rounded-md text-sm disabled:pointer-events-none border border-primary bg-[#BADDFA] dark:bg-transparent bg- p-4 ">
+    <div className="flex flex-row justify-start flex-wrap rounded-md text-sm disabled:pointer-events-none border border-primary bg-[#BADDFA] dark:bg-muted/40 bg- p-4 ">
       <p class="inline">
         <span className="font-bold text-primary">{title}: </span>
         {children}
