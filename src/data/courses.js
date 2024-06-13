@@ -1,4 +1,7 @@
-import VisualisationComponent from "../components/global/Visualisation/index";
+import {
+  VisualisationComponent,
+  InfoCard,
+} from "../components/global/Visualisation/index";
 import * as storageUnits from "./visualisation/sfsd/storageUnits.json";
 import File from "./visualisation/sfsd/File.jsx";
 import * as creatingDanceTable from "./visualisation/sfsd/CreatingIndexTable.json";
@@ -175,11 +178,13 @@ export const courses = [
                 the logical file on physical media. The records in the physical
                 file are called physical records (or blocks). <br />
                 <br />
-                <em>Analogy:</em> The relationship between a logical file and a
-                physical file is almost as close as that between a cooking
-                recipe and the resulting dish, before and after its preparation.
-                Here the recipe represents the logical file, and the flat
-                represents the physical file.
+                <InfoCard title="Analogy">
+                  he relationship between a logical file and a physical file is
+                  almost as close as that between a cooking recipe and the
+                  resulting dish, before and after its preparation. Here the
+                  recipe represents the logical file, and the flat represents
+                  the physical file.
+                </InfoCard>
               </div>
             ),
             subChapterVisualisation: null,
