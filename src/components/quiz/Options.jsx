@@ -9,16 +9,15 @@ export default function Options({ question, dispatch, answer }) {
         <Button
           variant="secondary"
           className={`text-wrap !h-fit ${
-            index === answer ? "translate-x-8 translate-y-1 " : "-translate-x-1"
+            index === answer ? "translate-x-8 !opacity-90" : "!opacity-40"
           } ${
-            hasAnswered
-              ? index === question.correctAnswer
-                ? "bg-green-500"
-                : index === answer
-                ? "bg-red-500"
-                : ""
+            hasAnswered && index === question.correctAnswer
+              ? "bg-green-500 !opacity-90"
               : ""
-          }`}
+          }
+          ${hasAnswered && index !== question.correctAnswer && "bg-red-500"}
+          
+          `}
           key={index}
           disabled={hasAnswered}
           onClick={() => {

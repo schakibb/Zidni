@@ -41,7 +41,7 @@ const page = () => {
     (course) => course.path === pathname
   )[0];
   return (
-    <div className="min-h-fit -mt-8 --font-abz sticky w-full m-0 p-0">
+    <div className="min-h-fit -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
           <>
