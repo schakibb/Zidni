@@ -3,9 +3,8 @@ import { Button } from "../ui/button";
 
 export default function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
-  console.log("correct", question?.correctAnswer);
   return (
-    <div className="flex flex-col gap-3 mb-7">
+    <div className="flex flex-col gap-4 mb-7">
       {question?.answers.map((opt, index) => (
         <Button
           variant="secondary"

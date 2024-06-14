@@ -6,6 +6,8 @@ import { ContainerScroll } from "../../ui/hero-animation-container";
 import Image from "next/image";
 
 const Hero = () => {
+  const [user] = useAuthState(auth);
+  // const user = true; /* for preview mode only */
   return (
     <section>
       <div className={`flex flex-col -mt-8 overflow-hidden`}>

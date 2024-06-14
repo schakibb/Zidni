@@ -8,7 +8,7 @@ import { auth } from "../../../utils/firebase/config";
 import { Button, buttonVariants } from "../../ui/button";
 import { useState } from "react";
 
-import { CircleUser, Search, Menu } from "lucide-react";
+import { CircleUser, Search, Menu, ExternalLink } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -18,9 +18,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown";
+import { cn } from "../../../utils/cn";
 const Header = () => {
   const [user] = useAuthState(auth);
-  // const user = true;/** for preview mode only */
+  // const user = true; /** for preview mode only */
   const router = useRouter();
   const [selected, setSelected] = useState("home");
 
@@ -42,21 +43,31 @@ const Header = () => {
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="/"
-            className={` ${
-              selected === "home" ? "text-foreground" : "text-muted-foreground"
-            } transition-colors hover:text-foreground`}
+            className={cn(
+              ` ${
+                selected === "home"
+                  ? "text-foreground"
+                  : "text-muted-foreground"
+              }transition-colors hover:text-foreground`
+            )}
             onClick={() => setSelected("home")}
           >
             Home
           </Link>
           <Link
-            href="/docs"
-            className={` ${
-              selected === "docs" ? "text-foreground" : "text-muted-foreground"
-            } transition-colors hover:text-foreground`}
+            href={"https://lokmanes-organization.gitbook.io/welcome/"}
+            className={cn(
+              `flex items-center ${
+                selected === "docs"
+                  ? "!text-foreground"
+                  : "!text-muted-foreground"
+              } hover:text-foreground hover:!text-white`,
+              buttonVariants({ variant: "link" })
+            )}
             onClick={() => setSelected("docs")}
           >
             Docs
+            <ExternalLink className="h4 w-4 ml-1" />
           </Link>
           <Link
             href="/courses"

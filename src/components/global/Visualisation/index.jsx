@@ -9,9 +9,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 import { cn } from "../../../utils/cn";
-const VisualisationComponent = ({
-  width = 600,
-  height = 400,
+export const VisualisationComponent = ({
   animationData,
   title,
   description,
@@ -26,20 +24,17 @@ const VisualisationComponent = ({
   };
 
   return (
-    <div className="m-2">
-      <Card>
+    <div className="my-2 w-full">
+      <Card className="w-full">
         <CardHeader>
           <CardTitle>Visualisation: {title}</CardTitle>
         </CardHeader>
         <CardDescription>
-          {description}
-          <br />
           <span className="dark:text-[#f3f7a1] text-[#6e7228] text-sm">
-            <br />
             Click on the animation to toggle it.
           </span>
         </CardDescription>
-        <CardContent
+        <div
           className={cn(
             "overflow-hidden",
             "w-full",
@@ -51,9 +46,20 @@ const VisualisationComponent = ({
           )}
         >
           <Lottie options={defaultOptions} />
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
 };
-export default VisualisationComponent;
+
+// For extra information in a course
+export const InfoCard = ({ title = "Example", children }) => {
+  return (
+    <div className="flex flex-row justify-start flex-wrap rounded-md text-sm disabled:pointer-events-none border border-primary bg-[#BADDFA] dark:bg-muted/40 bg- p-4 ">
+      <p class="inline">
+        <span className="font-bold text-primary">{title}: </span>
+        {children}
+      </p>
+    </div>
+  );
+};
