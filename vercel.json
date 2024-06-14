@@ -1,7 +1,12 @@
 {
   "git": {
     "deploymentEnabled": {
-      "main": true
+      "main": false,
+      "bdd": false,
+      "thg": false,
+      "docs": false,
+      "chatbot": false,
+      "about-us-updates": false
     }
   }
 }
