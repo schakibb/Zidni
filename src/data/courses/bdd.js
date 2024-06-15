@@ -1,12 +1,13 @@
 import * as databaseArchitecture from "../../data/visualisation/bdd/databaseArchitecture.json";
 import * as databaseModels from "../../data/visualisation/bdd/databaseModels.json";
+import * as erDiagram from "../../data/visualisation/bdd/er_diagram.json";
 import VisualisationComponent from "../../components/global/Visualisation/index";
 
 export const bdd = {
   id: 25,
   title: "Databases",
   description:
-    "Master database fundamentals, including design, SQL, normalization, indexing, transactions, and optimization for efficient data management and retrieval.",
+    "Master database fundamentals, including design, SQL, normalization, and optimization for efficient data management and retrieval.",
   comingSoon: true,
   isNew: false,
   chapters: [
@@ -18,88 +19,85 @@ export const bdd = {
         {
           title: "1) Concept of files",
           subChapterContent: (
-            <div>
-              <table className="min-w-full border-collapse border border-gray-200">
-                <thead>
-                  <tr className="bg-secondary">
-                    <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
-                      Base
-                    </th>
-                    <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
-                      DBMS
-                    </th>
-                    <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
-                      Flat File System
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="bg-transparent">
-                    <td className="border border-gray-200 px-4 py-2 font-medium ">
-                      Definition
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      DBMS is a collection of interrelated data and software
-                      programs to access those data.
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Flat file system stores data in a plain text file. Here,
-                      the records are specified in a single line.
-                    </td>
-                  </tr>
-                  <tr className="bg-transparent">
-                    <td className="border border-gray-200 px-4 py-2 font-medium ">
-                      Data Redundancy
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      There is no problem of data redundancy.
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      There is a main problem of data redundancy.
-                    </td>
-                  </tr>
-                  <tr className="bg-transparent">
-                    <td className="border border-gray-200 px-4 py-2 font-medium ">
-                      Cost
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      DBMS software is very costly and regular updates make it
-                      costly.
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Flat file are cost effective.
-                    </td>
-                  </tr>
-                  <tr className="bg-transparent">
-                    <td className="border border-gray-200 px-4 py-2 font-medium ">
-                      Use
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Mostly, large organizations use DBMS who can afford it and
-                      have a large number of clients and employees to be
-                      managed.
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Small organizations use it as it is cost effective and who
-                      have to deal with a small number of clients and employees.
-                    </td>
-                  </tr>
-                  <tr className="bg-transparent">
-                    <td className="border border-gray-200 px-4 py-2 font-medium ">
-                      Views
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Views are created and employees can’t see all information
-                      available, hence there is security.
-                    </td>
-                    <td className="border border-gray-200 px-4 py-2 ">
-                      Any information can be seen by anyone, hence there is no
-                      security.
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table className="min-w-full border-collapse border border-gray-200">
+              <thead>
+                <tr className="bg-secondary">
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
+                    Base
+                  </th>
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
+                    DBMS
+                  </th>
+                  <th className="border border-gray-200 px-4 py-2 text-left font-semibold ">
+                    Flat File System
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-transparent">
+                  <td className="border border-gray-200 px-4 py-2 font-medium ">
+                    Definition
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    DBMS is a collection of interrelated data and software
+                    programs to access those data.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Flat file system stores data in a plain text file. Here, the
+                    records are specified in a single line.
+                  </td>
+                </tr>
+                <tr className="bg-transparent">
+                  <td className="border border-gray-200 px-4 py-2 font-medium ">
+                    Data Redundancy
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    There is no problem of data redundancy.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    There is a main problem of data redundancy.
+                  </td>
+                </tr>
+                <tr className="bg-transparent">
+                  <td className="border border-gray-200 px-4 py-2 font-medium ">
+                    Cost
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    DBMS software is very costly and regular updates make it
+                    costly.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Flat file are cost effective.
+                  </td>
+                </tr>
+                <tr className="bg-transparent">
+                  <td className="border border-gray-200 px-4 py-2 font-medium ">
+                    Use
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Mostly, large organizations use DBMS who can afford it and
+                    have a large number of clients and employees to be managed.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Small organizations use it as it is cost effective and who
+                    have to deal with a small number of clients and employees.
+                  </td>
+                </tr>
+                <tr className="bg-transparent">
+                  <td className="border border-gray-200 px-4 py-2 font-medium ">
+                    Views
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Views are created and employees can’t see all information
+                    available, hence there is security.
+                  </td>
+                  <td className="border border-gray-200 px-4 py-2 ">
+                    Any information can be seen by anyone, hence there is no
+                    security.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           ),
           subChapterVisualisation: null,
         },
@@ -627,6 +625,546 @@ export const bdd = {
               title={"Database Models"}
               description={""}
             />
+          ),
+        },
+      ],
+    },
+    {
+      chapterId: 2,
+      title: "Database design & Relational model",
+      chapterDescription: (
+        <p>ER diagram and relational model transformation </p>
+      ),
+      subChapter: [
+        {
+          title: "1) Entity-Relationship Model",
+          subChapterContent: (
+            <div>
+              <div>
+                <h2 class="text-2xl font-bold mb-4">
+                  Introduction to ER Models
+                </h2>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">What are ER Models</h3>
+                <p class="mb-4">
+                  An Entity Relationship Diagram (ERD) is a visual
+                  representation of different data using conventions that
+                  describe how these data are related to each other.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">ER Diagram</h3>
+                <p class="mb-4">
+                  ER-modeling is a data modeling technique used in software
+                  engineering to produce a conceptual data model of an
+                  information system. Diagrams created using this ER-modeling
+                  technique are called Entity-Relationship Diagrams, or ER
+                  diagrams or ERDs.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Entity</h3>
+                <p class="mb-4">
+                  It is a collection of objects. An entity is an object that is
+                  distinguishable from other objects by a set of attributes. An
+                  entity may be an 'object' with a physical existence. This is
+                  the basic object of the E-R Model, which is a 'thing' in the
+                  real world with an independent existence.
+                </p>
+                <p class="mb-4">
+                  For example, in a school database, students, teachers,
+                  classes, and courses offered can be considered as entities.
+                  All these entities have some attributes or properties that
+                  give them their identity.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Types of Entity</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    <span class="font-bold">Strong Entities:</span> An entity
+                    that exists independently of other entity type.
+                  </li>
+                  <li>
+                    <span class="font-bold">Weak Entities:</span> An entity type
+                    whose existence depends on some other entity type.
+                  </li>
+                  <li>
+                    <span class="font-bold">Recursive Entities:</span> A
+                    recursive entity is one in which a relation can exist
+                    between occurrences of the same entity set. This occurs in a
+                    unary relationship. Let us take the example of an employee
+                    who is also a manager. But a manager is also an employee,
+                    whose details will be held in the employee entity.
+                  </li>
+                  <li>
+                    <span class="font-bold">Composite Entities:</span> If a Many
+                    to Many relationship exists we must create a bridge entity
+                    to convert it into 1 to Many. Bridge entity composed of the
+                    primary keys of each of the entities to be connected. The
+                    bridge entity is known as a composite entity. A composite
+                    entity is represented by a diamond shape within a rectangle
+                    in an ER Diagram.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Entity Sets</h3>
+                <p class="mb-4">
+                  An entity set is a collection of similar types of entities. An
+                  entity set may contain entities with attributes sharing
+                  similar values. For example, a Students set may contain all
+                  the students of a school; likewise, a Teachers set may contain
+                  all the teachers of a school from all faculties. Entity sets
+                  need not be disjoint.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Weak Entity</h3>
+                <p class="mb-4">
+                  A weak entity is an entity that depends on the existence of
+                  another entity. In more technical terms it can be defined as
+                  an entity that cannot be identified by its own attributes. It
+                  uses a foreign key combined with its attributes to form the
+                  primary key.
+                </p>
+                <p class="mb-4">
+                  An entity like order item is a good example for this. The
+                  order item will be meaningless without an order so it depends
+                  on the existence of the order.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Attribute</h3>
+                <p class="mb-4">
+                  Entities are represented by means of their properties, called
+                  attributes. All attributes have values. For example, a student
+                  entity may have name, class, and age as attributes. There
+                  exists a domain or range of values that can be assigned to
+                  attributes. For example, a student's name cannot be a numeric
+                  value. It has to be alphabetic. A student's age cannot be
+                  negative, etc.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Types of Attributes</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    <span class="font-bold">Simple attributes:</span> Simple
+                    attributes are atomic values, which cannot be divided
+                    further. For example, a student's phone number is an atomic
+                    value of 10 digits.
+                  </li>
+                  <li>
+                    <span class="font-bold">Composite attribute:</span> If the
+                    attributes are composite, they are further divided in a tree
+                    like structure. Every node is then connected to its
+                    attribute. That is composite attributes are represented by
+                    eclipses that are connected with an eclipse. Composite
+                    attributes are made of more than one simple attribute. For
+                    example, a student's complete name may have first_name and
+                    last_name.
+                  </li>
+                  <li>
+                    <span class="font-bold">Derived attribute:</span> Derived
+                    attributes are the attributes that do not exist in the
+                    physical database, but their values are derived from other
+                    attributes present in the database. For example,
+                    average_salary in a department should not be saved directly
+                    in the database, instead it can be derived. For another
+                    example, age can be derived from date_of_birth. For example
+                    for a circle the area can be derived from the radius.
+                  </li>
+                  <li>
+                    <span class="font-bold">Multi-valued attribute:</span>{" "}
+                    Multi-valued attributes may contain more than one value. For
+                    example, a person can have more than one phone number,
+                    email_address, etc. For example a teacher entity can have
+                    multiple subject values.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          ),
+        },
+        {
+          title: "2) Relationships",
+          subChapterContent: (
+            <div>
+              <div>
+                <h2 class="text-2xl font-bold mb-4">Relationships</h2>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">What are Relationships</h3>
+                <p class="mb-4">
+                  Relationships are associations between entities. For example,
+                  a student entity may have a relationship with a teacher entity
+                  through a relationship called "has." Relationships are
+                  represented by diamond shapes in an ER Diagram.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Types of Relationships</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    <span class="font-bold">One-to-One Relationship:</span> A
+                    one-to-one relationship is when a single instance of an
+                    entity is associated with a single instance of another
+                    entity. For example, a person can have only one passport
+                    number, and a passport number is associated with only one
+                    person.
+                  </li>
+                  <li>
+                    <span class="font-bold">One-to-Many Relationship:</span> A
+                    one-to-many relationship is when a single instance of an
+                    entity is associated with multiple instances of another
+                    entity. For example, a teacher can teach multiple students,
+                    but a student can have only one teacher.
+                  </li>
+                  <li>
+                    <span class="font-bold">Many-to-Many Relationship:</span> A
+                    many-to-many relationship is when multiple instances of an
+                    entity are associated with multiple instances of another
+                    entity. For example, a student can enroll in multiple
+                    courses, and a course can have multiple students.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  Cardinality & Participation{" "}
+                </h3>
+                <p class="mb-4">
+                  Cardinality and participation are two important aspects of
+                  relationships in an ER Diagram.
+                </p>
+                <p class="mb-4">
+                  <span class="font-bold">Cardinality:</span> Cardinality
+                  defines the number of instances of an entity that can be
+                  associated with the number of instances of another entity. It
+                  is represented by the symbols "1" (one) and "N" (many).
+                </p>
+                <p class="mb-4">
+                  <span class="font-bold">Participation:</span> Participation
+                  defines whether an entity is mandatory or optional in a
+                  relationship. It is represented by the symbols "0" (optional)
+                  and "1" (mandatory).
+                </p>
+                <p class="mb-4">
+                  e.g. A student can enroll in multiple courses (many) and a
+                  course can have multiple students (many), so the relationship
+                  between student and course is many-to-many. course are
+                  mandatory and student is optional in this relationship.
+                  student(0..N):(1..N)course -mandatory just for explanation
+                  purpose-
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Degree of Relationship</h3>
+                <p class="mb-4">
+                  The degree of a relationship is the number of entities
+                  associated with a relationship. It is of three types: Unary,
+                  Binary, and Ternary. Unary relationship involves a single
+                  entity, Binary relationship involves two entities, and Ternary
+                  relationship involves three entities.
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">
+                  Attributes of Relationships
+                </h3>
+                <p class="mb-4">
+                  Relationships can have attributes. For example, a student
+                  entity may have a relationship with a teacher entity through a
+                  relationship called "has" and the relationship may have an
+                  attribute called "grade."
+                </p>
+              </div>
+            </div>
+          ),
+          subChapterVisualisation: (
+            <VisualisationComponent
+              animationData={erDiagram}
+              title={"Entity Relationship Diagram"}
+              description={
+                "represents the relationship between student and course"
+              }
+            />
+          ),
+        },
+        {
+          title: "3) Relational Model",
+          subChapterContent: (
+            <div>
+              <div>
+                <h2 class="text-2xl font-bold mb-4">
+                  Introduction to the Relational Model
+                </h2>
+              </div>
+              <div>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    The relational model was proposed by Edgar Frank Codd in
+                    1970.
+                  </li>
+                  <li>
+                    The relational model is a Logical Data Model (LDM) based on
+                    set theory and predicate logic.
+                  </li>
+                  <li>
+                    Today, the relational model is by far the most widespread in
+                    the field of databases.
+                  </li>
+                  <li>
+                    In this model, the database is represented as a set of
+                    relations that can be viewed as tables.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Relational Model</h3>
+                <p class="mb-4">
+                  Informally, the relational model can be defined as follows:
+                </p>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    Data is organized in the form of two-dimensional tables,
+                    also called relations, whose rows are called n-tuples or
+                    tuples.
+                  </li>
+                  <li>Data is manipulated by relational algebra operators.</li>
+                  <li>
+                    The coherent state of the database is defined by a set of
+                    integrity constraints.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Basic Concepts</h3>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    <span class="font-bold">Attribute:</span> An attribute is a
+                    property describing information stored in a database.
+                    Example: a person's age, a person's name, social security
+                    number.
+                  </li>
+                  <li>
+                    <span class="font-bold">Domain:</span> The domain of an
+                    attribute is the set, finite or infinite, of its possible
+                    values. Example:
+                    <ul class="pl-5 mt-2 space-y-1">
+                      <li>ID_Student: Sequential number from 1 to 9999</li>
+                      <li>Name_Student: String of 15 characters</li>
+                      <li>
+                        City_Student: {"{'Algiers', 'Oran', 'Setif', ...}"}
+                      </li>
+                      <li>Age_Student: Integer between 18 and 65</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Relation</h3>
+                <p class="mb-4">
+                  A relation is a subset of the Cartesian product of n attribute
+                  domains.
+                </p>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    Let D1, D2, ..., Dn be domains, not necessarily distinct. A
+                    relation R(A1: D1, A2: D2, ..., An: Dn) is defined as: R ⊆
+                    D1 x D2 x ... x Dn.
+                  </li>
+                  <li>
+                    A relation is represented as a two-dimensional table where
+                    the n attributes correspond to the titles of the n columns.
+                  </li>
+                </ul>
+                <table class="table-auto w-full mt-4">
+                  <thead>
+                    <tr className="bg-secondary">
+                      <th class="px-4 py-2">ID_Student</th>
+                      <th class="px-4 py-2">Name_Student</th>
+                      <th class="px-4 py-2">City_Student</th>
+                      <th class="px-4 py-2">Age_Student</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="border px-4 py-2">0001</td>
+                      <td class="border px-4 py-2">Ahmed</td>
+                      <td class="border px-4 py-2">Algiers</td>
+                      <td class="border px-4 py-2">20</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0002</td>
+                      <td class="border px-4 py-2">Mohamed</td>
+                      <td class="border px-4 py-2">Oran</td>
+                      <td class="border px-4 py-2">19</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0003</td>
+                      <td class="border px-4 py-2">Sarra</td>
+                      <td class="border px-4 py-2">Setif</td>
+                      <td class="border px-4 py-2">21</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0004</td>
+                      <td class="border px-4 py-2">Chaima</td>
+                      <td class="border px-4 py-2">Illizi</td>
+                      <td class="border px-4 py-2">18</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>
+                    <span class="font-bold">Degree:</span> The degree of a
+                    relation is its number of attributes.
+                  </li>
+                  <li>
+                    <span class="font-bold">n-tuple or tuple:</span> An n-tuple
+                    or tuple is an element of the set represented by a relation.
+                    In other words, an n-tuple is a row in the table
+                    representing the relation.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Relation Schema</h3>
+                <p class="mb-4">
+                  A relation schema specifies the name of the relation as well
+                  as the list of attributes with their domains. Let R(A1: D1,
+                  A2: D2, ..., An: Dn) be a relation schema such that:
+                </p>
+                <ul class="list-disc pl-5 space-y-2">
+                  <li>R: Name of the relation.</li>
+                  <li>A1, A2, ..., An: Attributes of the relation R.</li>
+                  <li>
+                    D1, D2, ..., Dn: Domains of the attributes A1, A2, ..., An
+                    respectively.
+                  </li>
+                </ul>
+                <p class="mt-4">
+                  Example: Etudiant(ID_Etudiant : Num(4), Nom_Etudiant :
+                  String(15), Ville_Etudiant : String(10), Age_Etudiant :
+                  Num(2))
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Relational Schema</h3>
+                <p class="mb-4">
+                  A relational schema (or schema of a database) consists of the
+                  set of relation schemas, all of which have unique names. If
+                  R1, R2, ..., Rn form a set of relation schemas, then we can
+                  write the relational database schema R as:
+                </p>
+                <p class="mt-4">R = {"{ R1, R2, ..., Rn} "} </p>
+                <p class="mt-4">
+                  Example: Bibliothèque = {"{(Etudiant, Livre)}"}
+                </p>
+                <p class="mt-4">
+                  Etudiant(ID_Etudiant, Nom_Etudiant, Ville_Etudiant,
+                  Age_Etudiant)
+                </p>
+                <p class="mt-4">
+                  Livre(ISSN, Titre, Date_Edition, #ID_Etudiant)
+                </p>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Relational Database</h3>
+                <p class="mb-4">
+                  A relational database consists of the set of n-tuples of the
+                  various relations in the relational schema. Example:
+                </p>
+
+                <table class="table-auto w-full mt-4">
+                  <thead>
+                    <tr className="bg-secondary">
+                      <th class="px-4 py-2">ID_Student</th>
+                      <th class="px-4 py-2">Name_Student</th>
+                      <th class="px-4 py-2">City_Student</th>
+                      <th class="px-4 py-2">Age_Student</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="border px-4 py-2">0001</td>
+                      <td class="border px-4 py-2">Ahmed</td>
+                      <td class="border px-4 py-2">Algiers</td>
+                      <td class="border px-4 py-2">20</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0002</td>
+                      <td class="border px-4 py-2">Mohamed</td>
+                      <td class="border px-4 py-2">Oran</td>
+                      <td class="border px-4 py-2">19</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0003</td>
+                      <td class="border px-4 py-2">Sarra</td>
+                      <td class="border px-4 py-2">Setif</td>
+                      <td class="border px-4 py-2">21</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">0004</td>
+                      <td class="border px-4 py-2">Chaima</td>
+                      <td class="border px-4 py-2">Illizi</td>
+                      <td class="border px-4 py-2">18</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="overflow-x-auto mt-8">
+                <table class="table-auto w-full">
+                  <thead>
+                    <tr className="bg-secondary">
+                      <th class="px-4 py-2">ISSN</th>
+                      <th class="px-4 py-2">Title</th>
+                      <th class="px-4 py-2">Publication Date</th>
+                      <th class="px-4 py-2">ID_Student</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="border px-4 py-2">INF01</td>
+                      <td class="border px-4 py-2">SFSD</td>
+                      <td class="border px-4 py-2">2000</td>
+                      <td class="border px-4 py-2">0003</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">INF02</td>
+                      <td class="border px-4 py-2">BDD</td>
+                      <td class="border px-4 py-2">2020</td>
+                      <td class="border px-4 py-2">0001</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">INF03</td>
+                      <td class="border px-4 py-2">SI</td>
+                      <td class="border px-4 py-2">2015</td>
+                      <td class="border px-4 py-2">0002</td>
+                    </tr>
+                    <tr>
+                      <td class="border px-4 py-2">INF04</td>
+                      <td class="border px-4 py-2">POO</td>
+                      <td class="border px-4 py-2">2013</td>
+                      <td class="border px-4 py-2">0004</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold mb-2">Intension and Extension</h3>
+                <p class="mb-4">
+                  The structure of the relation, with domain specifications and
+                  other constraints, is part of the intension of the database,
+                  while the relation with all its tuples represents an instance
+                  or extension of the database.
+                </p>
+              </div>
+            </div>
           ),
         },
       ],
