@@ -1,7 +1,7 @@
 import * as databaseArchitecture from "../../data/visualisation/bdd/databaseArchitecture.json";
 import * as databaseModels from "../../data/visualisation/bdd/databaseModels.json";
 import * as erDiagram from "../../data/visualisation/bdd/er_diagram.json";
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import { VisualisationComponent } from "../../components/global/Visualisation/index";
 
 export const bdd = {
   id: 25,
