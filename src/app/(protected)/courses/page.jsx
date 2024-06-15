@@ -17,8 +17,8 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "../../../components/ui/bento-grid";
 import { AlignVerticalSpaceAround } from "lucide-react";
 const Courses = () => {
-  const [user] = useAuthState(auth);
-  // const user = true;
+  // const [user] = useAuthState(auth);
+  const user = true;
   React.useEffect(() => {
     const getUsers = async () => {
       const docRef = doc(db, "users", user.uid);
