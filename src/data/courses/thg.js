@@ -1,5 +1,5 @@
-import { Graphviz } from "graphviz-react";
 import Graphe from "../visualisation/thg/graphe";
+import React from "react";
 
 export const thg = {
   id: 38,
