@@ -1,7 +1,11 @@
 import * as databaseArchitecture from "../../data/visualisation/bdd/databaseArchitecture.json";
 import * as databaseModels from "../../data/visualisation/bdd/databaseModels.json";
 import * as erDiagram from "../../data/visualisation/bdd/er_diagram.json";
-import { VisualisationComponent } from "../../components/global/Visualisation/index";
+import * as dependencyDiagram from "../../data/visualisation/bdd/dependencyFunction.json";
+import {
+  VisualisationComponent,
+  InfoCard,
+} from "../../components/global/Visualisation/index";
 
 export const bdd = {
   id: 25,
@@ -787,6 +791,7 @@ export const bdd = {
               </div>
             </div>
           ),
+          subChapterVisualisation: null,
         },
         {
           title: "2) Relationships",
@@ -946,21 +951,24 @@ export const bdd = {
                   <li>
                     <span class="font-bold">Attribute:</span> An attribute is a
                     property describing information stored in a database.
-                    Example: a person's age, a person's name, social security
-                    number.
+                    <InfoCard title="Example">
+                      a person's age, a person's name, social security number.
+                    </InfoCard>
                   </li>
                   <li>
                     <span class="font-bold">Domain:</span> The domain of an
                     attribute is the set, finite or infinite, of its possible
-                    values. Example:
-                    <ul class="pl-5 mt-2 space-y-1">
-                      <li>ID_Student: Sequential number from 1 to 9999</li>
-                      <li>Name_Student: String of 15 characters</li>
-                      <li>
-                        City_Student: {"{'Algiers', 'Oran', 'Setif', ...}"}
-                      </li>
-                      <li>Age_Student: Integer between 18 and 65</li>
-                    </ul>
+                    values.
+                    <InfoCard title="Example">
+                      <ul class="pl-5 mt-2 space-y-1">
+                        <li>ID_Student: Sequential number from 1 to 9999</li>
+                        <li>Name_Student: String of 15 characters</li>
+                        <li>
+                          City_Student: {"{'Algiers', 'Oran', 'Setif', ...}"}
+                        </li>
+                        <li>Age_Student: Integer between 18 and 65</li>
+                      </ul>
+                    </InfoCard>
                   </li>
                 </ul>
               </div>
@@ -984,36 +992,44 @@ export const bdd = {
                 <table class="table-auto w-full mt-4">
                   <thead>
                     <tr className="bg-secondary">
-                      <th class="px-4 py-2">ID_Student</th>
-                      <th class="px-4 py-2">Name_Student</th>
-                      <th class="px-4 py-2">City_Student</th>
-                      <th class="px-4 py-2">Age_Student</th>
+                      <th class="border border-gray-200 px-4 py-2">
+                        ID_Student
+                      </th>
+                      <th class="border border-gray-200 px-4 py-2">
+                        Name_Student
+                      </th>
+                      <th class="border border-gray-200 px-4 py-2">
+                        City_Student
+                      </th>
+                      <th class="border border-gray-200 px-4 py-2">
+                        Age_Student
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="border px-4 py-2">0001</td>
-                      <td class="border px-4 py-2">Ahmed</td>
-                      <td class="border px-4 py-2">Algiers</td>
-                      <td class="border px-4 py-2">20</td>
+                      <td class="border border-gray-200 px-4 py-2">0001</td>
+                      <td class="border border-gray-200 px-4 py-2">Ahmed</td>
+                      <td class="border border-gray-200 px-4 py-2">Algiers</td>
+                      <td class="border border-gray-200 px-4 py-2">20</td>
                     </tr>
                     <tr>
-                      <td class="border px-4 py-2">0002</td>
-                      <td class="border px-4 py-2">Mohamed</td>
-                      <td class="border px-4 py-2">Oran</td>
-                      <td class="border px-4 py-2">19</td>
+                      <td class="border border-gray-200 px-4 py-2">0002</td>
+                      <td class="border border-gray-200 px-4 py-2">Mohamed</td>
+                      <td class="border border-gray-200 px-4 py-2">Oran</td>
+                      <td class="border border-gray-200 px-4 py-2">19</td>
                     </tr>
                     <tr>
-                      <td class="border px-4 py-2">0003</td>
-                      <td class="border px-4 py-2">Sarra</td>
-                      <td class="border px-4 py-2">Setif</td>
-                      <td class="border px-4 py-2">21</td>
+                      <td class="border border-gray-200 px-4 py-2">0003</td>
+                      <td class="border border-gray-200 px-4 py-2">Sarra</td>
+                      <td class="border border-gray-200 px-4 py-2">Setif</td>
+                      <td class="border border-gray-200 px-4 py-2">21</td>
                     </tr>
                     <tr>
-                      <td class="border px-4 py-2">0004</td>
-                      <td class="border px-4 py-2">Chaima</td>
-                      <td class="border px-4 py-2">Illizi</td>
-                      <td class="border px-4 py-2">18</td>
+                      <td class="border border-gray-200 px-4 py-2">0004</td>
+                      <td class="border border-gray-200 px-4 py-2">Chaima</td>
+                      <td class="border border-gray-200 px-4 py-2">Illizi</td>
+                      <td class="border border-gray-200 px-4 py-2">18</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1047,11 +1063,10 @@ export const bdd = {
                     respectively.
                   </li>
                 </ul>
-                <p class="mt-4">
-                  Example: Etudiant(ID_Etudiant : Num(4), Nom_Etudiant :
-                  String(15), Ville_Etudiant : String(10), Age_Etudiant :
-                  Num(2))
-                </p>
+                <InfoCard title="Example">
+                  Etudiant(ID_Etudiant : Num(4), Nom_Etudiant : String(15),
+                  Ville_Etudiant : String(10), Age_Etudiant : Num(2))
+                </InfoCard>
               </div>
               <div>
                 <h3 class="text-xl font-bold mb-2">Relational Schema</h3>
@@ -1062,9 +1077,9 @@ export const bdd = {
                   write the relational database schema R as:
                 </p>
                 <p class="mt-4">R = {"{ R1, R2, ..., Rn} "} </p>
-                <p class="mt-4">
-                  Example: Bibliothèque = {"{(Etudiant, Livre)}"}
-                </p>
+                <InfoCard title="Example">
+                  Bibliothèque = {"{(Etudiant, Livre)}"}
+                </InfoCard>
                 <p class="mt-4">
                   Etudiant(ID_Etudiant, Nom_Etudiant, Ville_Etudiant,
                   Age_Etudiant)
@@ -1077,84 +1092,101 @@ export const bdd = {
                 <h3 class="text-xl font-bold mb-2">Relational Database</h3>
                 <p class="mb-4">
                   A relational database consists of the set of n-tuples of the
-                  various relations in the relational schema. Example:
+                  various relations in the relational schema.
                 </p>
+                <InfoCard title="Example">
+                  <table class="table-auto w-full mt-4">
+                    <thead>
+                      <tr className="bg-secondary">
+                        <th class="border border-gray-200 px-4 py-2">
+                          ID_Student
+                        </th>
+                        <th class="border border-gray-200 px-4 py-2">
+                          Name_Student
+                        </th>
+                        <th class="border border-gray-200 px-4 py-2">
+                          City_Student
+                        </th>
+                        <th class="border border-gray-200 px-4 py-2">
+                          Age_Student
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">0001</td>
+                        <td class="border border-gray-200 px-4 py-2">Ahmed</td>
+                        <td class="border border-gray-200 px-4 py-2">
+                          Algiers
+                        </td>
+                        <td class="border border-gray-200 px-4 py-2">20</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">0002</td>
+                        <td class="border border-gray-200 px-4 py-2">
+                          Mohamed
+                        </td>
+                        <td class="border border-gray-200 px-4 py-2">Oran</td>
+                        <td class="border border-gray-200 px-4 py-2">19</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">0003</td>
+                        <td class="border border-gray-200 px-4 py-2">Sarra</td>
+                        <td class="border border-gray-200 px-4 py-2">Setif</td>
+                        <td class="border border-gray-200 px-4 py-2">21</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">0004</td>
+                        <td class="border border-gray-200 px-4 py-2">Chaima</td>
+                        <td class="border border-gray-200 px-4 py-2">Illizi</td>
+                        <td class="border border-gray-200 px-4 py-2">18</td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-                <table class="table-auto w-full mt-4">
-                  <thead>
-                    <tr className="bg-secondary">
-                      <th class="px-4 py-2">ID_Student</th>
-                      <th class="px-4 py-2">Name_Student</th>
-                      <th class="px-4 py-2">City_Student</th>
-                      <th class="px-4 py-2">Age_Student</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="border px-4 py-2">0001</td>
-                      <td class="border px-4 py-2">Ahmed</td>
-                      <td class="border px-4 py-2">Algiers</td>
-                      <td class="border px-4 py-2">20</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">0002</td>
-                      <td class="border px-4 py-2">Mohamed</td>
-                      <td class="border px-4 py-2">Oran</td>
-                      <td class="border px-4 py-2">19</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">0003</td>
-                      <td class="border px-4 py-2">Sarra</td>
-                      <td class="border px-4 py-2">Setif</td>
-                      <td class="border px-4 py-2">21</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">0004</td>
-                      <td class="border px-4 py-2">Chaima</td>
-                      <td class="border px-4 py-2">Illizi</td>
-                      <td class="border px-4 py-2">18</td>
-                    </tr>
-                  </tbody>
-                </table>
+                  <table class="table-auto w-full">
+                    <thead>
+                      <tr className="bg-secondary">
+                        <th class="border border-gray-200 px-4 py-2">ISSN</th>
+                        <th class="border border-gray-200 px-4 py-2">Title</th>
+                        <th class="border border-gray-200 px-4 py-2">
+                          Publication Date
+                        </th>
+                        <th class="border border-gray-200 px-4 py-2">
+                          ID_Student
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">INF01</td>
+                        <td class="border border-gray-200 px-4 py-2">SFSD</td>
+                        <td class="border border-gray-200 px-4 py-2">2000</td>
+                        <td class="border border-gray-200 px-4 py-2">0003</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">INF02</td>
+                        <td class="border border-gray-200 px-4 py-2">BDD</td>
+                        <td class="border border-gray-200 px-4 py-2">2020</td>
+                        <td class="border border-gray-200 px-4 py-2">0001</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">INF03</td>
+                        <td class="border border-gray-200 px-4 py-2">SI</td>
+                        <td class="border border-gray-200 px-4 py-2">2015</td>
+                        <td class="border border-gray-200 px-4 py-2">0002</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 px-4 py-2">INF04</td>
+                        <td class="border border-gray-200 px-4 py-2">POO</td>
+                        <td class="border border-gray-200 px-4 py-2">2013</td>
+                        <td class="border border-gray-200 px-4 py-2">0004</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </InfoCard>
               </div>
-              <div class="overflow-x-auto mt-8">
-                <table class="table-auto w-full">
-                  <thead>
-                    <tr className="bg-secondary">
-                      <th class="px-4 py-2">ISSN</th>
-                      <th class="px-4 py-2">Title</th>
-                      <th class="px-4 py-2">Publication Date</th>
-                      <th class="px-4 py-2">ID_Student</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="border px-4 py-2">INF01</td>
-                      <td class="border px-4 py-2">SFSD</td>
-                      <td class="border px-4 py-2">2000</td>
-                      <td class="border px-4 py-2">0003</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">INF02</td>
-                      <td class="border px-4 py-2">BDD</td>
-                      <td class="border px-4 py-2">2020</td>
-                      <td class="border px-4 py-2">0001</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">INF03</td>
-                      <td class="border px-4 py-2">SI</td>
-                      <td class="border px-4 py-2">2015</td>
-                      <td class="border px-4 py-2">0002</td>
-                    </tr>
-                    <tr>
-                      <td class="border px-4 py-2">INF04</td>
-                      <td class="border px-4 py-2">POO</td>
-                      <td class="border px-4 py-2">2013</td>
-                      <td class="border px-4 py-2">0004</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+
               <div>
                 <h3 class="text-xl font-bold mb-2">Intension and Extension</h3>
                 <p class="mb-4">
@@ -1166,6 +1198,1668 @@ export const bdd = {
               </div>
             </div>
           ),
+          subChapterVisualisation: null,
+        },
+        {
+          title: "4) Transformation of ER Diagram to Relational Model",
+          subChapterContent: <div></div>,
+          subChapterVisualisation: null,
+        },
+      ],
+    },
+    {
+      chapterId: 3,
+      title: "Constraints & Normalization",
+      chapterDescription: (
+        <p>
+          Constraints and Normalization are important concepts in database
+          design. Constraints ensure data integrity, while normalization
+          minimizes redundancy and dependency.
+        </p>
+      ),
+      subChapter: [
+        {
+          title: "1) Integrity Constraints",
+          subChapterContent: (
+            <div>
+              <h2 class="text-xl font-bold mb-4">Keys</h2>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">Super Key</h3>
+                <p>
+                  An attribute or a combination of attributes that is used to
+                  identify the records uniquely is known as Super Key. A table
+                  can have many Super Keys.
+                </p>
+
+                <InfoCard title="Example">
+                  <table class="table-auto w-full mt-4">
+                    <thead>
+                      <tr class="bg-secondary">
+                        <th class="border border-gray-200 py-2 px-4">EmpSSN</th>
+                        <th class="border border-gray-200 py-2 px-4">EmpNum</th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          Empname
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">1001</td>
+                        <td class="border border-gray-200 py-2 px-4">AB05</td>
+                        <td class="border border-gray-200 py-2 px-4">Shown</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">2001</td>
+                        <td class="border border-gray-200 py-2 px-4">AB06</td>
+                        <td class="border border-gray-200 py-2 px-4">Roslyn</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">3001</td>
+                        <td class="border border-gray-200 py-2 px-4">AB07</td>
+                        <td class="border border-gray-200 py-2 px-4">James</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">Candidate Key</h3>
+                <p>
+                  The candidate key is a set of one or more attributes whose set
+                  of values can uniquely identify an entity instance in the
+                  entity set. Any attribute in the candidate key cannot be
+                  omitted without destroying the unique property of the
+                  Candidate key. It is a minimal Super Key.
+                </p>
+
+                <p class="mt-2">
+                  <strong>Properties of Candidate key:</strong>
+                </p>
+                <ul class="list-disc pl-5">
+                  <li>It must contain unique values</li>
+                  <li>Candidate key may have multiple attributes</li>
+                  <li>Must not contain null values</li>
+                  <li>It should contain minimum fields to ensure uniqueness</li>
+                  <li>Uniquely identify each record in a table</li>
+                </ul>
+
+                <InfoCard title="Example">
+                  <table class="table-auto w-full mt-4">
+                    <thead>
+                      <tr class="bg-secondary">
+                        <th class="border border-gray-200 py-2 px-4">ID</th>
+                        <th class="border border-gray-200 py-2 px-4">Name</th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          Address
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">101</td>
+                        <td class="border border-gray-200 py-2 px-4">Robot</td>
+                        <td class="border border-gray-200 py-2 px-4">Boston</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">201</td>
+                        <td class="border border-gray-200 py-2 px-4">Mark</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          New York
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">Composite Key</h3>
+                <p>
+                  If we use multiple attributes to create a Primary Key then
+                  that Primary Key is called Composite Key (also called a
+                  Compound Key or Concatenated Key).
+                </p>
+
+                <InfoCard title="Example">
+                  If we have used “Name, Address” as a Primary Key then it will
+                  be our Composite Key.
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">Alternate Key</h3>
+                <p>
+                  Alternate Key can be any of the Candidate Keys except for the
+                  Primary Key.
+                </p>
+
+                <InfoCard title="Example">
+                  “Name, Address” as it is the only other Candidate Key which is
+                  not a Primary Key.
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">Primary Key</h3>
+                <p>
+                  A PRIMARY KEY constraint is a rule that the values in one
+                  column or a combination of columns must uniquely identify each
+                  row in a table. No primary-key value can appear in more than
+                  one row in the table. No column that is part of the primary
+                  key can contain a null. A table can have only one primary key.
+                </p>
+
+                <InfoCard title="Example">
+                  CREATE TABLE Persons ( ID int NOT NULL, FirstName
+                  varchar(255), Age int, PRIMARY KEY (ID) );
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">
+                  FOREIGN KEY (REFERENTIAL INTEGRITY) Constraints
+                </h3>
+                <p>
+                  FOREIGN KEY constraints are also called "referential
+                  integrity" constraints. Foreign Key constraints designate a
+                  column or combination of columns as a foreign key. A foreign
+                  key links back to the primary key (or a unique key) in another
+                  table, and this link is the basis of the relationship between
+                  tables.
+                </p>
+
+                <InfoCard title="Example">
+                  <table class="table-auto w-full mt-4 mb-6">
+                    <thead>
+                      <tr class="bg-secondary">
+                        <th class="border border-gray-200 py-2 px-4">
+                          DEPARTMENT_ID
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          DEPT_NAME
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          MANAGER_ID
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          LOCATION_ID
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">90</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Executive
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">100</td>
+                        <td class="border border-gray-200 py-2 px-4">1700</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">110</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Accounting
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">205</td>
+                        <td class="border border-gray-200 py-2 px-4">1700</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">190</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Contracting
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">-</td>
+                        <td class="border border-gray-200 py-2 px-4">1700</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table class="min-w-full">
+                    <thead>
+                      <tr class="bg-secondary">
+                        <th class="border border-gray-200 py-2 px-4">
+                          EMPLOYEE_ID
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          FIRST_NAME
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          LAST_NAME
+                        </th>
+                        <th class="border border-gray-200 py-2 px-4">
+                          DEPARTMENT_ID
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">100</td>
+                        <td class="border border-gray-200 py-2 px-4">Steven</td>
+                        <td class="border border-gray-200 py-2 px-4">King</td>
+                        <td class="border border-gray-200 py-2 px-4">90</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">101</td>
+                        <td class="border border-gray-200 py-2 px-4">Neena</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Kochhar
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">90</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">102</td>
+                        <td class="border border-gray-200 py-2 px-4">Lex</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          De Haan
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">90</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">205</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Shelley
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          Higgins
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">110</td>
+                      </tr>
+                      <tr>
+                        <td class="border border-gray-200 py-2 px-4">206</td>
+                        <td class="border border-gray-200 py-2 px-4">
+                          William
+                        </td>
+                        <td class="border border-gray-200 py-2 px-4">Gietz</td>
+                        <td class="border border-gray-200 py-2 px-4">110</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">
+                  Entity Integrity Constraint
+                </h3>
+                <p>
+                  The entity integrity constraint states that primary keys can't
+                  be null. There must be a proper value in the primary key
+                  field. This is because the primary key value is used to
+                  identify individual rows in a table. If there were null values
+                  for primary keys, it would mean that we could not identify
+                  those rows.
+                </p>
+
+                <p class="mt-2">
+                  On the other hand, there can be null values other than primary
+                  key fields. Null value means that one doesn't know the value
+                  for that field. Null value is different from zero value or
+                  space.
+                </p>
+
+                <InfoCard title="Example">
+                  In the Car Rental database in the Car table each car must have
+                  a proper and unique Reg_No. There might be a car whose rate is
+                  unknown - maybe the car is broken or it is brand new - i.e.
+                  the Rate field has a null value. See the picture below. The
+                  entity integrity constraints ensure that a specific row in a
+                  table can be identified.
+                </InfoCard>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold">
+                  Referential Integrity Constraint
+                </h3>
+                <p>
+                  The referential integrity constraint is specified between two
+                  tables and it is used to maintain the consistency among rows
+                  between the two tables.
+                </p>
+
+                <p class="mt-2">The rules are:</p>
+                <ul class="list-disc pl-5">
+                  <li>
+                    You can't delete a record from a primary table if matching
+                    records exist in a related table.
+                  </li>
+                  <li>
+                    You can't change a primary key value in the primary table if
+                    that record has related records.
+                  </li>
+                  <li>
+                    You can't enter a value in the foreign key field of the
+                    related table that doesn't exist in the primary key of the
+                    primary table.
+                  </li>
+                  <li>
+                    However, you can enter a Null value in the foreign key,
+                    specifying that the records are unrelated.
+                  </li>
+                </ul>
+
+                <InfoCard title="Example">
+                  <ul class="list-disc pl-5">
+                    <li>
+                      <strong>Rule 1:</strong> You can't delete any of the rows
+                      in the CarType table that are visible in the picture since
+                      all the car types are in use in the Car table.
+                    </li>
+                    <li>
+                      <strong>Rule 2:</strong> You can't change any of the
+                      model_ids in the CarType table since all the car types are
+                      in use in the Car table.
+                    </li>
+                    <li>
+                      <strong>Rule 3:</strong> The values that you can enter in
+                      the model_id field in the Car table must be in the
+                      model_id field in the CarType table.
+                    </li>
+                    <li>
+                      <strong>Rule 4:</strong> The model_id field in the Car
+                      table can have a null value which means that the car type
+                      of that car is not known.
+                    </li>
+                  </ul>
+                </InfoCard>
+              </div>
+            </div>
+          ),
+          subChapterVisualisation: null,
+        },
+        {
+          title: "2) Dependency function",
+          subChapterContent: (
+            <div>
+              <h1 class="text-2xl font-bold">Decomposition</h1>
+              <p>
+                The decomposition approach is a successive refinement process
+                that starts from a given relation and decomposes it into
+                sub-relations that do not suffer from redundancy and update
+                anomalies.
+              </p>
+
+              <ul class="list-disc pl-5">
+                <li>
+                  More formally, decomposition is a process that allows
+                  replacing a relation R(A1, A2, ..., An) with a collection of
+                  relations R1, R2, ... Rn obtained by projections of R on
+                  subsets of attributes whose union contains all attributes of
+                  R, in order to obtain a lossless decomposition.
+                </li>
+                <li>
+                  The sub-relations R1, R2, ... Rn do not suffer from redundancy
+                  and update anomalies.
+                </li>
+                <li>
+                  Decomposition relies on the semantic links that exist between
+                  attributes within the same relation, or what is called
+                  functional dependency.
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Functional Dependency</h2>
+              <p>
+                Functional dependency is a property of the meaning or semantics
+                of attributes in a relation. The semantics indicate how the
+                attributes are related to each other.
+              </p>
+
+              <ul class="list-disc pl-5">
+                <li>
+                  Formally, let R(A1, A2, ..., An) be a relation schema, and X
+                  and Y be subsets of {"{A1, A2, ... An}"}. We say that X → Y (X
+                  determines Y, or Y is functionally dependent on X) if, given a
+                  value of X, there is a unique value of Y at any given time.
+                </li>
+                <li>
+                  In other words, when two or more tuples have the same value of
+                  X, they also have the same value for Y. However, for a given
+                  value of Y, there may be multiple values of X.
+                </li>
+                <li>
+                  The left part of a functional dependency (FD) is called the
+                  determinant and the right part is called the dependent.
+                </li>
+                <li>
+                  It is essential to note that a functional dependency is an
+                  assertion on all possible values and not on actual values: it
+                  characterizes an intention and not an extension of the
+                  relation.
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">
+                Example 1: Identifying Functional Dependencies from a Good
+                Understanding of the Semantic Properties of Data
+              </h2>
+              <p>
+                Order(ID_Order, Order_Date, ID_Product, Unit_Price, Quantity,
+                Total_Amount)
+              </p>
+              <p>Functional Dependencies:</p>
+              <ul class="list-disc pl-5">
+                <li>ID_Order → Order_Date</li>
+                <li>ID_Order → ID_Product</li>
+                <li>ID_Order → Unit_Price</li>
+                <li>ID_Order → Quantity</li>
+                <li>ID_Order → Total_Amount</li>
+                <li>ID_Product → Unit_Price</li>
+                <li>(Unit_Price, Quantity) → Total_Amount</li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">
+                Properties of Functional Dependencies
+              </h2>
+
+              <p>
+                <strong>Armstrong's Axioms:</strong>
+              </p>
+              <ul class="list-disc pl-5">
+                <li>Reflexivity: Y ⊆ X ⇒ X → Y</li>
+                <li>Augmentation: X → Y ⇒ XZ → YZ</li>
+                <li>Transitivity: X → Y and Y → Z ⇒ X → Z</li>
+              </ul>
+              <p>Several other rules are derived from these basic axioms:</p>
+              <ul class="list-disc pl-5">
+                <li>Union: X → Y and X → Z ⇒ X → YZ</li>
+                <li>Pseudo-Transitivity: X → Y and WY → Z ⇒ WX → Z</li>
+                <li>Decomposition: X → Y and Z ⊆ Y ⇒ X → Z</li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">
+                Elementary Functional Dependency
+              </h2>
+
+              <p>
+                An elementary functional dependency is a dependency of the form
+                X → A, where A is a single attribute not belonging to X (A ∉ X),
+                and there does not exist X' included in X (X' ⊂ X) such that X'
+                → A.
+              </p>
+              <p>
+                The question of the elementarity of a functional dependency
+                should be raised when the left side of the functional dependency
+                has multiple attributes.
+              </p>
+              <InfoCard title="Example">
+                <p>RegNumber, Student_Name → Student_FirstName</p>
+                <p>
+                  This FD is not elementary because the attribute
+                  Student_FirstName also functionally depends on a part of{" "}
+                  {"(RegNumber, Student_Name)"}, which is RegNumber: RegNumber →
+                  Student_FirstName
+                </p>
+              </InfoCard>
+
+              <h2 class="text-xl font-bold mt-6">
+                Direct Functional Dependency
+              </h2>
+
+              <p>
+                A functional dependency X → A is a direct functional dependency
+                if there is no set of attributes Y such that X → Y and Y → A.
+              </p>
+              <p>
+                This means that the dependency between X and A cannot be
+                obtained by transitivity (Direct FD ≠ Transitive FD).
+              </p>
+              <InfoCard title="Example">
+                Order(ID_Order, Order_Date, ID_Product, Unit_Price, Quantity,
+                Total_Amount)
+                <ul class="list-disc pl-5">
+                  <li>ID_Order → ID_Product</li>
+                  <li>ID_Product → Unit_Price</li>
+                  <li>ID_Order → Unit_Price (Transitive FD)</li>
+                </ul>
+              </InfoCard>
+
+              <h2 class="text-xl font-bold mt-6">
+                Identifying the Primary Key of a Relation
+              </h2>
+
+              <p>
+                The identification of the primary key of a relation using
+                functional dependencies involves the following steps:
+              </p>
+              <ul class="list-disc pl-5">
+                <li>Identify all functional dependencies of the relation.</li>
+                <li>
+                  Identify the determinants of these functional dependencies.
+                </li>
+                <li>
+                  Determine from these determinants the candidate key(s) of the
+                  relation. The candidate key is the attribute that functionally
+                  determines all other attributes of the relation.
+                </li>
+                <li>
+                  If the relation has multiple candidate keys, determine which
+                  one should act as the primary key of the relation.
+                </li>
+                <li>
+                  All attributes that are not part of the primary key must
+                  functionally depend on the primary key.
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">
+                Identifying the Primary Key of a Relation
+              </h2>
+
+              <p>
+                Let R(A1, A2, ..., An) and X be a subset of the attributes of R.
+                X is a key of R if and only if:
+              </p>
+              <ol class="list-decimal pl-5">
+                <li>X → A1, A2, ..., An.</li>
+                <li>There is no subset Y ∈ X such that Y → A1, A2, ..., An.</li>
+              </ol>
+
+              <h2 class="text-xl font-bold mt-6">
+                Functional Dependency Graph
+              </h2>
+
+              <p>
+                Let F be a set of functional dependencies. It is possible to
+                visualize this set of FDs with a graph called a functional
+                dependency graph.
+              </p>
+            </div>
+          ),
+          subChapterVisualisation: (
+            <VisualisationComponent
+              animationData={dependencyDiagram}
+              title={"Dependency Function"}
+              description={
+                "Dependency function between attributes and diagram of dependency"
+              }
+            />
+          ),
+        },
+        {
+          title: "3) Normalization",
+          subChapterContent: (
+            <div>
+              <h1 class="text-2xl font-bold">Normalization</h1>
+              <p>
+                A process of organizing the data in the database to avoid data
+                redundancy, insertion anomaly, update anomaly & deletion
+                anomaly.
+              </p>
+              <p>
+                A process of organizing data into tables in such a way that the
+                results of using the database are always unambiguous and as
+                intended. Such normalization is intrinsic to relational database
+                theory. It may have the effect of duplicating data within the
+                database and often results in the creation of additional tables.
+              </p>
+
+              <h2 class="text-xl font-bold mt-6">
+                Advantages of Normalization
+              </h2>
+              <ul class="list-disc pl-5">
+                <li>
+                  Elimination of data redundancy makes the database compact,
+                  reducing the overall amount of space a database consumes.
+                </li>
+                <li>
+                  Enforcement of referential integrity on data ensuring data
+                  consistency across all tables.
+                </li>
+                <li>
+                  Maintenance becomes easier and faster since the data are
+                  organized logically in a normalized database in a flexible
+                  way.
+                </li>
+                <li>
+                  Searching and sorting of records is easier and faster because
+                  data will appear in a separate, smaller table when a database
+                  is normalized allowing us to easily find them.
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">
+                Difference between Normalization and Denormalization
+              </h2>
+              <p>
+                Normalization and denormalization are two processes that are
+                completely opposite.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Normalization is the process of dividing larger tables into
+                  smaller ones reducing the redundant data, while
+                  denormalization is the process of adding redundant data to
+                  optimize performance.
+                </li>
+                <li>
+                  Normalization is carried out to prevent database anomalies.
+                </li>
+                <li>
+                  Denormalization is usually carried out to improve the read
+                  performance of the database, but due to the additional
+                  constraints used for denormalization, writes (i.e. insert,
+                  update and delete operations) can become slower. Therefore, a
+                  denormalized database can offer worse write performance than a
+                  normalized database.
+                </li>
+              </ul>
+              <p>
+                It is often recommended that you should “normalize until it
+                hurts, denormalize until it works”.
+              </p>
+              <p>
+                Normalizing data means eliminating redundant information from a
+                table and organizing the data so that future changes to the
+                table are easier.
+              </p>
+
+              <h2 class="text-xl font-bold mt-6">Types of Normal Form</h2>
+              <ul class="list-disc pl-5">
+                <li>1NF</li>
+                <li>2NF</li>
+                <li>3NF</li>
+                <li>BCNF</li>
+                <li>4NF</li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">1st Normal Form (1NF)</h2>
+              <p>
+                The values in each column of a table are atomic (No multi-value
+                attributes allowed). Each table has a primary key: minimal set
+                of attributes which can uniquely identify a record.
+              </p>
+              <p>
+                There are no repeating groups: two columns do not store similar
+                information in the same table.
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Genres</th>
+                    <th className="border border-gray-200 py-2 px-4">Name</th>
+                    <th className="border border-gray-200 py-2 px-4">Movie</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Kevin Feige
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers, Captain America
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Zack Snyder
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs SuperMan, Suicide Squad
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>
+                This table contains attribute values which are not single. This
+                is not in normalized form. To make it into 1NF we have to
+                decompose the table into atomic elements.
+              </p>
+
+              <p>Table in 1NF after eliminating:</p>
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Genres</th>
+                    <th className="border border-gray-200 py-2 px-4">Name</th>
+                    <th className="border border-gray-200 py-2 px-4">Movie</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Kevin Feige
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Kevin Feige
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Captain America
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Zack Snyder
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs Superman
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Zack Snyder
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Suicide Squad
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <h2 class="text-xl font-bold mt-6">Second Normal Form (2NF)</h2>
+              <p>
+                A table is said to be in 2NF if both the following conditions
+                hold:
+              </p>
+              <ul class="list-disc pl-5">
+                <li>Table is in 1NF (First normal form)</li>
+                <li>
+                  No non-prime attribute is dependent on the proper subset of
+                  any candidate key of the table.
+                </li>
+              </ul>
+              <p>
+                Prime attribute: an attribute, which is a part of the prime-key,
+                is known as a prime attribute.
+              </p>
+              <p>
+                Non-prime attribute: an attribute, which is not a part of the
+                prime-key, is said to be a non-prime attribute.
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Studio</th>
+                    <th className="border border-gray-200 py-2 px-4">Movie</th>
+                    <th className="border border-gray-200 py-2 px-4">Budget</th>
+                    <th className="border border-gray-200 py-2 px-4">City</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">100</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Captain America
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">120</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">150</td>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Suicide Squad
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">75</td>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>
+                Here the Primary key is (studio, movie) and the city depends
+                only on the studio and not on the whole key. So, this is not in
+                2NF form.
+              </p>
+
+              <p>Solution of 2 NF</p>
+              <p>
+                Old Scheme -{">"}
+                {"{Studio, Movie, Budget, City}"}
+              </p>
+              <p>
+                New Scheme -{">"} {"{Movie, Studio, Budget}"}
+              </p>
+              <p>
+                New Scheme -{">"}
+                {"{Studio, City}"}
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Movie</th>
+                    <th className="border border-gray-200 py-2 px-4">Studio</th>
+                    <th className="border border-gray-200 py-2 px-4">Budget</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">100</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Captain America
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">120</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">150</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Suicide Squad
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">75</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Studio</th>
+                    <th className="border border-gray-200 py-2 px-4">City</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>Now the 2 tables are in 2NF form.</p>
+
+              <h2 class="text-xl font-bold mt-6">Third Normal Form (3NF)</h2>
+              <p>
+                This form dictates that all non-key attributes of a table must
+                be functionally dependent on a candidate key i.e. there can be
+                no interdependencies among non-key attributes.
+              </p>
+              <p>For a table to be in 3NF, there are two requirements:</p>
+              <ul class="list-disc pl-5">
+                <li>The table should be in second normal form</li>
+                <li>
+                  No attribute is transitively dependent on the primary key
+                </li>
+              </ul>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Studio</th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      CityTemp
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      Studio City
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">96</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">99</td>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Fox</td>
+                    <td className="border border-gray-200 py-2 px-4">96</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Paramount
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">95</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Hollywood
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>
+                Here Studio is the primary key and both studio temp and city
+                depends entirely on the Studio.
+              </p>
+              <ol class="list-decimal pl-5">
+                <li>
+                  Primary Key -{">"}
+                  {"{Studio}"}
+                </li>
+                <li>
+                  {"{Studio}"} -{">"} {"{StudioCity}"}
+                </li>
+                <li>
+                  {"{StudioCity}"} -{">"}
+                  {"{CityTemp}"}
+                </li>
+                <li>
+                  {"{Studio}"} -{">"} {"{CityTemp}"}
+                </li>
+              </ol>
+              <p>
+                CityTemp transitively depends on Studio hence violates 3NF. It
+                is called transitive dependency.
+              </p>
+
+              <p>Solution of 3NF</p>
+              <p>
+                Old Scheme -{">"} {"{Studio, StudioCity, CityTemp}"}
+              </p>
+              <p>
+                New Scheme-{">"} {"{Studio, StudioCity}"}
+              </p>
+              <p>
+                New Scheme -{">"}
+                {"{StudioCity, CityTemp}"}
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">Studio</th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      Studio City
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Marvel</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">DCEU</td>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Fox</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Paramount
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Hollywood
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      Studio City
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      CityTemp
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">96</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">Gotham</td>
+                    <td className="border border-gray-200 py-2 px-4">95</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Hollywood
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">99</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <h2 class="text-xl font-bold mt-6">
+                Boyce Codd Normal Form (BCNF) – 3.5NF
+              </h2>
+              <p>
+                BCNF does not allow dependencies between attributes that belong
+                to candidate keys.
+              </p>
+              <p>
+                BCNF is a refinement of the third normal form in which it drops
+                the restriction of a non-key attribute from the 3rd normal form.
+              </p>
+              <p>
+                Third normal form and BCNF are not the same if the following
+                conditions are true:
+              </p>
+              <ul class="list-disc pl-5">
+                <li>The table has two or more candidate keys</li>
+                <li>
+                  At least two of the candidate keys are composed of more than
+                  one attribute
+                </li>
+                <li>
+                  The keys are not disjoint i.e. The composite candidate keys
+                  share some attributes.
+                </li>
+              </ul>
+
+              <InfoCard title="Example">
+                <p>
+                  Scheme -{">"}{" "}
+                  {"{MovieTitle, MovieID, PersonName, Role, Payment }"}
+                </p>
+                <p>
+                  Key1 -{">"} {"{MovieTitle, PersonName}"}
+                </p>
+                <p>
+                  Key2 -{">"}
+                  {"{MovieID, PersonName}"}
+                </p>
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieTitle
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieID
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      PersonName
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">Role</th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      Payment
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">M101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Robert Downet Jr.
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Tony Stark
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">200m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">M101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Chris Evans
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Chris Rogers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">120m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">D101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Ben Afflek
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Bruce Wayne
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">180m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman Vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">D101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Henry Cavill
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Clarke Cent
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">125m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      A walk to remember
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">P101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Mandy Moore
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Jamie Sullivan
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">50m</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>Dependency between MovieID & MovieTitle violates BCNF.</p>
+              <p>Solution of BCNF</p>
+              <p>Place the two candidate primary keys in separate entities</p>
+              <p>
+                Place each of the remaining data items in one of the resulting
+                entities according to its dependency on the primary key.
+              </p>
+              <p>
+                New Scheme -{">"}
+                {"{MovieID, PersonName, Role, Payment}"}
+              </p>
+              <p>
+                New Scheme -{">"}
+                {"{MovieID, MovieTitle}"}
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieID
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      PersonName
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">Role</th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      Payment
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">M101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Robert Downey Jr.
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Tony Stark
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">200m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">M101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Chris Evans
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Chris Rogers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">125m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">D101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Ben Afflek
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Bruce Wayne
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">175m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">D101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Henry Cavill
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Clarke Cent
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">120m</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">P101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Mandy Moore
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Jamie Sullivan
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">50m</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieID
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieTitle
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">M101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">D101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman VS Superman
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">P101</td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      A walk to remember
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <h2 class="text-xl font-bold mt-6">4 NF</h2>
+              <p>
+                Fourth normal form (4NF) is a level of database normalization
+                where there are no non-trivial multivalued dependencies other
+                than a candidate key.
+              </p>
+              <p>
+                It builds on the first three normal forms (1NF, 2NF and 3NF) and
+                the Boyce-Codd Normal Form (BCNF).
+              </p>
+              <p>
+                It states that, in addition to a database meeting the
+                requirements of BCNF, it must not contain more than one
+                multivalued dependency.
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieName
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      ScreeningCity
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">Genre</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Los Angeles
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Sci-Fi</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Sci-Fi</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Santa Monica
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Action</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Venice</td>
+                    <td className="border border-gray-200 py-2 px-4">Action</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      A walk to remember
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New Jersey
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Drama</td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <p>MovieName -{">"} ScreeningCity</p>
+              <p>MovieName -{">"} Genre</p>
+              <p>
+                Each row in the above table represents two facts: the genre and
+                the cities in which a movie is playing. These facts are stored
+                in two or more tuples. The above table has 2 independent
+                multivalued dependencies.
+              </p>
+              <p>
+                To bring the above table to 4NF, we can decompose it into two
+                tables:
+              </p>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieName
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">
+                      ScreeningCity
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Los Angeles
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New York
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Santa Monica
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Venice</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      A walk to remember
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">
+                      New Jersey
+                    </td>
+                  </tr>
+                </table>
+              </InfoCard>
+
+              <InfoCard title="Example">
+                <table className="table-auto w-full mt-4">
+                  <tr className="bg-secondary">
+                    <th className="border border-gray-200 py-2 px-4">
+                      MovieName
+                    </th>
+                    <th className="border border-gray-200 py-2 px-4">Genre</th>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      The Avengers
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Sci-Fi</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      Batman vs Superman
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Action</td>
+                  </tr>
+                  <tr>
+                    <td className="border border-gray-200 py-2 px-4">
+                      A walk to remember
+                    </td>
+                    <td className="border border-gray-200 py-2 px-4">Drama</td>
+                  </tr>
+                </table>
+              </InfoCard>
+            </div>
+          ),
+          subChapterVisualisation: null,
+        },
+      ],
+    },
+    {
+      chapterId: 4,
+      title: "Relational algebra",
+      chapterDescription: (
+        <p>
+          Relational algebra is a procedural query language, which takes
+          relations as input and returns relations as output. It uses operators
+          to perform queries.
+        </p>
+      ),
+      subChapter: [
+        {
+          title: "Basic Operators",
+          subChapterContent: (
+            <div>
+              <h1 class="text-2xl font-bold">Relational Algebra</h1>
+              <p>
+                Relational algebra is a procedural query language used to query
+                the relational database model. It uses a set of operators to
+                perform operations on relations and produce results in the form
+                of new relations.
+              </p>
+
+              <h2 class="text-xl font-bold mt-6">Selection (σ)</h2>
+              <p>
+                The selection operation selects tuples from a relation that
+                satisfy a given predicate. It is denoted by σ
+                <sub>condition</sub>(R).
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Select all employees who earn more than $50,000 per
+                  year from the Employee table.
+                  <pre>
+                    <code>
+                      σ<sub>Salary {">"} 50000</sub>(Employee)
+                    </code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>
+                      Idempotent: σ<sub>p</sub>(σ<sub>q</sub>(R)) = σ
+                      <sub>p</sub>(R) if p ⊆ q
+                    </li>
+                    <li>
+                      Commutative: σ<sub>p ∧ q</sub>(R) = σ<sub>q ∧ p</sub>(R)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Projection (π)</h2>
+              <p>
+                The projection operation extracts only the specified columns
+                from a relation. It is denoted by π<sub>attribute_list</sub>(R).
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Extract the names and ages of all employees from the
+                  Employee table.
+                  <pre>
+                    <code>
+                      π<sub>Name, Age</sub>(Employee)
+                    </code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>
+                      Idempotent: π<sub>a, b</sub>(π<sub>c, d</sub>(R)) = π
+                      <sub>a, b</sub>(R)
+                    </li>
+                    <li>
+                      Not commutative: π<sub>a, b</sub>(R) ≠ π<sub>b, a</sub>(R)
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Union (∪)</h2>
+              <p>
+                The union operation combines two relations and removes any
+                duplicate tuples. Both relations must have the same set of
+                attributes.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Combine the Employee and Manager tables to find all
+                  employees and managers.
+                  <pre>
+                    <code>Employee ∪ Manager</code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>Commutative: R ∪ S = S ∪ R</li>
+                    <li>Associative: (R ∪ S) ∪ T = R ∪ (S ∪ T)</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Difference (-)</h2>
+              <p>
+                The difference operation removes tuples from one relation that
+                are also present in another relation.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Find all employees who are not managers.
+                  <pre>
+                    <code>Employee - Manager</code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>Not commutative: R - S ≠ S - R</li>
+                    <li>Not associative: (R - S) - T ≠ R - (S - T)</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Join (⨝)</h2>
+              <p>
+                The join operation combines columns from two or more relations
+                based on related columns.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Join the Employee and Department tables to find
+                  employees and their departments.
+                  <pre>
+                    <code>Employee ⨝ Department</code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>Commutative: R ⨝ S = S ⨝ R</li>
+                    <li>Associative: (R ⨝ S) ⨝ T = R ⨝ (S ⨝ T)</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Intersection (∩)</h2>
+              <p>
+                The intersection operation returns only the tuples that appear
+                in both relations.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Find all employees who are also managers.
+                  <pre>
+                    <code>Employee ∩ Manager</code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>Commutative: R ∩ S = S ∩ R</li>
+                    <li>Associative: (R ∩ S) ∩ T = R ∩ (S ∩ T)</li>
+                  </ul>
+                </li>
+              </ul>
+
+              <h2 class="text-xl font-bold mt-6">Division (÷)</h2>
+              <p>
+                The division operation returns tuples that are in one relation
+                but not in another related relation.
+              </p>
+              <ul class="list-disc pl-5">
+                <li>
+                  Example: Find all employees who have worked on all projects.
+                  <pre>
+                    <code>Employee ÷ Project</code>
+                  </pre>
+                </li>
+                <li>
+                  Properties:
+                  <ul class="list-disc pl-5">
+                    <li>Not commutative: R ÷ S ≠ S ÷ R</li>
+                    <li>Not associative: (R ÷ S) ÷ T ≠ R ÷ (S ÷ T)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          ),
+          subChapterVisualisation: null,
         },
       ],
     },

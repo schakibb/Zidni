@@ -20,8 +20,8 @@ import {
 } from "../../../components/ui/dropdown";
 import { cn } from "../../../utils/cn";
 const Header = () => {
-  // const [user] = useAuthState(auth);
-  const user = true; /** for preview mode only */
+  const [user] = useAuthState(auth);
+  // const user = true; /** for preview mode only */
   const router = useRouter();
   const [selected, setSelected] = useState("home");
 
