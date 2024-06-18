@@ -50,7 +50,7 @@ const GraphInput = () => {
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
         onClick={handleAddNodes}
       >
-        Add Nodes
+        Draw
       </button>
       <div className="m-2 h-96 border rounded shadow-inner">
         {nodes && <Graphe nodes={nodes} link={edgeType} />}
