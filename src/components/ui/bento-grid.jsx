@@ -1,6 +1,6 @@
 import { useRouter } from "next/navigation";
 import { cn } from "../../utils/cn";
-import { Badge } from "./badge";
+import { Badge, badgeVariants } from "./badge";
 
 export const BentoGrid = ({ className, children }) => {
   return (
@@ -32,14 +32,17 @@ export const BentoGridItem = ({
       onClick={() => router.push(path)}
     >
       <div className="translate-x-0 transition duration-200">
-        <Badge
-          className={cn(
-            "absolute right-5 top-1",
-            label === "New" ? "bg-green-500" : "bg-[#ffa500]"
-          )}
-        >
-          {label}
-        </Badge>
+        {label && (
+          <Badge
+            className={cn(
+              "absolute right-5 top-1",
+              label === "New" ? "!bg-green-500" : "!bg-[#ffa500]",
+              badgeVariants({ variant: "secondary" })
+            )}
+          >
+            {label}
+          </Badge>
+        )}
         <div className="font-sans font-bold text-neutral-600 dark:text-neutral-200 mb-2 mt-2">
           {title}
         </div>

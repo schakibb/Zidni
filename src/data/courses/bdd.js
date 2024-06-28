@@ -12,8 +12,8 @@ export const bdd = {
   title: "Databases",
   description:
     "Master database fundamentals, including design, SQL, normalization, and optimization for efficient data management and retrieval.",
-  comingSoon: true,
-  isNew: false,
+  comingSoon: false,
+  isNew: true,
   chapters: [
     {
       chapterId: 1,

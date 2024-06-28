@@ -154,6 +154,7 @@ const page = () => {
           <Visualisation index={index} courseSelected={selectedCourse} />
         </ResizablePanel>
       </ResizablePanelGroup>
+      {/* <Chatbot /> */}
     </div>
   );
 };
@@ -169,7 +170,7 @@ const Visualisation = ({ courseSelected, index }) => {
 
   filteredChapter = filterChapter(idx);
   return (
-    <div className="min-h-[85dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
+    <div className="overflow-x-hidden min-h-[90dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
       <div
         className={
           "flex-col justify-center items-center sm:flex m-0 p-0 w-full"

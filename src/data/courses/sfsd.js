@@ -27,7 +27,7 @@ export const sfsd = {
   description:
     "The File Structures and Data Structures module studies file access, data structures, and associated algorithms to efficiently manipulate massive data, optimizing transfers between central and external memory.",
   comingSoon: false,
-  isNew: true,
+  isNew: false,
   chapters: [
     {
       chapterId: 1,
