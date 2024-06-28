@@ -13,13 +13,13 @@ import * as FormEnrgVarSizeNonBlocked from "../../data/visualisation/sfsd/Le for
 import * as DiskOrganization from "../../data/visualisation/sfsd/disk organization.json";
 import * as treeCreation from "../../data/visualisation/sfsd/treeCreation.json";
 import * as nodeDeletion from "../../data/visualisation/sfsd/nodeDeletion.json";
-import * as TableSFSD from "../../data/visualisation/sfsd/TableSFSD";
+import TableSFSD from "../../data/visualisation/sfsd/TableSFSD";
 import * as storageUnits from "../../data/visualisation/sfsd/storageUnits.json";
 import * as creatingDanceTable from "../../data/visualisation/sfsd/CreatingIndexTable.json";
 import * as RepresentationsOfMultiValued from "../../data/visualisation/sfsd/RepresentationsOfMultiValued.json";
 import * as blockCirculation from "../../data/visualisation/sfsd/blockCirculation.json";
 import * as recordTypes from "../../data/visualisation/sfsd/recordTypes.json";
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import { VisualisationComponent } from "../../components/global/Visualisation/index";
 import { Fragment } from "react";
 export const sfsd = {
   id: 23,

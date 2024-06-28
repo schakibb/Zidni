@@ -1,4 +1,4 @@
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import { VisualisationComponent } from "../../components/global/Visualisation/index";
 
 export const thg = {
   id: 38,
