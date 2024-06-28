@@ -6,8 +6,10 @@ import { ContainerScroll } from "../../ui/hero-animation-container";
 import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../../utils/firebase/config";
+
 const Hero = () => {
   const [user] = useAuthState(auth);
+  // const user = true; /* for preview mode only */
   return (
     <section>
       <div className={`flex flex-col -mt-8 overflow-hidden`}>
@@ -25,10 +27,7 @@ const Hero = () => {
                 <br /> Join us to revolutionize education together!
               </p>
               <div className="flex flex-col items-center justify-center  space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                <Link
-                  href={user ? "/courses" : "/signup"}
-                  className={buttonVariants()}
-                >
+                <Link href={"/courses"} className={buttonVariants()}>
                   Get Started <span className="ml-2"> &rarr;</span>
                 </Link>
 
