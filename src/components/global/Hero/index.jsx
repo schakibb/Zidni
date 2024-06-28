@@ -4,6 +4,8 @@ import { buttonVariants } from "../../ui/button";
 import { FaGithub } from "react-icons/fa";
 import { ContainerScroll } from "../../ui/hero-animation-container";
 import Image from "next/image";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../../../utils/firebase/config";
 
 const Hero = () => {
   const [user] = useAuthState(auth);

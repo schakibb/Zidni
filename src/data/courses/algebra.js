@@ -6,7 +6,7 @@ import * as MatrixDetCalc from "../../data/visualisation/sfsd/determinantcalcul.
 import * as AppLinear from "../../data/visualisation/sfsd/application_matrice.json";
 import * as Matrix from "../../data/visualisation/sfsd/matrix.json";
 import * as MatrixDet from "../../data/visualisation/sfsd/matrix determinant.json";
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import { VisualisationComponent } from "../../components/global/Visualisation/index";
 
 export const algebra = {
   id: 11,
