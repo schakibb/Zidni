@@ -40,38 +40,60 @@ const Courses = () => {
   return (
     <>
       <div className="bg-muted/40 py-1 rounded-lg mt-1">
-        {user && (
-          <div className="text-center ml-4">
-            <h1 className="text-xl sm:text-3xl mt-28">
-              Hi there {user?.displayName}👋,
-            </h1>
-            <p className="lg:text-lg text-base ml-2 ">
-              Glad to see you , excited to explore our new way of learning
-              together. Let's dive in!
-            </p>
-          </div>
-        )}
-        {user ? (
+        {
+          <>
+            <div className="text-center ml-4">
+              <h1 className="text-xl sm:text-3xl mt-28">
+                Hi there {user?.displayName ?? ""}👋,
+              </h1>
+              <p className="lg:text-lg text-base ml-2 ">
+                Glad to see you , excited to explore our new way of learning
+                together. Let's dive in!
+              </p>
+            </div>
+            <BentoGrid className="mt-7 mx-auto">
+              {courses.map((course, i) => (
+                <BentoGridItem
+                  path={course.path}
+                  key={i}
+                  title={course.title}
+                  description={course.description}
+                  icon={
+                    course.icon ?? (
+                      <AlignVerticalSpaceAround className="h-4 w-4 text-neutral-500" />
+                    )
+                  }
+                  className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+                  label={
+                    (course.comingSoon && "Coming Soon") ||
+                    (course.isNew && "New")
+                  }
+                />
+              ))}
+            </BentoGrid>
+          </>
+        }
+        {/* {user ? (
           <BentoGrid className="mt-7 mx-auto">
-            {courses.map((course, i) => (
-              <BentoGridItem
-                path={course.path}
-                key={i}
-                title={course.title}
-                description={course.description}
-                icon={
-                  course.icon ?? (
-                    <AlignVerticalSpaceAround className="h-4 w-4 text-neutral-500" />
-                  )
-                }
-                className={i === 3 || i === 6 ? "md:col-span-2" : ""}
-                label={
-                  (course.comingSoon && "Coming Soon") ||
-                  (course.isNew && "New")
-                }
-              />
-            ))}
-          </BentoGrid>
+          {courses.map((course, i) => (
+            <BentoGridItem
+              path={course.path}
+              key={i}
+              title={course.title}
+              description={course.description}
+              icon={
+                course.icon ?? (
+                  <AlignVerticalSpaceAround className="h-4 w-4 text-neutral-500" />
+                )
+              }
+              className={i === 3 || i === 6 ? "md:col-span-2" : ""}
+              label={
+                (course.comingSoon && "Coming Soon") ||
+                (course.isNew && "New")
+              }
+            />
+          ))}
+        </BentoGrid>
         ) : (
           <div className="py-20 mx-2 md:mx-[35dvw] text-center">
             <Card className="py-3">
@@ -85,7 +107,7 @@ const Courses = () => {
               </CardFooter>
             </Card>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );
