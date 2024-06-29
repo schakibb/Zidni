@@ -1,5 +1,4 @@
 import { buttonVariants } from "../../ui/button";
-import NewsLatterBox from "./NewsLatterBox";
 
 const Contact = () => {
   return (
