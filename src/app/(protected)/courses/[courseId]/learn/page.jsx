@@ -40,7 +40,7 @@ const page = () => {
     (course) => course.path === pathname
   )[0];
   return (
-    <div className="min-h-fit -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
+    <div className="min-h-fit !max-h-[90dvh] overflow-hidden -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
           <>
@@ -94,7 +94,10 @@ const page = () => {
             </Card>
           </>
         </ResizablePanel>
-        <ResizableHandle withHandle className={"min-h-[91dvh]"} />
+        <ResizableHandle
+          withHandle
+          className={"min-h-[85dvh] max-h-[92dvh] "}
+        />
         <ResizablePanel defaultSize={65} className="z-[40] !w-full !p-0 !m-0">
           <Sheet>
             <SheetTrigger>

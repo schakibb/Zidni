@@ -55,7 +55,7 @@ const Header = () => {
             Home
           </Link>
           <Link
-            href={"https://lokmanes-organization.gitbook.io/welcome/"}
+            href={"/docs"}
             className={cn(
               `flex items-center ${
                 selected === "docs"
