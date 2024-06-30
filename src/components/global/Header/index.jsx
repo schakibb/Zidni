@@ -103,9 +103,9 @@ const Header = () => {
         </nav>
         <div className="flex w-full items-center justify-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <form className="ml-auto flex-1 sm:flex-initial">
-            {user ? (
+            {/* {user ? (
               <div className="relative">
-                {/* <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                 <input
                   list="courses"
                   type="search"
@@ -131,7 +131,7 @@ const Header = () => {
                       }}
                     />
                   ))}
-                </datalist> */}
+                </datalist>
               </div>
             ) : (
               <div className="hidden sm:block">
@@ -149,7 +149,7 @@ const Header = () => {
                   Get Started
                 </Link>
               </div>
-            )}
+            )} */}
           </form>
           <ThemeToggler />
           <div className="h-full m-0 p-0">
