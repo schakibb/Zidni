@@ -6,21 +6,25 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
+
 const syne = Syne({
   subsets: ["latin"],
   weight: ["700", "800"],
   variable: "--font-syne",
 });
-// according to gogle font's official website it's the best font for learing
+
+// According to Google Fonts' official website, it's the best font for learning
 const abeezee = ABeeZee({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-abz",
 });
+
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : "http://localhost:3000";
@@ -40,7 +44,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
         className={`bg-[#fdfdfd] dark:bg-background ${syne.variable} ${inter.variable} ${abeezee.variable}`}
       >
-        <Providers children={children}>
+        <Providers>
           <Header />
           {children}
           <ScrollToTop />

@@ -62,8 +62,7 @@ const Header = () => {
                 selected === "docs"
                   ? "!text-foreground"
                   : "!text-muted-foreground"
-              } hover:text-foreground`,
-              buttonVariants({ variant: "link" })
+              } hover:text-foreground`
             )}
             onClick={() => setSelected("docs")}
           >

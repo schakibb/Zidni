@@ -16,6 +16,7 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "../../ui/popover";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const frameworks = [
   {
@@ -79,16 +80,11 @@ export function ComboboxDemo() {
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
                     setOpen(false);
-                    framework.path && router.push(framework.path);
                   }}
                 >
-                  {framework.label}
-                  <CheckIcon
-                    className={cn(
-                      "ml-auto h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
+                  <Link href={framework.path ?? "/coming-soon"}>
+                    {framework.label}
+                  </Link>
                 </CommandItem>
               ))}
             </CommandGroup>
