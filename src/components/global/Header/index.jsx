@@ -19,6 +19,7 @@ import {
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown";
 import { cn } from "../../../utils/cn";
+import { ComboboxDemo } from "./searchCourses";
 const Header = () => {
   const [user] = useAuthState(auth);
   // const user = true; /** for preview mode only */
@@ -40,7 +41,7 @@ const Header = () => {
             className="mr-12 ml-2"
           />
         </Link>
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:!items-center md:gap-4 md:text-sm lg:gap-6">
           <Link
             href="/"
             className={cn(
@@ -61,13 +62,12 @@ const Header = () => {
                 selected === "docs"
                   ? "!text-foreground"
                   : "!text-muted-foreground"
-              } hover:text-foreground hover:!text-white`,
+              } hover:text-foreground`,
               buttonVariants({ variant: "link" })
             )}
             onClick={() => setSelected("docs")}
           >
             Docs
-            <ExternalLink className="h4 w-4 ml-1" />
           </Link>
           <Link
             href="/courses"
@@ -103,6 +103,7 @@ const Header = () => {
         </nav>
         <div className="flex w-full items-center justify-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <form className="ml-auto flex-1 sm:flex-initial">
+            <ComboboxDemo />
             {/* {user ? (
               <div className="relative">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />

@@ -1,9 +1,10 @@
 import React from "react";
+import { ComboboxDemo } from "../../components/global/Header/searchCourses";
 
 const page = () => {
   return (
     <>
-      <iframe src="https://lokmanes-organization.gitbook.io/untitled/platform-guide/quizzes" />
+      <ComboboxDemo />
     </>
   );
 };
