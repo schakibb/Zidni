@@ -29,12 +29,11 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "../../../../../components/ui/sheet";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 const page = () => {
   const pathname = usePathname();
   const [index, setIndex] = React.useState(1);
@@ -42,7 +41,7 @@ const page = () => {
     (course) => course.path === pathname
   )[0];
   return (
-    <div className="min-h-fit -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
+    <div className="min-h-fit !max-h-[90dvh] overflow-hidden -mt-8 sm:mt-0 --font-abz sticky w-full m-0 p-0">
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={35} className={"hidden sm:block"}>
           <>
@@ -74,55 +73,7 @@ const page = () => {
                       {idx + 1}. {chapter.title}
                     </button>
                   ))}
-                  <Link
-                    href={selectedCourse.quiz}
-                    className={cn("my-2", buttonVariants())}
-                  >
-                    Take quiz
-                  </Link>
-                </div>
-              </CardContent>
-            </Card>
-          </>
-        </ResizablePanel>
-        <ResizableHandle withHandle className={"min-h-[91dvh]"} />
-        <ResizablePanel defaultSize={65} className="z-[40] w-full">
-          <div className="flex items-center space-x-2">
-            <Sheet>
-              <SheetTrigger>
-                <button
-                  className={cn(
-                    "relative -left-3 top-8 bg-muted/100 p-2 !rounded-full block sm:hidden",
-                    buttonVariants({})
-                  )}
-                >
-                  <ChevronRight />
-                </button>
-              </SheetTrigger>
-              <SheetContent
-                side="left"
-                className={
-                  "flex-col justify-center items-center sm:flex mt-5 w-full"
-                }
-              >
-                <SheetHeader>
-                  <SheetTitle>{selectedCourse.title} </SheetTitle>
-                  <SheetClose>
-                    {selectedCourse.chapters.map((chapter, idx) => (
-                      <button
-                        onClick={() => {
-                          setIndex(idx + 1);
-                        }}
-                        className={cn(
-                          "w-full my-1 text-left",
-                          buttonVariants({ variant: "outline" })
-                        )}
-                        key={chapter.chapterId}
-                        type="submit"
-                      >
-                        {idx + 1}. {chapter.title}
-                      </button>
-                    ))}
+                  <div>
                     <Link
                       href={selectedCourse.quiz}
                       className={cn("my-2", buttonVariants())}
@@ -138,16 +89,76 @@ const page = () => {
                     >
                       Next course
                     </Link>
-                  </SheetClose>
-                </SheetHeader>
-              </SheetContent>
-            </Sheet>
-          </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </>
+        </ResizablePanel>
+        <ResizableHandle
+          withHandle
+          className={"min-h-[85dvh] max-h-[92dvh] "}
+        />
+        <ResizablePanel defaultSize={65} className="z-[40] !w-full !p-0 !m-0">
+          <Sheet>
+            <SheetTrigger>
+              <button
+                className={cn(
+                  "relative -left-3 top-8 bg-muted/100 p-2 !rounded-full block sm:hidden",
+                  buttonVariants({})
+                )}
+              >
+                <ChevronRight />
+              </button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className={
+                "flex-col justify-center items-center sm:flex mt-5 w-full"
+              }
+            >
+              <SheetHeader>
+                <SheetTitle>{selectedCourse.title} </SheetTitle>
+                <SheetClose>
+                  {selectedCourse.chapters.map((chapter, idx) => (
+                    <button
+                      onClick={() => {
+                        setIndex(idx + 1);
+                      }}
+                      className={cn(
+                        "w-full my-1 text-left",
+                        buttonVariants({ variant: "outline" })
+                      )}
+                      key={chapter.chapterId}
+                      type="submit"
+                    >
+                      {idx + 1}. {chapter.title}
+                    </button>
+                  ))}
+                  <Link
+                    href={selectedCourse.quiz}
+                    className={cn("my-2", buttonVariants())}
+                  >
+                    Take quiz
+                  </Link>
+                  <Link
+                    href={selectedCourse.next}
+                    className={cn(
+                      "my-2 ml-3",
+                      buttonVariants({ variant: "secondary" })
+                    )}
+                  >
+                    Next course
+                  </Link>
+                </SheetClose>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
 
           <Visualisation index={index} courseSelected={selectedCourse} />
         </ResizablePanel>
       </ResizablePanelGroup>
-      <Chatbot />
+      {/* <Chatbot /> */}
     </div>
   );
 };
@@ -163,13 +174,13 @@ const Visualisation = ({ courseSelected, index }) => {
 
   filteredChapter = filterChapter(idx);
   return (
-    <div className="min-h-[85dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
+    <div className="overflow-x-hidden min-h-[90dvh] max-h-[91dvh] border-2 rounded-sm m-0 p-0 dark:bg-background overflow-y-scroll w-full">
       <div
         className={
           "flex-col justify-center items-center sm:flex m-0 p-0 w-full"
         }
       >
-        <Card className="m-4 w-[97%]">
+        <Card className="m-4 !min-w-[96%]">
           <CardHeader>
             <CardTitle className="text-center text-2xl">
               {filteredChapter[0]?.chapterId}. {filteredChapter[0]?.title}

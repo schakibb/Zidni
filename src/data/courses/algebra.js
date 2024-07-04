@@ -1,12 +1,12 @@
-import * as Addition from "../../data/visualisation/sfsd/addition.json";
-import * as Soustraction from "../../data/visualisation/sfsd/substraction.json";
-import * as MultipleByK from "../../data/visualisation/sfsd/multiplication_number.json";
-import * as Multiplication from "../../data/visualisation/sfsd/multiplication.json";
-import * as MatrixDetCalc from "../../data/visualisation/sfsd/determinantcalcul.json";
-import * as AppLinear from "../../data/visualisation/sfsd/application_matrice.json";
-import * as Matrix from "../../data/visualisation/sfsd/matrix.json";
-import * as MatrixDet from "../../data/visualisation/sfsd/matrix determinant.json";
-import VisualisationComponent from "../../components/global/Visualisation/index";
+import * as Addition from "../../data/visualisation/algebra/addition1.json";
+import * as Soustraction from "../../data/visualisation/algebra/substraction1.json";
+import * as MultipleByK from "../../data/visualisation/algebra/multiplication_number.json";
+import * as Multiplication from "../../data/visualisation/algebra/multiplication1.json";
+import * as MatrixDetCalc from "../../data/visualisation/algebra/determinant_calcul1.json";
+import * as AppLinear from "../../data/visualisation/algebra/linear_application_matrix.json";
+import * as Matrix from "../../data/visualisation/algebra/matrix.json";
+import * as MatrixDet from "../../data/visualisation/algebra/matrix determinant.json";
+import { VisualisationComponent } from "../../components/global/Visualisation/index";
 
 export const algebra = {
   id: 11,
@@ -20,7 +20,7 @@ export const algebra = {
     {
       chapterId: 1,
       title: "Review of Algebra 2 Concepts",
-      chapterDescription: <p></p>,
+      chapterDescription: "",
       subChapter: [
         {
           id: 111,
