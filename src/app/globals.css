@@ -46,6 +46,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+
   }
 }
 
@@ -53,11 +54,13 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
   }
 }
+
 /* to test css  variables */
 
 /* * {
@@ -66,15 +69,19 @@
 
 /* Customize the scrollbar */
 ::-webkit-scrollbar {
-  width: 8px; /* Set the width of the scrollbar */
+  width: 8px;
+  /* Set the width of the scrollbar */
 }
+
 ::-webkit-scrollbar-track {
   background-color: #b1b1b2e6;
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #2563ebe6;
   border-radius: 8px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0e3faa;
 }
@@ -82,6 +89,39 @@
 .zindex {
   z-index: 1599 !important;
 }
+
 .second-zindex {
   z-index: 1999 !important;
+}
+
+.node {
+  fill: #007bff;
+}
+
+.link {
+  stroke: #ccc;
+}
+
+.label {
+  font-size: 12px;
+  fill: #333;
+}
+
+polygon {
+  fill: transparent;
+}
+
+.node>text {
+  fill: black;
+  font-size: 14px;
+}
+
+.node>ellipse {
+  fill: white;
+}
+
+.edge>path,
+.node>ellipse,
+.edge>polygon {
+  stroke: #3b82f6;
 }

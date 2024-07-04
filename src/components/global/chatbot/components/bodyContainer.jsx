@@ -6,6 +6,7 @@ import Link from "next/link";
 import { buttonVariants } from "../../../ui/button";
 import { Input } from "../../../ui/input";
 import { cn } from "../../../../utils/cn";
+import { SendHorizontal } from "lucide-react";
 
 function BodyContainer({
   initQuestion,
@@ -54,11 +55,7 @@ function BodyContainer({
           disabled={isLoading}
           className="scale-130 p-2"
         >
-          <img
-            src="./chatbot/send.svg"
-            alt="send"
-            className="transform scale-150"
-          />
+          <SendHorizontal />
         </button>
       </div>
     </div>

@@ -46,9 +46,10 @@ const page = () => {
             className="grid gap-4 text-sm text-muted-foreground"
             x-chunk="dashboard-04-chunk-0"
           >
-            {iframes.map((frame, index) => {
+            {docsData.map((frame, index) => {
               return (
                 <p
+                  key={frame.id}
                   onClick={() => setIframe(index)}
                   className={cn(
                     "cursor-pointer font-semibold",
@@ -76,7 +77,7 @@ const page = () => {
                 </CardHeader>
                 <CardContent>Select a topic to view its guide.</CardContent>
               </Card>
-            ) : iframes[iframe]?.link ? (
+            ) : iframes[iframe]?.
               iframes[iframe]?.link
             ) : (
               <Card>
